@@ -42,12 +42,11 @@ const Categories = () => {
             setLoading(true)
 
             try {
-                const { data } = await axios.post<TYPE_API_Response<TYPE_Taxonomy>>(`${api}/blog/categories`, {
+                const { data } = await axios.post<TYPE_API_Response<TYPE_Taxonomy>>(`${api}/blog/categories`, category, {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: `Bearer ${loginToken}`
-                    },
-                    data: category
+                    }
                 })
                 
                 setLoading(false)

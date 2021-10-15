@@ -80,10 +80,7 @@ const Dashboard = () => {
             borderColor: theme.content.includes('dark') ? '#ffffff50' : '#00000050',
           }
         ],
-    }
-
-    console.log(theme);
-    
+    }    
 
     const options: any = {
         scales: {

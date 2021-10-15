@@ -123,11 +123,10 @@ const Slide = ({ slide }: SlideProps) => {
             slide && headers.append('thumbnailID', slide.backgroundImageID.toString())
             
             try {
-                const { data } = await axios.post<TYPE_API_Response<TYPE_Slide>>(`${api}/slide`, {
+                const { data } = await axios.post<TYPE_API_Response<TYPE_Slide>>(`${api}/slide`, headers, {
                     headers: {
                         Authorization: `Bearer ${loginToken}`
-                    },
-                    data: headers
+                    }
                 })
                 setLoading(false)
                 setSendStatus(data.status)

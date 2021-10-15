@@ -43,14 +43,14 @@ const Year = () => {
             setLoading(true)
 
             try {
-                const { data } = await axios.post<TYPE_API_Response<TYPE_Taxonomy>>(`${api}/cars/taxonomies`, {
+                const axiosdata = {
+                    type: 'year',
+                    taxonomy: newYear,
+                }
+                const { data } = await axios.post<TYPE_API_Response<TYPE_Taxonomy>>(`${api}/cars/taxonomies`, axiosdata, {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: `Bearer ${loginToken}`
-                    },
-                    data: {
-                        type: 'year',
-                        taxonomy: newYear,
                     }
                 })
                 setLoading(false)

@@ -95,11 +95,10 @@ const CarConfig = () => {
         formConfig.append('descriptionSectionTitle', titleSection3)
 
         try {
-            const { data } = await axios.post<TYPE_API_Response<TYPE_ConfigProps>>(`${api}/config`, {
+            const { data } = await axios.post<TYPE_API_Response<TYPE_ConfigProps>>(`${api}/config`, formConfig, {
                 headers: {
                     Authorization: `Bearer ${loginToken}`
-                },
-                data: formConfig
+                }
             })
             setLoading(false)
 

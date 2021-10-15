@@ -118,7 +118,7 @@ const AllTickets = () => {
                 setMessageBoxMessage('')
             }, 2000);
         }
-}
+    }
 
     function massiveDelete() {
         const ticketsDeleted:TYPE_Tickets[] = []
@@ -140,16 +140,16 @@ const AllTickets = () => {
         setLoading(true)
         
         try {
-            const { data } = await axios.post<TYPE_API_Response<TYPE_Tickets>>(`${api}/tickets`, {
+            const axiosdata = {
+                ...ticket,
+                messages: ticket.messages.map(msg => `author:${msg.author}/&/message:${msg.message}/&/time:${msg.time}/&/attachments:${msg.attachments.map(file=> `file:${file}`)}`),
+                status: ticket.status === 'closed' ? 'progress' : 'closed',
+                user: user?.capability === 'administrator' ?  'microsite' : user?.email
+            }
+            const { data } = await axios.post<TYPE_API_Response<TYPE_Tickets>>(`${api}/tickets`, axiosdata, {
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${loginToken}`
-                },
-                data: {
-                    ...ticket,
-                    messages: ticket.messages.map(msg => `author:${msg.author}/&/message:${msg.message}/&/time:${msg.time}/&/attachments:${msg.attachments.map(file=> `file:${file}`)}`),
-                    status: ticket.status === 'closed' ? 'progress' : 'closed',
-                    user: user?.capability === 'administrator' ?  'microsite' : user?.email
                 }
             })
             setLoading(false)

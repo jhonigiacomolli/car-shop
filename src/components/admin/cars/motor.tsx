@@ -43,14 +43,14 @@ const Motor = () => {
             setLoading(true)
 
             try {
-                const { data } = await axios.post<TYPE_API_Response<TYPE_Taxonomy>>(`${api}/cars/taxonomies`, {
+                const axiosdata = {
+                    type: 'motor',
+                    taxonomy: newMotor,
+                }
+                const { data } = await axios.post<TYPE_API_Response<TYPE_Taxonomy>>(`${api}/cars/taxonomies`, axiosdata, {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: `Bearer ${loginToken}`
-                    },
-                    data: {
-                        type: 'motor',
-                        taxonomy: newMotor,
                     }
                 })
                 setLoading(false)

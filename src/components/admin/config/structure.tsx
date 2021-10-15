@@ -80,7 +80,7 @@ const Structure = () => {
                     button.innerHTML = 'X'
                     div.appendChild(img)
                     div.appendChild(button)
-                    container.insertBefore(div, container)
+                    container.insertBefore(div, defaultGalleryItem.current)
                 }, false)
                 reader.readAsDataURL(tempGallery[i])
             }
@@ -104,7 +104,7 @@ const Structure = () => {
                 button.innerHTML = 'X'
                 div.appendChild(img)
                 div.appendChild(button)
-                container.insertBefore(div, container)
+                container.insertBefore(div, defaultGalleryItem.current)
             })  
         }
     }
@@ -140,14 +140,12 @@ const Structure = () => {
             galleryFiles.map((file, index) => headers.append(`structure${index}`, file ))
             
             try {
-                const { data } = await axios.post<TYPE_API_Response<TYPE_ConfigProps>>(`${api}/config`, {
+                const { data } = await axios.post<TYPE_API_Response<TYPE_ConfigProps>>(`${api}/config`, headers, {
                     headers: {
                         Authorization: `Bearer ${loginToken}`
-                    },
-                    data: headers
+                    }
                 })
                 setLoading(false)
-                console.log(data)
                 setSendResponse(data.message)
                 setSendStatus(data.status)
                 config.structure = data.data.structure

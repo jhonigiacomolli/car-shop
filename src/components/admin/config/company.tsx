@@ -124,12 +124,12 @@ const Company = () => {
         formConfig.append('revalidate', dataRevalidate.toString())
 
         try {
-            const { data } = await axios.post<TYPE_API_Response<TYPE_ConfigProps>>(`${api}/config`, {
+            const { data } = await axios.post<TYPE_API_Response<TYPE_ConfigProps>>(`${api}/config`, formConfig, {
                 headers: {
                     Authorization: `Bearer ${loginToken}`
-                },
-                data: formConfig
+                }
             })
+            
             setLoading(false)
             if(data.status === 200) {
                 setSendResponse(data.message)
@@ -158,8 +158,8 @@ const Company = () => {
                 setSendResponse('')
             }, 2000);
         }
-    }
-    
+    }    
+
     useEffect(() => {
         clear && setTitle('')        
     }, [clear])

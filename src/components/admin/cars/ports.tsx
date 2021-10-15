@@ -43,14 +43,14 @@ const Ports = () => {
             setLoading(true)
             
             try {
-                const { data } = await axios.post<TYPE_API_Response<TYPE_Taxonomy>>(`${api}/cars/taxonomies`, {
+                const axiosdata = {
+                    type: 'ports',
+                    taxonomy: newPorts,
+                }
+                const { data } = await axios.post<TYPE_API_Response<TYPE_Taxonomy>>(`${api}/cars/taxonomies`, axiosdata, {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: `Bearer ${loginToken}`
-                    },
-                    data: {
-                        type: 'ports',
-                        taxonomy: newPorts,
                     }
                 })
                 setLoading(false)

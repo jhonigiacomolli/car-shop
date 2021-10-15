@@ -54,17 +54,16 @@ const Branch = ({ branch }: BranchProps) => {
         
             try {
                 const { data } = await axios.post<TYPE_API_Response<TYPE_Branch>>(`${api}/branch`, {
+                    id: branch?.id ?? 0,
+                    title,
+                    description,
+                    address,
+                    email,
+                    fixedPhone,
+                    mobilePhone,
+                }, {
                     headers: {
                         Authorization: `Bearer ${loginToken}`
-                    },
-                    data: {
-                        id: branch?.id ?? 0,
-                        title,
-                        description,
-                        address,
-                        email,
-                        fixedPhone,
-                        mobilePhone,
                     }
                 })
     

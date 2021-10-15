@@ -55,23 +55,19 @@ const Footer = () => {
         formConfig.append('copyright', copyright)
 
         try {
-            const { data } = await axios.post<TYPE_API_Response<TYPE_ConfigProps>>(`${api}/config`, {
+            const { data } = await axios.post<TYPE_API_Response<TYPE_ConfigProps>>(`${api}/config`, formConfig, {
                 headers: {
                     Authorization: `Bearer ${loginToken}`
-                },
-                data: formConfig
+                }
             })
             setLoading(false)
             if(data.status === 200) {
+                console.log(data);
+                
                 setSendResponse(data.message)
                 setSendStatus(data.status)
-                config.footer.addressTitle = data.data.footer.addressTitle
-                config.footer.addressText = data.data.footer.addressText
-                config.footer.phoneTitle = data.data.footer.phoneTitle
-                config.footer.phoneText = data.data.footer.phoneText
-                config.footer.scheduleTitle = data.data.footer.scheduleTitle
-                config.footer.scheduleText = data.data.footer.scheduleText
-                config.copyright.message = data.data.copyright.message
+                config.footer = data.data.footer
+                config.copyright = data.data.copyright
                 setTimeout(() => {
                     setSendResponse('')
                     window.scrollTo(0,0)

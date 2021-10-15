@@ -43,14 +43,14 @@ const Type = () => {
             setLoading(true)
 
             try {
-                const { data } = await axios.post<TYPE_API_Response<TYPE_Taxonomy>>(`${api}/jobs/taxonomies`, {
+                const axiosdata = {
+                    type: 'type',
+                    tax: newType
+                }
+                const { data } = await axios.post<TYPE_API_Response<TYPE_Taxonomy>>(`${api}/jobs/taxonomies`, axiosdata, {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: `Bearer ${loginToken}`
-                    },
-                    data: {
-                        type: 'type',
-                        tax: newType
                     }
                 })
                 setLoading(false)     

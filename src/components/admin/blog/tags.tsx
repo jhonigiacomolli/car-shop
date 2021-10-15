@@ -39,12 +39,11 @@ const Tags = () => {
         if(tag.name) {
             setLoading(true)
             try {
-                const { data } = await axios.post<TYPE_API_Response<TYPE_Taxonomy>>(`${api}/blog/tags`, {
+                const { data } = await axios.post<TYPE_API_Response<TYPE_Taxonomy>>(`${api}/blog/tags`, tag, {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: `Bearer ${loginToken}`
-                    },
-                    data: tag
+                    }
                 })
                 setLoading(false)
                 setMessageBox(data.message)

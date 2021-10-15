@@ -82,11 +82,10 @@ const Ticket = ({ ticket }: TicketProps) => {
             user && headers.append('user', user?.capability === 'administrator' ?  'microsite' : user?.email)
             
             try {
-                const { data } = await axios.post<TYPE_API_Response<TYPE_Tickets>>(`${api}/tickets`, {
+                const { data } = await axios.post<TYPE_API_Response<TYPE_Tickets>>(`${api}/tickets`, headers, {
                     headers: {
                         Authorization: `Bearer ${loginToken}`
-                    },
-                    data: headers
+                    }
                 })
                 setLoading(false)
                 setSendStatus(data.status)
@@ -141,7 +140,6 @@ const Ticket = ({ ticket }: TicketProps) => {
     function handleRemoveAttachment(attachment: File) {
         setFile(file?.filter(fl => fl.name !== attachment.name))
     }
-    
 
     return (
         <div className={theme.content}>

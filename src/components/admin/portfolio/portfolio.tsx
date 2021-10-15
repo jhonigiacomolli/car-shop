@@ -110,11 +110,10 @@ const Portfolio = ({ portfolio }: PortfolioProps) => {
             headers.append('cover', file ? file : fileThumbnail)
 
             try {
-                const { data }  = await axios.post<TYPE_API_Response<TYPE_Portfolio>>(`${api}/portfolio`, {
+                const { data }  = await axios.post<TYPE_API_Response<TYPE_Portfolio>>(`${api}/portfolio`, headers, {
                     headers: {
                         Authorization: `Bearer ${loginToken}`
-                    },
-                    data: headers
+                    }
                 })
                 setLoading(false)
                 setSendStatus(data.status)

@@ -85,8 +85,6 @@ const AdminPanel = ({ users }: AdminProps) => {
         
         const { data } = await  axios.get<TYPE_ConfigProps>(`${api}/config`)
         setConfig(data)
-        console.log(data);
-        
         
         async function getAccess() {
             const { data: access } = await axios.get<TYPE_Access[]>(`${api}/access`)

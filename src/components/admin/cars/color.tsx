@@ -42,15 +42,15 @@ const Color = () => {
         if(newColor.name) {
             setLoading(true)
             try {
-                const { data } = await axios.post<TYPE_API_Response<TYPE_Taxonomy>>(`${api}/cars/taxonomies`, {
+                const axiosdata = {
+                    type: 'color',
+                    taxonomy: newColor,
+                }
+                const { data } = await axios.post<TYPE_API_Response<TYPE_Taxonomy>>(`${api}/cars/taxonomies`, axiosdata, {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: `Bearer ${loginToken}`
-                    },
-                    data: {
-                        type: 'color',
-                        taxonomy: newColor,
-                    }
+                    } 
                 })
                 setLoading(false)
                 setMessageBox(data.message)

@@ -42,14 +42,14 @@ const Fuel = () => {
         if(newFuel.name) {
             setLoading(true)
             try {
-                const { data } = await axios.post<TYPE_API_Response<TYPE_Taxonomy>>(`${api}/cars/taxonomies`, {
+                const axiosdata = {
+                    type: 'fuel',
+                    taxonomy: newFuel,
+                }
+                const { data } = await axios.post<TYPE_API_Response<TYPE_Taxonomy>>(`${api}/cars/taxonomies`, axiosdata, {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: `Bearer ${loginToken}`
-                    },
-                    data: {
-                        type: 'fuel',
-                        taxonomy: newFuel,
                     }
                 })
                 setLoading(false)

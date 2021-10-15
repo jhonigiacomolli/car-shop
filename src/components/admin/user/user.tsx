@@ -127,11 +127,10 @@ const User = ({ user }: UserProps) => {
             userPassword && headers.append('password', userPassword.trim().toString())
             
             try {
-                const { data } = await axios.post<TYPE_API_Response<TYPE_Users>>(`${api}/user`, {
+                const { data } = await axios.post<TYPE_API_Response<TYPE_Users>>(`${api}/user`, headers, {
                     headers: {
                         Authorization: `Bearer ${loginToken}`
-                    },
-                    data: headers
+                    }
                 })
                 setLoading(false)
                 setSendResponse(data.message)

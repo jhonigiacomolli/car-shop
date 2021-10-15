@@ -43,14 +43,14 @@ const Assembler = () => {
             setLoading(true)
             
             try {
-                const { data } = await axios.post<TYPE_API_Response<TYPE_Taxonomy>>(`${api}/cars/taxonomies`, {
+                const axiosdata = {
+                    type: 'assembler',
+                    taxonomy: newAssembler,
+                }
+                const { data } = await axios.post<TYPE_API_Response<TYPE_Taxonomy>>(`${api}/cars/taxonomies`, axiosdata, {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: `Bearer ${loginToken}`
-                    },
-                    data: {
-                        type: 'assembler',
-                        taxonomy: newAssembler,
                     }
                 })
                 setLoading(false)

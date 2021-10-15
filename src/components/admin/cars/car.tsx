@@ -289,11 +289,10 @@ const Car = ({ car }: CarProps) => {
             galleryFiles.map((file, index) => headers.append(`gallery${index + 1}`, file ))
 
             try {
-                const { data } = await axios.post<TYPE_API_Response<TYPE_Cars>>(`${api}/car`, {
+                const { data } = await axios.post<TYPE_API_Response<TYPE_Cars>>(`${api}/car`, headers, {
                     headers: {
                         Authorization: `Bearer ${loginToken}`
-                    },
-                    data: headers
+                    }
                 })
                 setLoading(false)
                 setSendStatus(data.status)
@@ -358,11 +357,6 @@ const Car = ({ car }: CarProps) => {
     function handleChangeFiles(event: ChangeEvent) {
         const { files } = event.target as HTMLInputElement
         files && setFile(files[0])
-    }
-
-    function handleOptionalChange(event: ChangeEvent<HTMLInputElement>) {
-        const { checked, value } = event.target as HTMLInputElement    
-        checked ? !carOptionals.includes(value) && setCarOptionals([...carOptionals, value]) : setCarOptionals(carOptionals.filter(option => option !== value))
     }
 
     function handleGalleryChange(event: ChangeEvent) {

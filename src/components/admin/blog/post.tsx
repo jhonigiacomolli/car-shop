@@ -136,13 +136,13 @@ const Article = ({ post }: ArticleProps) => {
             post && headers.append('thumbnailID', post.thumbnailID.toString())
             
             try {
-                const { data } = await axios.post<TYPE_API_Response<TYPE_Posts>>(`${api}/post`, {
+                const axiosconfig = {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: `Bearer ${loginToken}`
-                    },
-                    data: headers
-                })
+                    }
+                }
+                const { data } = await axios.post<TYPE_API_Response<TYPE_Posts>>(`${api}/post`, headers, axiosconfig )
                 setLoading(false)
                 setSendStatus(data.status)
                 setSendResponse(data.message)

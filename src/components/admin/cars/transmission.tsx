@@ -42,14 +42,14 @@ const Transmission = () => {
         if(newTransmission.name) {
             setLoading(true)
             try {
-                const { data } = await axios.post<TYPE_API_Response<TYPE_Taxonomy>>(`${api}/cars/taxonomies`, {
+                const axiosdata = {
+                    type: 'transmission',
+                    taxonomy: newTransmission,
+                }
+                const { data } = await axios.post<TYPE_API_Response<TYPE_Taxonomy>>(`${api}/cars/taxonomies`, axiosdata, {
                     headers: {
                         'Content-Type': 'application/json',
                         Authorization: `Bearer ${loginToken}`
-                    },
-                    data: {
-                        type: 'transmission',
-                        taxonomy: newTransmission,
                     }
                 })
                 setLoading(false)

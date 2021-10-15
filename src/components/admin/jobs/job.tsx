@@ -121,11 +121,10 @@ const Job = ({ job }: SlideProps) => {
             headers.append('cover', file ? file : fileThumbnail)
             
             try {
-                const { data } = await axios.post<TYPE_API_Response<TYPE_Jobs>>(`${api}/jobs`, {
+                const { data } = await axios.post<TYPE_API_Response<TYPE_Jobs>>(`${api}/jobs`, headers, {
                     headers: {
                         Authorization: `Bearer ${loginToken}`
-                    },
-                    data: headers
+                    }
                 })
                 setLoading(false)
                 console.log(data);
@@ -332,7 +331,7 @@ const Job = ({ job }: SlideProps) => {
                     </h2>
                 </div>
                 <div className={Styles.button}>
-                    <PrimarySubmit value={job ? 'Atualizar job' : 'Criar novo job'} />
+                    <PrimarySubmit value={job ? 'Atualizar vaga' : 'Criar nova vaga'} />
                 </div>
             </form>
         </div>

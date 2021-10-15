@@ -46,25 +46,25 @@ const InfoBox = ({ infoBox }: UserProps) => {
         }
     }, [infoBox])
 
-    async function createUser(event: FormEvent) {
+    async function createInfoBox(event: FormEvent) {
         event.preventDefault()
     
         if (title) {
             setLoading(true)
         
             try {
-                const { data } = await axios.post<TYPE_API_Response<TYPE_InfoBox>>(`${api}/info-box`, {
+                const axiosdata = {
+                    id: infoBox?.id ?? 0,
+                    icon,
+                    title,
+                    subtitle,
+                    description,
+                    buttonLabel,
+                    buttonLink,
+                }
+                const { data } = await axios.post<TYPE_API_Response<TYPE_InfoBox>>(`${api}/info-box`, axiosdata, {
                     headers: {
                         Authorization: `Bearer ${loginToken}`
-                    },
-                    data: {
-                        id: infoBox?.id ?? 0,
-                        icon,
-                        title,
-                        subtitle,
-                        description,
-                        buttonLabel,
-                        buttonLink,
                     }
                 })
                 setLoading(false)
@@ -123,7 +123,7 @@ const InfoBox = ({ infoBox }: UserProps) => {
                 />
             )}
             <PageHeader title={infoBox ? 'ATUALIZAR BOX DE INFORMAÇÃO' : 'NOVO BOX DE INFORMAÇÃO'} description={infoBox ? 'Atualize os dados dos seus boxes de informação' : 'Crie novos boxes de informação'} />
-            <form className={Styles.data} onSubmit={(e) => createUser(e)}>
+            <form className={Styles.data} onSubmit={(e) => createInfoBox(e)}>
                 <div className={Styles.info}>
                     <h2 className={Styles.title}>
                         <p>Título</p>
