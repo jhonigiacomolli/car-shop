@@ -1,0 +1,15 @@
+a.menuSubItem {
+    padding: 10px 10px 10px 50px;
+    font-family: 'MontSerrat', sans-serif;
+    font-size: 0.875rem;
+    text-transform: capitalize;
+    color: var(--medium-gray) !important;
+}
+.active {
+    padding: 10px 10px 10px 85px;
+    margin: 0 -35px 0 -35px;
+    font-family: 'MontSerrat', sans-serif;
+    color: var(--white) !important;
+    background: var(--color-secundary);
+    cursor: default !important;
+}

@@ -1,0 +1,51 @@
+.item {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 20px 0;
+}
+.image {
+    width: 100px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.image svg {
+    width: 80px;
+    height: 60px;
+}
+.title {
+    margin: 0 20px;
+    text-transform: initial;
+}
+.title p {
+    font-size: 0.775rem;
+}
+.title > span {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}
+.title span {
+    font-size: 0.875rem;
+}
+.title h1 {
+    font-size: 1.1rem;
+    margin: 0;
+}
+@media (max-width: 767px) {
+    .item {
+        flex-wrap: wrap ;
+        justify-content: center;
+    }
+}
+@media (max-width: 480px) {
+    .title span {
+        display: flex;
+        flex-direction: column;
+        margin:  15px 0;
+    }
+    .title h1 {
+        margin: 0;
+    }
+}

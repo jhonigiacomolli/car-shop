@@ -9,9 +9,25 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@types/date-fns": "^2.6.0",
+    "@types/draft-js": "^0.11.6",
+    "@types/react-chartjs-2": "^2.5.7",
+    "@types/react-datepicker": "^4.1.7",
+    "@types/react-draft-wysiwyg": "^1.13.3",
+    "@types/webfontloader": "^1.6.33",
+    "axios": "^0.23.0",
+    "chart.js": "^3.5.1",
+    "date-fns": "^2.25.0",
+    "draft-js": "^0.11.7",
+    "draft-js-export-html": "^1.4.1",
+    "draft-js-import-html": "^1.4.1",
     "next": "11.1.2",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-chartjs-2": "^3.0.5",
+    "react-datepicker": "^4.2.1",
+    "react-dom": "17.0.2",
+    "react-draft-wysiwyg": "^1.14.7",
+    "webfontloader": "^1.6.28"
   },
   "devDependencies": {
     "@types/react": "17.0.30",

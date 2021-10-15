@@ -1,0 +1,134 @@
+.title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 30px 0 10px 10px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    color: var(--color-title);
+}
+.title textarea {
+    min-height: 150px;
+}
+.title p {
+    min-width: 200px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+.title span {
+    font-size: 0.875rem;
+    font-weight: 400;
+    margin: 0 0 0 10px;
+}
+.subtitle {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin: 10px 0 5px 15px;
+    color: var(--color-subtitle);
+}
+.observation {
+    font-size: 0.875rem;
+    border-radius: 10px;
+    padding: 10px 15px;
+    margin: 0;
+    filter: brightness(1.15);
+    background: var(--color-list-item);
+}
+.observation span {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-title);
+}
+.data {
+    max-width: 700px;
+    padding: 50px 100px;
+}
+.data p {
+    color: var(--color-subtitle);
+    margin: 10px 0;
+}
+.button {
+    max-width: 250px;
+    margin: 80px 0 20px 0; 
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.button span {
+    border-color: var(--purple);
+    border-left-color: transparent;
+}
+.button input[type="submit"] {
+    color: var(--color-title);
+}
+.editorContainer {
+    background: var(--text-editor-body);
+    border-radius: 10px;
+    border: var(--input-border);
+    color: var(--text-editor-color);
+}
+.inputContainer {
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 20px;
+    background: var(--config-background);
+}
+.inputContainer .title {
+    margin: 0 0 20px 10px;
+}
+.inputContainer p {
+    margin: 0 0 10px 10px;
+}
+.originalInput {
+    display: none;
+}
+.fileContainer {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    contain: content;
+    padding: 20px;
+}
+.fileContainer p {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: var(--color-subtitle);
+}
+.fileContainer span {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--purple-extra-light);
+}
+.fileButton {
+    padding: 15px;
+    margin: 15px 0 0 0;
+    border-radius: 10px;
+    color: var(--color-title);
+    background: var(--purple);
+    cursor: pointer;
+}
+.fileContainer span.removeFile {
+    position: absolute;
+    right: 20px;
+    padding: 2px 10px;
+    border-radius: 5px;
+    font-size: 0.875rem;
+    cursor: pointer;
+    color: var(--color-title);
+    background: var(--error);
+}
+.inputContainer textarea {
+    height: auto;
+}
+.inputContainer textarea:disabled {
+    color: var(--color-subtitle);
+}
+@media (max-width: 767px) {
+    .data {
+        padding: 50px 0px;
+    }
+    .title {
+        flex-direction: column;
+    }
+}

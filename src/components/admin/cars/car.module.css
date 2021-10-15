@@ -1,0 +1,316 @@
+.title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin: 60px 0 5px 0;
+    color: var(--color-title);
+}
+.title span {
+    font-size: 0.875rem;
+    font-weight: 400;
+    margin: 0 0 0 10px;
+}
+.subtitle {
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin: 10px 0 0 0;
+    color: var(--color-title);
+}
+.priceContainer {
+    display: flex;
+    align-content: space-between;
+    flex-wrap: nowrap;
+    gap: 10px;
+    margin: 0;
+}
+.price {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    width: 50%;
+}
+.observation {
+    font-size: 0.775rem;
+    color: var(--color-subtitle);
+}
+.carOptions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 10px 5px;
+    padding: 25px 0;
+}
+.dataItem {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    color: var(--color-title);
+}
+.dataItem svg {
+    width: 1.5rem;
+    height: 1.3rem;
+    fill: var(--purple-light);
+}
+.carFeatures {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px 5px;
+    padding: 25px 5px 25px 15px;
+}
+.featureItem {
+    display: flex;
+    gap: 10px;
+    font-size: 0.875rem;
+    color: var(--color-subtitle);
+}
+select.initialOption, .initialOption {
+    font-weight: 100;
+    font-size: 0.775rem;
+}
+.selectOption {
+    font-weight: 700;
+    font-size: 0.875rem;
+    color: var(--purple-extra-light);
+}
+.data {
+    max-width: 700px;
+    padding: 50px 100px;
+}
+img.preview {
+    display: block;
+    max-width: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: var(--input-border);
+}
+.previewContainer {
+    contain: content;
+}
+.galleryContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.coverPreview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 700px;
+    height: 450px;
+    background: var(--preview-background);
+    border-radius: 20px;
+    border: var(--input-border);
+    transition: all 0.4s ease;
+    contain: content;
+}
+.coverPreview:hover {
+    background: var(--preview-background-hover);
+    transition: all 0.4s ease;
+    cursor: pointer;
+}
+.coverPreview svg {
+    width: 100px;
+    height: 100px;
+    fill: var(--preview-color);
+    transition: all 0.4s ease;
+}
+.coverPreview:hover svg {
+    fill: var(--preview-color-hover);
+    transition: all 0.4s ease;
+}
+.galleryTitle h2 {
+    margin: 15px 0 0 0;
+}
+.galleryPreview {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 220px;
+    height: 160px;
+    object-fit: contain;
+    background: var(--preview-background);
+    border-radius: 20px;
+    margin: 15px 0;
+    border: var(--input-border);
+    transition: all 0.4s ease;
+}
+.galleryPreview:hover {
+    transition: all 0.4s ease;
+    background: var(--preview-background-hover);
+    cursor: initial;
+}
+.defaultGallery:hover {
+    cursor: pointer;
+}
+.galleryPreview svg {
+    width: 50px;
+    height: 40px;
+    fill: var(--preview-color);
+    filter: brightness(1.5);
+    transition: all 0.4s ease;
+}
+.galleryPreview:hover svg {
+    fill: var(--preview-color-hover);
+    transition: all 0.4s ease;
+}
+.galleryItemContainer {
+    contain: content;
+}
+.removeFile {
+    position: absolute;
+    padding: 5px 10px;
+    border-radius:10px;
+    top: 20px;
+    left: 20px;
+    background: var(--purple);
+    color: var(--white);
+    font-weight: 900;
+    z-index: 50;
+}
+.removeGalleryFile {
+    position: absolute;
+    padding: 3px 5px;
+    border-radius:10px;
+    top: 20px;
+    left: 10px;
+    background: var(--purple);
+    color: var(--white);
+    font-weight: 900;
+    z-index: 50;
+}
+.removeFile:hover {
+    cursor: pointer;
+}
+.removeGalleryFile:hover {
+    cursor: pointer;
+}
+.data p {
+    color: var(--color-subtitle);
+    margin: 10px 0;
+}
+.taxonomies {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+.taxonomy {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.categoryList, .tagList {
+    background: var(--input-background);
+    color: var(--input-color);
+    border: var(--input-border);
+    border-radius: 10px;
+    padding: 20px;
+    flex: 1;
+}
+.categoryList label, .tagList label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.tagList p {
+    text-transform: capitalize;
+}
+.button {
+    max-width: 250px;
+    margin: 60px 0; 
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.button span {
+    border-color: var(--purple);
+    border-left-color: transparent;
+}
+.button input[type="submit"] {
+    color: var(--color-title);
+}
+.loading input[type="submit"] {
+    color: var(--purple);
+}
+.loading input[type="submit"]:disabled {
+    filter: var(--submit-button-disabled-filter);
+}
+.success {
+    padding: 40px;
+    font-size: 1.1rem;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 900;
+    /* background: var(--color-secundary); */
+    color: var(--success);
+    margin: 0 0px -30px 0;
+}
+.error {
+    padding: 40px;
+    background: var(--color-secundary);
+    color: var(--error);
+    margin: 0 0px -30px 0;
+}
+.teste {
+    display: none;
+}
+.editorContainer {
+    background: var(--color-secundary);
+    border-radius: 10px;
+    border: var(--input-border);
+    color: var(--color-title);
+}
+.coverHeader, .galleryHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-grow: 2;
+}
+.coverTitle, .galleryTitle {
+    flex-grow: 2;
+}
+.personalInputFile {
+    margin: 0 0 10px 0;
+    flex-grow: 0;
+}
+.personalInputFile input {
+    display: none;
+}
+.personalInputFile span {
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: var(--color-title);
+    background: var(--color-primary);
+}
+@media (max-width: 767px) {
+    .data {
+        padding: 50px 0px;
+    }
+    .previewContainer {
+        min-height: 200px ;
+    }
+    .coverPreview {
+        min-height: 150px;
+    }
+}
+@media (max-width: 480px) {
+    .priceContainer {
+        flex-direction: column;
+    }
+    .price {
+        width: 100%;
+    }
+    .carOptions {
+        display: flex;
+        flex-direction: column;
+    }
+    .dataItem {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        margin: 10px 0 0 0;
+    }
+    .coverPreview {
+        height: 250px;
+    }
+    .galleryPreview {
+        width: 150px;
+        height: 120px;
+    }
+}

@@ -1,0 +1,183 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    contain: content;
+    font-family: 'Roboto', sans-serif;    
+    color: var(--medium-gray);
+    background: linear-gradient(325deg, var(--dark-gray) 0%, var(--dark-gray-3) 100% );
+}
+body a {
+    text-decoration: none;
+}
+:root {
+    --full-width: 100vw;
+
+    /* Color Variables */
+    --black: #000;
+    --dark-gray: #1a1a1a;
+    --header-background: linear-gradient(156deg, #6a0785d0, #000);
+    --topbar-background: linear-gradient(156deg, #6a0785d0, #000);
+    --dark-gray-transparency: #000000d2;
+    --dark-gray-transparency-2: #1818185e;
+    --dark-gray-2: #222;
+    --dark-gray-3: #333;
+    --gray: #333;
+    --medium-gray: #737373;
+    --light-gray: #cecece;
+    --light-gray-transparency: #ecececf1;
+    --light-gray-transparency-2: #d4d4d45e;
+    --detach: #6a0785;
+    --detach-transparency: #6a078542;
+    --detach-secundary: #ff3c00;
+    --detach-tertiary: #24002d;
+    --detach-quaternary: #c800ff;
+    --ice-white: #f7f7f7;
+    --white: #fff;
+    --facebook-background: #133783;
+    --messenger-background: #045ba7;
+    --telegram-background: #2496ff;
+    --whatsapp-background: #00e61b;
+    --twitter-background: #2aa9e0;
+    --input-checked: #6a0785;
+    --input-checkbox-border:1px solid #dadada;
+    --color-primary: var(--detach-tertiary);
+    --color-secundary: #6a0785;
+    --color-title: #fff;
+    --color-subtitle: #c5c5c5;
+    --warning: #ffae00;
+
+    /* Components Color Variables */
+    --top-bar: #181818;
+    --header: #181818bb;
+    --fixed-header: transparent;
+    --mobile-menu: linear-gradient(180deg, var(--black), var(--detach));
+    --about-us-divisor: #181818;
+    --filter-box: #333;
+    --search-bar-dark: #ffffff10;
+    --search-bar-light: #00000010;
+    --blog-divisor: #000000;
+
+    --decorated-title-1-offcolor1: #050505;
+    --decorated-title-1-offcolor2: #151515;
+    --decorated-title-1-offcolor3: #30303000;
+    
+    --decorated-title-2-offcolor1: #d4d4d400;
+    --decorated-title-2-offcolor2: #8e8e8e;
+    --decorated-title-2-offcolor3: #8e8e8e;
+    --decorated-title-2-offcolor4: #d4d4d400;
+
+    --view-overlay-background: #1f1f1fe8;
+    --view-overlay-background2: #1f1f1fe8;
+    
+    /* Size Variables */
+    --boxed-size: 1100px;
+    --boxed-padding: 0 10vw;
+    --header-height: 0px;
+    --fixed-header-height: 350px;
+    --fixed-header-margin-bottom: -150px;
+    --slide-height: 900px;
+    --back-to-top-width: 90px;
+    --back-to-top2-width: 75px;
+    
+}
+@font-face {
+    font-family: RobotoBold;
+    src: url('/fonts/Roboto-Bold.ttf');
+}
+@font-face {
+    font-family: Roboto;
+    src: url('/fonts/Roboto-Regular.ttf');
+}
+@font-face {
+    font-family: RobotoThin;
+    src: url('/fonts/Roboto-Thin.ttf');
+}
+@font-face {
+    font-family: Lato;
+    src: url('/fonts/Lato-Light.ttf');
+}
+@font-face {
+    font-family: LatoBold;
+    src: url('/fonts/Lato-Black.ttf');
+}
+.container {
+    font-family: 'Quenda';
+    width: 100vw;
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows:  auto auto 1fr auto auto 0px 0px 0px ;
+    grid-template-areas: 
+        "topbar"
+        "header"
+        "content"
+        "divider"
+        "copyright"
+        "chat"
+        "backtotop"
+        "cookie"
+    ;
+}
+.private-container {
+    font-family: sans-serif;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 0px auto 1fr;
+    grid-template-areas: 
+        "loader loader"
+        "nav header"
+        "nav body"
+    ;
+}
+div.react-datepicker {
+    background-color: var(--input-date-picker-body);
+    color: var(--color-subtitle);
+    border: 1px solid var(--input-date-picker-body);
+    box-shadow: 5px 5px 8px 1px var(--input-date-picker-header);
+}
+div.react-datepicker__header {
+    background-color: var(--input-date-picker-header);
+    border-bottom: 1px solid var(--input-date-picker-body);
+}
+div.react-datepicker__current-month, .react-datepicker-time__header, .react-datepicker-year-header {
+    color: var(--color-title);
+}
+div.react-datepicker__day-name, .react-datepicker__day, .react-datepicker__time-name {
+    color: var(--color-subtitle);
+}
+div.react-datepicker__day-name, div.react-datepicker__day, div.react-datepicker__time-name {
+    color: var(--color-subtitle);
+}
+div.react-datepicker__day--selected, div.react-datepicker__day--in-selecting-range, div.react-datepicker__day--in-range, div.react-datepicker__month-text--selected, div.react-datepicker__month-text--in-selecting-range, div.react-datepicker__month-text--in-range, div.react-datepicker__quarter-text--selected, div.react-datepicker__quarter-text--in-selecting-range, div.react-datepicker__quarter-text--in-range, div.react-datepicker__year-text--selected, div.react-datepicker__year-text--in-selecting-range, div.react-datepicker__year-text--in-range {
+    background-color: var(--purple);
+    color: var(--white);
+}
+div.react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle::before {
+    border-bottom-color: var(--input-date-picker-header);
+}
+div.react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle::before, div.react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle::after {
+    border-bottom-color: var(--input-date-picker-header);
+}
+div.react-datepicker__day--selected:hover, div.react-datepicker__day--in-selecting-range:hover, div.react-datepicker__day--in-range:hover, div.react-datepicker__month-text--selected:hover, div.react-datepicker__month-text--in-selecting-range:hover, div.react-datepicker__month-text--in-range:hover, div.react-datepicker__quarter-text--selected:hover, div.react-datepicker__quarter-text--in-selecting-range:hover, div.react-datepicker__quarter-text--in-range:hover, div.react-datepicker__year-text--selected:hover, div.react-datepicker__year-text--in-selecting-range:hover, div.react-datepicker__year-text--in-range:hover {
+    background-color: var(--purple-light);
+}
+div.react-datepicker__day--keyboard-selected, div.react-datepicker__month-text--keyboard-selected, div.react-datepicker__quarter-text--keyboard-selected, div.react-datepicker__year-text--keyboard-selected {
+    border-radius: 0.3rem;
+    background-color: var(--purple);
+    color: var(--white);
+}
+.branches {
+    background: var(--dark-gray-transparency);
+}
+
+@media (max-width: 991px) {
+    :root {
+        --fixed-header-height: 250px;
+    }
+}
+@media (max-width: 767px) {
+    img {
+        max-width: 90%;
+    }
+}

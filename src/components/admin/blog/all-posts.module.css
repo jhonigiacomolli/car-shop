@@ -1,0 +1,102 @@
+.selectionContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--color-subtitle);
+}
+.options {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    min-height: 40px;
+    padding: 0 20px;
+    margin: 50px 60px 10px 60px;
+    border-bottom: 3px outset var(--color-list-item);
+    color: var(--color-title);
+}
+.article {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    background: var(--color-list-item);
+    margin: 20px 60px;
+    padding: 15px 30px;
+    border-radius: 20px;
+    transition: all 0.4s ease;
+}
+.article:hover {
+    filter: var(--item-hover);
+    transition: all 0.4s ease;
+}
+.article h1 {
+    color: var(--purple-extra-light);
+}
+.article p {
+    color: var(--color-subtitle);
+}
+.article span {
+    color: var(--color-title);
+}
+.actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+.actions span {
+    width: 20px;
+}
+.actions svg, .options svg {
+    fill: var(--color-title);
+    width: 1.3rem;
+    height: 1.3rem;
+    transition: all 0.4s ease;
+}
+.actions span:hover svg {
+    fill: var(--purple-light);
+    transition: all 0.4s ease;
+}
+.actions label span:hover svg {
+    fill: var(--color-title);
+}
+.postsCount span {
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+@media (max-width: 1200px) {
+    .article {
+        margin: 20px 0;
+    }
+    .options {
+        margin: 50px 0 -10px 0;
+    }
+}
+@media (max-width: 991px) {
+   .options {
+        justify-content: center;
+        align-items: center;
+    } 
+}
+@media (max-width: 767px) {
+    .article {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+    .actions {
+        flex-direction: row;
+    }
+    .actions span {
+        padding: 20px 40px;
+        margin: 10px 0;
+    }
+    .options {
+        margin: 50px 10px 10px 10px;
+        padding: 20px 10px;
+        text-align: center;
+    }
+}

@@ -1,0 +1,14 @@
+.iconContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; 
+}
+.personIcon {
+    fill: var(--black);
+    width: 2rem;
+    height: 2rem;
+    margin: 0 10px;
+}
+.label {
+    font-size: 0.75rem;
+}

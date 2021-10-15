@@ -1,0 +1,55 @@
+.container {
+    width: 100%;
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    background: var(--view-overlay-background2);
+}
+.content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 5px 20px;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 20px;
+    color: var(--light-gray);
+    font-size: 0.875rem;
+    font-weight: 300;
+}
+.actionContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.actionContainer span {
+    height: 35px;
+    font-size: 0.875rem;
+}
+.actionContainer span:hover {
+    filter: brightness(1.2);
+} 
+.actionContainer span.button {
+    background-color: var(--dark-gray-transparency);
+    font-weight: 300;
+    min-width: 250px;
+}
+.actionContainer span.buttonDetach {
+    background-color: var(--detach-secundary);
+}
+@media (max-width: 991px) {
+    .content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .actionContainer {
+        flex-wrap: wrap;
+    }
+}
+@media (max-width: 480px) {
+    .actionContainer span {
+        width: 100%;
+    }
+}

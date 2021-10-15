@@ -1,0 +1,36 @@
+.wrapperClass {
+    border-radius: 10px;
+}
+.editorBody {
+    padding: 0 20px;
+    min-height: 150px;
+    border-radius: 10px;
+    color: var(--text-editor-color);
+}
+.editorBody a {
+    color: var(--text-editor-color) !important;
+}
+div.editorToolBar {
+    border: none;
+    padding: 20px;
+    border-radius: 10px 10px 0 0 ;
+    background: var(--text-editor-header);
+}
+.editorToolBar > div div {
+    background: var(--text-editor-header);
+    border: 1px solid var(--text-editor-body);
+}
+.editorToolBar > div div:hover {
+    box-shadow: 1px 1px 1px var(--text-editor-body);
+    filter: brightness(1.2);
+    background: var(--text-editor-body);
+}
+.editorToolBar img {
+    filter: var(--editor-invert);
+}
+.editorToolBar ul {
+    border: none;
+}
+.editorToolBar li {
+    background: var(--text-editor-body);
+}

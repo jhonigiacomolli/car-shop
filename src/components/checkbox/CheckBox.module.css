@@ -1,0 +1,40 @@
+.personalCheck {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    background: var(--white);
+    border: var(--input-checkbox-border);
+    contain: content;
+}
+.personalCheck svg {
+    position: absolute;
+    width: 1rem !important;
+    height: 1rem !important;
+    left: -7.5px;
+    fill:var(--white);
+    display: none;
+}
+.checked {
+    background: var(--input-checked);
+}
+div .checked svg {
+    display: inline;
+    fill: var(--input-checkbox-color);
+}
+.originalCheck {
+    display: none;
+}
+@media (max-width: 767px) {
+    .personalCheck {
+        width: 25px;
+        height: 25px;
+    }
+    .personalCheck svg {
+        width: 1.45rem !important;
+        height: 1.45rem !important;
+        left: -7px;
+    }
+}

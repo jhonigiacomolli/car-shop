@@ -1,0 +1,118 @@
+.selectionContainer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--color-subtitle);
+}
+.options {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    min-height: 40px;
+    padding: 0 20px;
+    margin: 50px 60px 10px 60px;
+    border-bottom: 3px outset var(--color-secundary);
+    color: var(--color-title);
+}
+.article {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--color-list-item);
+    gap: 10px;
+    margin: 20px 60px;
+    padding: 15px 30px;
+    border-radius: 20px;
+    transition: all 0.4s ease;
+}
+.article:hover {
+    filter: var(--item-hover);
+    transition: all 0.4s ease;
+}
+.article h1 {
+    color: var(--purple-extra-light);
+}
+.article p {
+    color: var(--color-subtitle);
+}
+.article span {
+    color: var(--color-title);
+}
+.actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+}
+.actions span {
+    width: 20px;
+}
+.actions svg, .options svg {
+    fill: var(--color-title);
+    /* width: 1.3rem; */
+    height: 1.3rem;
+    transition: all 0.4s ease;
+}
+.actions span:hover svg {
+    fill: var(--purple-light);
+    transition: all 0.4s ease;
+}
+.actions label span:hover svg {
+    fill: var(--color-title);
+}
+.carsCount span {
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+.externalLink {
+    padding: 10px 0;
+    background: var(--color-primary);
+    fill: var(--color-title);
+}
+@media (max-width: 1200px) {
+    .article {
+        margin: 20px 0;
+    }
+    .options {
+        margin: 50px 0 -10px 0;
+    }
+}
+@media (max-width: 991px) {
+   .options {
+        justify-content: center;
+        align-items: center;
+    } 
+}
+@media (max-width: 767px) {
+    .article {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 0 10px;
+    }
+    .actions {
+        flex-direction: row;
+    }
+    .actions span {
+        padding: 20px 40px;
+        margin: 10px 0;
+    }
+    .options {
+        margin: 50px 10px 10px 10px;
+    }
+}
+@media (max-width: 480px) {
+    .options {
+        padding: 20px 5px;
+     } 
+     .actions {
+         flex-wrap: wrap;
+     }
+     .actions span {
+         padding: 10px 20px;
+     }
+ }

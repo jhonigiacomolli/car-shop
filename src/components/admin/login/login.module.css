@@ -1,0 +1,147 @@
+.content {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 0;
+    background: linear-gradient(45deg, #6a0785, #000);
+
+    --view-overlay-background: #181818d2;
+    --input-checked: #ae00df;
+    
+    --color-primary: #050505;
+    --color-title: #cecece;
+    --warning: #e26d00;
+    --success: #009100;
+    --error: #ac0000;
+}
+.form {
+    grid-area: body;
+    display: flex;
+    max-width: 350px;
+    width: 100%;
+    margin: 0 auto;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.logomarca {
+    width: 70px;
+    position: relative;
+    margin: -20px auto 10px auto;
+}
+.logomarca svg {
+    position: absolute;
+    top: -142px;
+    right: -50px;
+
+    width: 150px;
+    height: 200px;
+    opacity: 0.5;
+    fill: url(#loginGradient) ;
+}
+.user, .pass {
+    width: 100%;
+    margin: 10px 20px;
+    padding: 20px 10px 20px 50px;
+    border-radius: 10px;
+    /* filter: brightness(1.3); */
+    background: #bfb7ff10;
+    border: 3px inset #c800ff;
+    color: #fff;
+}
+.user:focus-visible, .pass:focus-visible {
+    filter: brightness(1.5);
+    cursor: pointer;
+    outline:none;
+    box-shadow: 0 0 0 1px #6a0785;
+}
+.userData, .passwordData {
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    contain: content;
+}
+.user::placeholder, .pass::placeholder {
+    color: #d86dff
+}
+
+.userData > div > svg, .passwordData > div > svg {
+    position: absolute;
+    left: 20px;
+    height: 20px;
+    fill: url(#iconGradient);
+    filter: brightness(1.5);
+}
+.revealPassword > div > svg {
+    position: absolute;
+    right: 20px;
+    width: 20px;
+    fill: url(#iconGradient);
+    /* filter: brightness(1.5); */
+}
+.revealPassword:hover > div > svg {
+    filter: brightness(1.5);
+}
+.active {
+    filter: brightness(2);
+}
+.submit {
+    width: 100%;
+    margin: 0;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+.submit input[type='submit'] {
+    padding: 15px;
+    margin: 20px 0 0 0 ;
+    width: 100%;
+    background-image: linear-gradient(90deg,#c300ff 0%, #000 150%);
+    border: none;
+    border-bottom: 3px solid #c800ff;
+    border-right: 0.5px solid #c800ff;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    color: #fff;
+    z-index: 1;
+    transition: all 0.8s ease;
+}
+.submit input[type="submit"]:hover {
+    transition: all 0.8s ease;
+    filter: saturate(1.5);
+    cursor: pointer;
+}
+.submit label {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    color: #f2c2ff;
+    font-size: 0.8rem;
+    display: flex;
+    gap: 10px;
+}
+.displayError {
+    display: block;
+    color: red;
+    font-size: 0.875rem;
+    padding: 0 15px;
+    margin: 0 20px;
+}
+.return {
+    padding: 30px;
+    color: #c800ff;
+}
+.return:hover {
+    cursor: pointer;
+}
+.return svg {
+    width: 1.3rem;
+    height: 1.3rem;
+    fill: #c800ff;
+}

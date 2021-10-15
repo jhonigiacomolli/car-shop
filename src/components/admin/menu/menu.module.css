@@ -1,0 +1,54 @@
+.menuItem {
+    padding: 10px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+}
+.menuItem p {
+    background: linear-gradient(90deg, var(--menu-primary) 0%, var(--menu-secundary) 100%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    padding: 15px 0;
+    text-transform: uppercase;
+    font-family: 'Krona One', sans-serif;
+    font-size: 0.7rem;
+    
+}
+.menuItem svg {
+    fill: url(#loginGradient);
+    height: 3rem;
+    width: 3rem;
+}
+.title {
+    display: flex;
+    align-items: center;
+}
+.title p {
+    display: flex;
+    margin: 0 0 -15px 0;
+}
+.title > div {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+}
+.subtitle {
+    display: flex;
+    flex-direction: column;
+}
+.active p {
+    background: linear-gradient(90deg, var(--purple-light) 0%, var(--purple) 100%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.detach {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    margin: 0 15px;
+    border-radius: 50%;
+    color: var(--white) !important;
+    background: var(--purple);
+}

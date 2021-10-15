@@ -1,0 +1,46 @@
+.container {
+    padding: 20px;
+    border-radius: 20px;
+    margin: 10px 0;
+    border: 1px solid var(--preview-color);
+}
+.title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--white) !important;
+}
+.title span {
+    font-size: 1rem;
+    font-weight: 100;
+    margin: 0 10px;
+    color: var(--color-subtitle);
+}
+.supportFlag {
+    margin: 0 !important;
+    font-size: 1.1rem !important;
+    color:green !important;
+}
+.support {
+    background: #5bf80004;
+    border: 1px solid green;
+    border-radius: 20px;
+    margin: 10px 0;
+}
+.attachments {
+    padding: 5px 25px;
+}
+.attachments a {
+    display: block;
+    width: 100%;
+    margin: 0 0 20px 0;
+    font-size: 0.875rem;
+    color: var(--color-subtitle);
+    border-bottom: 1px solid var(--menu-secundary);
+}
+.message {
+    word-wrap: break-word;
+    padding: 10px 25px;
+    border-radius: 10px;
+    background: var(--preview-color);
+    color: var(--color-title);
+}
