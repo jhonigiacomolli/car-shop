@@ -1,0 +1,27 @@
+.title {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 0 0 30px 0;
+    margin: 0;
+    background-clip: text;
+    -webkit-text-fill-color: #0000;
+}
+.title:before {
+    content: '';
+    display: inline-block;
+    width: auto;
+    height: 1.5px; 
+    margin: 0 10px 0 0;
+    background-color: inherit;
+    opacity: 0.5;
+}
+.title:after {
+    content: '';
+    display: inline-block;
+    width: auto;
+    height: 1.5px; 
+    margin: 0 0 0 10px;
+    background-color: inherit;
+    opacity: 0.5;
+}

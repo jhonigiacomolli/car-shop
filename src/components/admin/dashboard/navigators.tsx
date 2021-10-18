@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react'
 import { TokenContext } from '..'
 import { useConfig } from 'context'
-import { AccessPerDay, PercentualAccess } from 'functions/AccessData'
+import { accessPerDay, percentualAccess } from 'functions/access-data'
 import { Google_Chrome, Microsoft_Edge, Mozilla_Firefox, Opera_Browser, Safari_Browser } from 'components/icons'
 import { registerLocale } from 'react-datepicker'
 import { Doughnut } from 'react-chartjs-2'
@@ -11,6 +11,7 @@ import ptBR from 'date-fns/locale/pt-BR'
 import { subDays } from 'date-fns'
 import "react-datepicker/dist/react-datepicker.css"
 import Styles from './devices.module.css'
+import { TYPE_Access } from 'context/context-types'
 
 const Dashboard = () => {
     const { access } = useContext(TokenContext)
@@ -18,7 +19,7 @@ const Dashboard = () => {
     const [initialDate, setInitialDate] = useState<Date>(subDays(new Date(), 30))
     const [finalDate, setFinalDate] = useState<Date>(new Date())
     const [period, setPeriod] = useState(0)
-    const [pageViewsOfPeriod, setPageViewsOfPeriod] = useState<Number[]>([])
+    const [pageViewsOfPeriod, setPageViewsOfPeriod] = useState<TYPE_Access[]>([])
     const [chrome, setChrome] = useState(0)
     const [firefox, setFirefox] = useState(0)
     const [edge, setEdge] = useState(0)
@@ -33,9 +34,9 @@ const Dashboard = () => {
     }, [initialDate, finalDate])
 
     useEffect(() => {
-        const dataViews:Number[] = []
+        const dataViews:TYPE_Access[] = []
         for (let i = 0; i <= period; i++) {
-            const dayResult = AccessPerDay(access, subDays(new Date(finalDate), (period - i)).toLocaleDateString('pt-BR'),'views')
+            const dayResult = accessPerDay(access, subDays(new Date(finalDate), (period - i)).toLocaleDateString('pt-BR'),'views')
             if(dayResult.length > 0) {
                 dayResult.map(acc => dataViews.push(acc))
             }
@@ -44,11 +45,11 @@ const Dashboard = () => {
     }, [access, period, finalDate])
 
     useEffect(() => {
-        setChrome(Math.round(Number(PercentualAccess(pageViewsOfPeriod, 'browser', 'Google Chrome'))))
-        setFirefox(Math.round(Number(PercentualAccess(pageViewsOfPeriod, 'browser', 'Mozilla Firefox'))))
-        setEdge(Math.round(Number(PercentualAccess(pageViewsOfPeriod, 'browser', 'Microsoft Edge'))))
-        setSafari(Math.round(Number(PercentualAccess(pageViewsOfPeriod, 'browser', 'Safari'))))
-        setOpera(Math.round(Number(PercentualAccess(pageViewsOfPeriod, 'browser', 'Opera'))))
+        setChrome(Math.round(Number(percentualAccess(pageViewsOfPeriod, 'browser', 'Google Chrome'))))
+        setFirefox(Math.round(Number(percentualAccess(pageViewsOfPeriod, 'browser', 'Mozilla Firefox'))))
+        setEdge(Math.round(Number(percentualAccess(pageViewsOfPeriod, 'browser', 'Microsoft Edge'))))
+        setSafari(Math.round(Number(percentualAccess(pageViewsOfPeriod, 'browser', 'Safari'))))
+        setOpera(Math.round(Number(percentualAccess(pageViewsOfPeriod, 'browser', 'Opera'))))
     }, [pageViewsOfPeriod])
 
     useEffect(() => {

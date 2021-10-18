@@ -1,0 +1,40 @@
+.container {
+    text-align: center;
+    margin: 5px 10px;
+}
+.title {
+    font-size: 0.875rem;
+}
+.socialContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.socials  {
+    margin: 5px;
+    text-align: center; 
+    border-radius: 50%;
+    cursor: pointer;
+}
+.socials svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    fill: var(--white);
+}
+.big {
+    padding: 5px;
+    height: 2.7rem;
+    width: 2.7rem;
+}
+.socials.small svg {
+    width: 1rem;
+    height: 1rem;
+}
+.small {
+    height: 2.2rem;
+    width: 2.2rem;
+}
+.socials:hover svg {
+    fill: var(--detach-secundary);
+}
+

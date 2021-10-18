@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { DateFormat_inFull } from '../../../functions/DateFormat'
+import { dateFormat_inFull } from '../../../functions/date-format'
 import { TYPE_Cars } from '../../../context/context-types'
 import Styles from './car-item.module.css'
 
@@ -21,7 +21,7 @@ const CarItem = ({ car, link }: CarItemProps) => {
                 </div>
                 <div className={Styles.title}>
                     <h1>{title}</h1>
-                    <div className={Styles.itemDescription}><p>Anunciado em: </p><span>{DateFormat_inFull(registration)}</span></div>
+                    <div className={Styles.itemDescription}><p>Anunciado em: </p><span>{dateFormat_inFull(registration)}</span></div>
                     <div className={Styles.itemDescription}><p>Código do anúncio: </p><span>{code}</span></div>
                     <div className={Styles.itemDescription}><p>Ano: </p><span>{year}</span></div>
                     <div className={Styles.itemDescription}><p>Motorização: </p><span>{motor}</span></div>

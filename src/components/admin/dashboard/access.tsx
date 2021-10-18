@@ -3,7 +3,7 @@ import { Line  } from 'react-chartjs-2'
 import { TokenContext } from '..'
 import { registerLocale } from 'react-datepicker'
 import { Desktop, Eye, LinkIcon, PageViews, Users } from 'components/icons'
-import { AccessPerDay } from 'functions/AccessData'
+import { accessPerDay } from 'functions/access-data'
 import { subDays } from 'date-fns'
 import DatePicker from 'react-datepicker'
 import ptBR from 'date-fns/locale/pt-BR'
@@ -48,8 +48,8 @@ const Dashboard = () => {
         )
         for (let i = 0; i <= period; i++) {
             labels.push(subDays(new Date(finalDate), period - i).toLocaleDateString('pt-BR'))
-            dataVisits.push(AccessPerDay(access, subDays(new Date(finalDate).getTime(), period - i).toLocaleDateString('pt-BR'),'visit').length)
-            dataViews.push(AccessPerDay(access, subDays(new Date(finalDate).getTime(), period - i).toLocaleDateString('pt-BR'),'views').length)
+            dataVisits.push(accessPerDay(access, subDays(new Date(finalDate).getTime(), period - i).toLocaleDateString('pt-BR'),'visit').length)
+            dataViews.push(accessPerDay(access, subDays(new Date(finalDate).getTime(), period - i).toLocaleDateString('pt-BR'),'views').length)
         }
         try {
             labels && setChartLabels(labels)

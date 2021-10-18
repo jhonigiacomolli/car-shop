@@ -1,0 +1,54 @@
+.titleContainer {
+    display: grid;
+    margin: 10px 0 20px 0;
+    min-height: 100px;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: left;
+}
+.backTitle {
+    grid-area: title;
+}
+.textTitle {
+    grid-area: title;
+    text-transform: uppercase;
+    margin: 0 0 0 120px;
+    letter-spacing: -1px;
+    font-family: 'Spartan';
+    font-weight: 800;
+    font-size: 1rem;
+    color: var(--gray);
+}
+
+/* SVG  */
+.flag {
+    fill: url(#decoratedTitle_1_flag);
+    stroke: none;
+}
+.colorFlag1 {
+    stop-color: var(--decorated-title-1-offcolor1);
+}
+.colorFlag2 {
+    stop-color: var(--decorated-title-1-offcolor2);
+}
+.colorFlag3 {
+    stop-color: var(--decorated-title-1-offcolor3);
+}
+.underFlag {
+    fill: var(--medium-gray);
+    stroke: none;
+}
+.flagWrap {
+    fill: url(#decoratedTitle_1_wrap);
+    stroke: url(#decoratedTitle_1_wrap);
+}
+.colorWrap1 {
+    stop-color: var(--black);
+}
+.colorWrap2 {
+    stop-color: var(--medium-gray);
+}
+.backTicks {
+    fill: var(--dark-gray);
+    stroke:  var(--dark-gray);
+}

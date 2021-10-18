@@ -1,0 +1,107 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+.searchBox {
+    display: grid;
+    align-items: center;
+    justify-items: flex-end;
+    grid-auto-flow: row;
+    width: calc(100% - 40px);
+}
+.search {
+    grid-area: searchBar;
+    width: 100%;
+    height: 45px;
+    border: none;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 30px;
+    grid-area: 1/1;
+    margin: 0;
+    padding: 0 0 0 40px;
+    transition: 0.4s;
+}
+.dark .search{
+    color: var(--white);
+    background-color: var(--search-bar-dark);
+}
+.light .search {
+    color: var(--black);
+    background-color: var(--search-bar-light);
+}
+.search:focus-visible{
+    box-shadow: 0 0 0 1px var(--detach);
+    outline: none;
+    filter: brightness(1.5);
+}
+.searchBox div {
+    grid-area: 1/1;
+}
+.searchBox svg {
+    grid-area: searchMenu;
+    position: relative;
+    width: 1.2rem;
+    margin: 10px -10px 10px 0 ;
+    font-size: 1.3rem;
+    opacity: 0.5;
+}
+.dark svg {
+    fill: var(--light-gray);
+}
+.light svg {
+    fill: var(--dark-gray);
+}
+.modal {
+    position: absolute;
+    max-width: 500px;
+    max-height: 800px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 100%;
+    z-index: 9999;
+    margin-top: 50px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: var(--dark-gray);
+}
+.modal h2 {
+    width: 100%;
+    text-align: center;
+    font-size: 1.1rem;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--detach);
+    color: var(--white);
+}
+.modal h3 {
+    font-size: 1rem;
+    color: var(--detach-quaternary);
+}
+.modal a, .modal p {
+    font-size: 0.875rem;
+    margin: 5px 0;
+    color: var(--light-gray);
+}
+.modal span p {
+    color: var(--medium-gray);
+}
+.hostResult {
+    width: 100%;
+    margin: 5px;
+    padding: 5px;
+    cursor: pointer;
+    background: var(--dark-gray-2);
+}
+.resultDescription {
+    max-height: 100px;
+    overflow-y: scroll;
+}
+@media(max-width: 991px) {
+    .modal {
+        max-height: 600px;
+    }
+}

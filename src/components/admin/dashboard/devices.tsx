@@ -4,13 +4,14 @@ import { useConfig } from 'context'
 import { subDays } from 'date-fns'
 import { Doughnut } from 'react-chartjs-2'
 import { registerLocale } from 'react-datepicker'
-import { AccessPerDay, PercentualAccess } from 'functions/AccessData'
+import { accessPerDay, percentualAccess } from 'functions/access-data'
 import { Desktop, Mobile, Tablet } from 'components/icons'
 import DatePicker from 'react-datepicker'
 import PageHeader from '../page-header'
 import ptBR from 'date-fns/locale/pt-BR'
 import  "react-datepicker/dist/react-datepicker.css"
 import Styles from './devices.module.css'
+import { TYPE_Access } from 'context/context-types'
 
 const Dashboard = () => {
     const { access } = useContext(TokenContext)
@@ -18,7 +19,7 @@ const Dashboard = () => {
     const [initialDate, setInitialDate] = useState<Date>(subDays(new Date(), 30))
     const [finalDate, setFinalDate] = useState<Date>(new Date())
     const [period, setPeriod] = useState(0)
-    const [pageViewsOfPeriod, setPageViewsOfPeriod] = useState<number[]>([])
+    const [pageViewsOfPeriod, setPageViewsOfPeriod] = useState<TYPE_Access[]>([])
     const [mobile, setMobile] = useState(0)
     const [tablet, setTablet] = useState(0)
     const [desktop, setDesktop] = useState(0)
@@ -30,9 +31,9 @@ const Dashboard = () => {
     }, [initialDate, finalDate])
 
     useEffect(() => {
-        const dataViews: number[] = []
+        const dataViews: TYPE_Access[] = []
         for (let i = 0; i <= period; i++) {
-            const dayResult = AccessPerDay(access, subDays(new Date(finalDate), (period - i)).toLocaleDateString('pt-BR'),'views')
+            const dayResult = accessPerDay(access, subDays(new Date(finalDate), (period - i)).toLocaleDateString('pt-BR'),'views')
             if(dayResult.length > 0) {
                 dayResult.map(acc => dataViews.push(acc))
             }
@@ -41,9 +42,9 @@ const Dashboard = () => {
     }, [period, access, finalDate])
 
     useEffect(() => {
-        setMobile(Math.round(Number(PercentualAccess(pageViewsOfPeriod, 'device', 'Mobile'))))
-        setTablet(Math.round(Number(PercentualAccess(pageViewsOfPeriod, 'device', 'Tablet'))))
-        setDesktop(Math.round(Number(PercentualAccess(pageViewsOfPeriod, 'device', 'Desktop'))))
+        setMobile(Math.round(Number(percentualAccess(pageViewsOfPeriod, 'device', 'Mobile'))))
+        setTablet(Math.round(Number(percentualAccess(pageViewsOfPeriod, 'device', 'Tablet'))))
+        setDesktop(Math.round(Number(percentualAccess(pageViewsOfPeriod, 'device', 'Desktop'))))
     }, [pageViewsOfPeriod])
     
     const data = {

@@ -1,0 +1,51 @@
+.container {
+    grid-area: copyright;
+    background: var(--detach);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: -5px 0 -150px 0;
+}
+.copyright {
+    max-width: var(--boxed-size);
+    display: flex;
+    flex: 1;
+    align-items: flex-end;
+    justify-content: space-between;
+    padding: 30px 0;
+    border-top: 1px solid var(--detach-tertiary);
+    color: var(--white);
+    font-size: 0.75rem;
+}
+.copyright a {
+    color: var(--white);
+    transition: 0.3s ease;
+}
+.copyright a:hover {
+    color: var(--detach-secundary);
+    transition: 0.3s ease;
+}
+.copyLeft {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    margin: 0 0 15px 0;
+}
+.copyLeft a {
+    padding: 30px 0;
+}
+@media (max-width: 767px) {
+    .copyright {
+        flex-direction: column;
+        flex: initial;
+        align-items: center;
+        padding: 30px 10px;
+    }
+    .container {
+        text-align: center;
+    }
+    .copyLeft {
+        flex-direction: column;
+    }
+}

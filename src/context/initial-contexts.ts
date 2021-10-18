@@ -11,7 +11,7 @@ const HostsPackages:TYPE_Packages[] = [
         available: true
       },
       {
-        text: '4 Gigabytes de espaço de aramazenamento',
+        text: '4 Gigabytes de espaço de armazenamento',
         available: true
       },
       {
@@ -37,7 +37,7 @@ const HostsPackages:TYPE_Packages[] = [
         available: true
       },
       {
-        text: '6 Gigabytes de espaço de aramazenamento',
+        text: '6 Gigabytes de espaço de armazenamento',
         available: true
       },
       {
@@ -63,7 +63,7 @@ const HostsPackages:TYPE_Packages[] = [
         available: true
       },
       {
-        text: '10 Gigabytes de espaço de aramazenamento',
+        text: '10 Gigabytes de espaço de armazenamento',
         available: true
       },
       {
@@ -412,6 +412,7 @@ const configProps: TYPE_ConfigProps = {
         topBarLeft: '',
         topBarRight: '',
         headScripts: '',
+        keywords: '',
     },
     slideShow: {
         config: {

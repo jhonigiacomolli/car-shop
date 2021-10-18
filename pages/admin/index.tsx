@@ -12,6 +12,10 @@ const Admin = ({ users, setAdminArea }: AdminProps) => {
 
     useEffect(() => {
         setAdminArea(true)
+
+        return () => {
+            setAdminArea(false)
+        }
     }, [])  
     
     return <AdminPanel users={users} />

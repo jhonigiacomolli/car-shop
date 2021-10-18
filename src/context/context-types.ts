@@ -171,6 +171,7 @@ export type TYPE_ConfigProps = {
       topBarLeft: string
       topBarRight: string
       headScripts: string
+      keywords: string
     },
     slideShow: {
       config: {

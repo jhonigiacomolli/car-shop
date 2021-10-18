@@ -2,17 +2,17 @@ import axios from 'axios'
 import { api } from 'api/api'
 import { TokenContext } from '..'
 import { useConfig } from 'context'
-import { BRL_Currency } from 'functions/CurrencyFormat'
 import { TYPE_API_Response, TYPE_Cars, TYPE_Image } from 'context/context-types'
 import { ChangeEvent, FormEvent, useContext, useEffect, useRef, useState } from 'react'
 import { Calendar, CarPlate, Check, Color, Door, Engine, Fuel, PictureAdd, SteeringWheel, Tachometer, Transmission, Vehicle } from 'components/icons'
-import PrimarySubmit from 'components/buttons/PrimarySubmit'
-import CheckBox from 'components/checkbox/CheckBox'
-import AlertBox from 'components/messages/AlertBox'
-import MessageBox from 'components/messages/MessageBox'
+import CheckBox from 'components/checkbox/check-box'
+import AlertBox from 'components/messages/alert-box'
+import MessageBox from 'components/messages/message-box'
 import TextEditor from 'components/text-editor/text-editor'
 import PageHeader from '../page-header'
 import Styles from './car.module.css'
+import { brl_currency } from 'functions/currency-format'
+import PrimarySubmit from 'components/buttons/primary-submit'
 
 type CarProps = {
     car?: TYPE_Cars
@@ -98,8 +98,8 @@ const Car = ({ car }: CarProps) => {
             setCode(car.code) 
             setTitle(car.title)
             setSlug(car.slug)
-            setSalePrice(BRL_Currency(car.salePrice))
-            setPrice(BRL_Currency(car.price))
+            setSalePrice(brl_currency(car.salePrice))
+            setPrice(brl_currency(car.price))
             condition.map(cond=> cond.name === car.condition && setCarCondition(cond.slug))
             assembler.map(assembler=> assembler.name === car.assembler && setCarAssembler(assembler.slug))
             motor.map(motor=> motor.name === car.motor && setCarMotor(motor.slug))

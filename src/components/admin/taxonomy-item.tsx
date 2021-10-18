@@ -1,6 +1,6 @@
 import React from 'react'
 import { TYPE_Taxonomy } from '../../context/context-types'
-import AdminButton from '../buttons/AdminButton'
+import AdminButton from '../buttons/admin-button'
 import Styles from './taxonomy-item.module.css'
 
 type TaxonomyItemProps = {

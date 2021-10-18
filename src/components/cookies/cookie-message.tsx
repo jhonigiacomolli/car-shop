@@ -5,7 +5,7 @@ import Styles from './cookie-message.module.css'
 import { useConfig } from 'context'
 import { addDays, format } from 'date-fns'
 import { api } from 'api/api'
-import PrimaryButton from 'components/buttons/PrimaryButton'
+import PrimaryButton from 'components/buttons/primary-button'
 
 const CookieMessage = () => {
     const { config } = useConfig()

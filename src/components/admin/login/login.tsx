@@ -5,9 +5,9 @@ import {token, token_validation} from 'api/api'
 import { ChangeEvent, Dispatch, FormEvent, useEffect, useState } from 'react'
 import { User, Key, Eye, User_Logo, ArrowLeft } from 'components/icons'
 import { TYPE_Users, TYPE_Message_Types, TYPE_API_Response } from 'context/context-types'
-import CheckBox from 'components/checkbox/CheckBox'
+import CheckBox from 'components/checkbox/check-box'
 import Image from 'next/image'
-import MessageBox from 'components/messages/MessageBox'
+import MessageBox from 'components/messages/message-box'
 import Styles from './login.module.css'
 
 type LoginProps = {

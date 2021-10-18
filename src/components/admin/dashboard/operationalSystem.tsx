@@ -5,12 +5,13 @@ import { Doughnut } from 'react-chartjs-2'
 import { registerLocale } from 'react-datepicker'
 import { Apple_Icon, Linux_Icon, Windows_Icon } from 'components/icons'
 import { subDays } from 'date-fns'
-import { AccessPerDay, PercentualAccess } from 'functions/AccessData'
+import { accessPerDay, percentualAccess } from 'functions/access-data'
 import DatePicker from 'react-datepicker'
 import PageHeader from '../page-header'
 import ptBR from 'date-fns/locale/pt-BR'
 import  "react-datepicker/dist/react-datepicker.css"
 import Styles from './devices.module.css'
+import { TYPE_Access } from 'context/context-types'
 
 const Dashboard = () => {
     const { access } = useContext(TokenContext)
@@ -18,7 +19,7 @@ const Dashboard = () => {
     const [initialDate, setInitialDate] = useState<Date>(subDays(new Date(), 30))
     const [finalDate, setFinalDate] = useState<Date>(new Date())
     const [period, setPeriod] = useState(0)
-    const [pageViewsOfPeriod, setPageViewsOfPeriod] = useState<Number[]>([])
+    const [pageViewsOfPeriod, setPageViewsOfPeriod] = useState<TYPE_Access[]>([])
     const [windows, setWindows] = useState(0)
     const [mac, setMac] = useState(0)
     const [linux, setLinux] = useState(0)
@@ -31,9 +32,9 @@ const Dashboard = () => {
     }, [initialDate, finalDate])
 
     useEffect(() => {
-        const dataViews:Number[] = []
+        const dataViews:TYPE_Access[] = []
         for (let i = 0; i <= period; i++) {
-            const dayResult = AccessPerDay(access, subDays(new Date(finalDate), (period - i)).toLocaleDateString('pt-BR'),'views')
+            const dayResult = accessPerDay(access, subDays(new Date(finalDate), (period - i)).toLocaleDateString('pt-BR'),'views')
             if(dayResult.length > 0) {
                 dayResult.map(acc => dataViews.push(acc))
             }
@@ -43,16 +44,16 @@ const Dashboard = () => {
 
     useEffect(() => {
         setWindows(
-            Math.round(Number(PercentualAccess(pageViewsOfPeriod, 'os', 'Windows 10')) +
-                        Number(PercentualAccess(pageViewsOfPeriod, 'os', 'Windows 8')) +
-                        Number(PercentualAccess(pageViewsOfPeriod, 'os', 'Windows 7')) + 
-                        Number(PercentualAccess(pageViewsOfPeriod, 'os', 'Windows Vista')) +
-                        Number(PercentualAccess(pageViewsOfPeriod, 'os', 'Windows XP')) +
-                        Number(PercentualAccess(pageViewsOfPeriod, 'os', 'Windows 2000')))
+            Math.round(Number(percentualAccess(pageViewsOfPeriod, 'os', 'Windows 10')) +
+                        Number(percentualAccess(pageViewsOfPeriod, 'os', 'Windows 8')) +
+                        Number(percentualAccess(pageViewsOfPeriod, 'os', 'Windows 7')) + 
+                        Number(percentualAccess(pageViewsOfPeriod, 'os', 'Windows Vista')) +
+                        Number(percentualAccess(pageViewsOfPeriod, 'os', 'Windows XP')) +
+                        Number(percentualAccess(pageViewsOfPeriod, 'os', 'Windows 2000')))
         )
-        setMac(Math.round(Number(PercentualAccess(pageViewsOfPeriod, 'os', 'Mac/iOS'))))
-        setLinux(Math.round(Number(PercentualAccess(pageViewsOfPeriod, 'os', 'Linux'))))
-        setUnix(Math.round(Number(PercentualAccess(pageViewsOfPeriod, 'os', 'UNIX'))))
+        setMac(Math.round(Number(percentualAccess(pageViewsOfPeriod, 'os', 'Mac/iOS'))))
+        setLinux(Math.round(Number(percentualAccess(pageViewsOfPeriod, 'os', 'Linux'))))
+        setUnix(Math.round(Number(percentualAccess(pageViewsOfPeriod, 'os', 'UNIX'))))
     }, [pageViewsOfPeriod])
     
     const data = {

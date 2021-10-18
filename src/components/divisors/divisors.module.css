@@ -1,0 +1,12 @@
+.divisorTop {
+    position: relative;
+    display: block;
+    fill: var(--dark-gray);
+    box-sizing: border-box;
+}
+.divisorBottom {
+    position: relative;
+    display: block;
+    fill: var(--dark-gray);
+    box-sizing: border-box;
+}

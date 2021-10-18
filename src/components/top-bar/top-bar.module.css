@@ -1,0 +1,51 @@
+.topBarContainer {
+    grid-area: topbar;
+    padding: 5px 0;
+    position: relative;
+    z-index: 10;
+    background: var(--topbar-background);
+    border-bottom: 1px solid var(--detach);
+}
+.topBar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 30px ;
+    grid-template-areas: 
+        "topBarLeft topBarRight"
+    ;
+    align-items: center;
+    max-width: var(--boxed-size);
+    margin: 0 auto;
+}
+.topBar p, .topBar a {
+    font-size: 0.75rem;
+    color: var(--white);
+}
+.topBarLeft {
+    grid-area: topBarLeft;
+    text-align: left;
+    display: flex;
+}
+.topBarLeft svg {
+    width: 1rem;
+    height: 1rem;
+    margin: 0 10px 0 0 ;
+    fill: var(--medium-gray);
+}
+.topBarRight {
+    grid-area: topBarRight;
+    text-align: right;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    
+    color: var(--white);
+    font-size: 0.75rem;
+    line-height: 1rem;
+    margin: 0;
+}
+@media  (max-width: 480px ){
+    .topBar {
+        grid-template-rows: 0;
+    }
+}

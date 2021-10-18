@@ -4,9 +4,9 @@ import { TokenContext } from '..'
 import { useConfig } from 'context'
 import { FormEvent, useContext, useEffect, useState } from 'react'
 import { TYPE_API_Response, TYPE_ConfigProps } from 'context/context-types'
-import PrimarySubmit from 'components/buttons/PrimarySubmit'
-import AlertBox from 'components/messages/AlertBox'
-import MessageBox from 'components/messages/MessageBox'
+import PrimarySubmit from 'components/buttons/primary-submit'
+import AlertBox from 'components/messages/alert-box'
+import MessageBox from 'components/messages/message-box'
 import TextEditor from 'components/text-editor/text-editor'
 import PageHeader from '../page-header'
 import Styles from './header.module.css'
@@ -15,7 +15,6 @@ const Header = () => {
     const { loginToken, theme, setLoading } = useContext(TokenContext)
     const [topBarLeft, setTopBarLeft] = useState('')
     const [topBarRight, setTopBarRight] = useState('')
-    const [scripts, setScripts] = useState('')
     const [clear, setClear] = useState(false)
     const [sendStatus, setSendStatus] = useState(0)
     const [sendResponse, setSendResponse] = useState('')
@@ -29,7 +28,6 @@ const Header = () => {
     useEffect(() => {
         config.header && setTopBarLeft(config.header.topBarLeft)
         config.header && setTopBarRight(config.header.topBarRight)
-        config.header && setScripts(config.header.headScripts)
     }, [config])
 
     async function updateHeader(event: FormEvent) {
@@ -40,7 +38,6 @@ const Header = () => {
         formConfig.append('type', 'header')
         formConfig.append('topBarLeft', topBarLeft)
         formConfig.append('topBarRight', topBarRight)
-        formConfig.append('headScripts', scripts)
 
         try {
             const { data } = await axios.post<TYPE_API_Response<TYPE_ConfigProps>>(`${api}/config`, formConfig, {
@@ -54,7 +51,6 @@ const Header = () => {
                 setSendStatus(data.status)
                 config.header.topBarLeft = data.data.header.topBarLeft
                 config.header.topBarRight = data.data.header.topBarRight
-                config.header.headScripts = data.data.header.headScripts
                 setTimeout(() => {
                     setSendResponse('')
                     window.scrollTo(0,0)
@@ -99,12 +95,6 @@ const Header = () => {
                     <h2 className={Styles.title}>Barra superior Direita</h2>
                     <div className={Styles.editorContainer}>
                         <TextEditor setText={setTopBarRight} clear={clear} content={topBarRight} />
-                    </div>  
-                </div>
-                <div className={Styles.inputContainer}>
-                    <h2 className={Styles.title}>HEAD Scripts</h2>
-                    <div className={Styles.editorContainer}>
-                        <textarea className={Styles.scripts} value={scripts} onChange={(e) => setScripts(e.target.value)} />
                     </div>  
                 </div>
                 <div className={Styles.button}>

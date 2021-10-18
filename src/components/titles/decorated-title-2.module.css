@@ -1,0 +1,54 @@
+.titleContainer {
+    display: flex;
+    min-height: 100px;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 60px 0 0 0;
+}
+.textTitle {
+    position: absolute;
+    margin: 0;
+    padding: 15px 0 0 0px;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    font-family: 'Spartan';
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: var(--white);
+}
+
+/* SVG  */
+.flag {
+    fill: url(#decoratedTitle_2_flag);
+    stroke: none;
+}
+.colorFlag1 {
+    stop-color: var(--decorated-title-2-offcolor1);
+}
+.colorFlag2 {
+    stop-color: var(--decorated-title-2-offcolor2);
+}
+.colorFlag3 {
+    stop-color: var(--decorated-title-2-offcolor3);
+}
+.colorFlag4 {
+    stop-color: var(--decorated-title-2-offcolor4);
+}
+.underFlag {
+    fill: var(--medium-gray);
+    stroke: none;
+}
+.flagWrap {
+    fill: url(#decoratedTitle_2_wrap);
+    stroke: url(#decoratedTitle_2_wrap);
+}
+.colorWrap1 {
+    stop-color: var(--gray);
+}
+.colorWrap2 {
+    stop-color: var(--medium-gray);
+}
+.backTicks {
+    fill: var(--dark-gray);
+    stroke:  var(--dark-gray);
+}
