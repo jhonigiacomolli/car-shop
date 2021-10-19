@@ -82,6 +82,8 @@ const api = 'https://database.sartorautomoveis.com.br//ms-api/v1'
 const token = 'https://database.sartorautomoveis.com.br/ms-api/jwt-auth/v1/token'
 const token_validation = 'https://database.sartorautomoveis.com.br/ms-api/jwt-auth/v1/token/validate'
 const administration = 'https://database.microsite.net.br/ms-api/v1'
+const administration_token = 'https://database.microsite.net.br/ms-api/jwt-auth/v1/token'
+const administration_token_validation = 'https://database.microsite.net.br/ms-api/jwt-auth/v1/token/validate'
 const support_api = `${administration}/tickets`
 
 
@@ -167,7 +169,7 @@ const AdminPanelOption: TYPE_AdminPanelOption[] = [
     {
         id: 'articles',
         title: 'Artigos',
-        display:  true,
+        display:  false,
         capability: {
             administrator: true,
             editor: true,
@@ -245,7 +247,7 @@ const AdminPanelOption: TYPE_AdminPanelOption[] = [
     {
         id: 'portfolios',
         title: 'Portfólios',
-        display:  true,
+        display:  false,
         capability: {
             administrator: true,
             editor: true,
@@ -297,7 +299,7 @@ const AdminPanelOption: TYPE_AdminPanelOption[] = [
     {
         id: 'info-boxes',
         title: 'Box de Informação',
-        display:  true,
+        display:  false,
         capability: {
             administrator: true,
             editor: true,
@@ -388,7 +390,7 @@ const AdminPanelOption: TYPE_AdminPanelOption[] = [
     {
         id: 'jobs',
         title: 'Vagas de Emprego',
-        display:  true,
+        display:  false,
         capability: {
             administrator: true,
             editor: true,
@@ -726,7 +728,7 @@ const AdminPanelOption: TYPE_AdminPanelOption[] = [
     {
         id: 'branches',
         title: 'Filiais',
-        display:  true,
+        display:  false,
         capability: {
             administrator: true,
             editor: true,
@@ -948,4 +950,4 @@ export const infoBoxesIcons: {[key: string]: ReactElement}[] = [
     {icon: <p></p>},
 ]
 
-export { api, token, token_validation, administration, support_api, AdminPanelOption }
+export { api, token, token_validation, administration, administration_token, administration_token_validation, support_api, AdminPanelOption }

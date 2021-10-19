@@ -1,0 +1,146 @@
+.contact {
+    padding: 50px 30px;
+    margin: 0;
+    border-radius: 15px;
+    background-color: var(--dark-gray-3);
+    color: var(--light-gray);
+}
+.contactTitle {
+    display: flex;
+    text-transform: uppercase;
+    font-weight: 900;
+    color: var(--detach);
+    padding: 0 15px;
+}
+.contactTitle h2 {
+    font-size: 1.6rem;
+    margin: 0;
+}
+.contactTitle svg {
+    fill: var(--detach);
+    width: 100px;
+    margin: 0 -20px 0 0 ;
+    filter: brightness(0.6);
+}
+.contactSubtitle {
+    margin: 5px 0;
+    padding: 0px 15px;
+    color: var(--medium-gray);
+}
+.contactFixedPhone, .contactMobilePhone {
+    display: flex;
+    align-items: center;
+    padding: 15px 0;
+}
+.contactFixedPhone p, .contactMobilePhone p {
+    margin: 0;
+    font-size: 1rem;
+}
+.contactFixedPhone svg, .contactMobilePhone svg {
+    fill: var(--medium-gray);
+}
+.contact a {
+    color: var(--light-gray);
+}
+.contact a:hover {
+    cursor: pointer;
+}
+.contactForm {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 0;
+}
+.contactForm input {
+    padding: 10px 20px 10px 50px;
+    background-color: var(--gray);
+    font-size: 0.875rem;
+    border: none;
+    color: var(--white);
+    outline: none;
+}
+.contactForm input:focus-visible, .contactForm textarea:focus-visible {
+    outline: 2px solid var(--detach-secundary);
+}
+.contactForm textarea {
+    background-color: var(--gray);
+    border: none;
+    padding: 10px 20px 10px 50px;
+    color: var(--white);
+    font-family: Montserrat;
+    font-size: 0.875rem;
+    outline: none;
+}
+.contactForm svg {
+    margin: 0 0 -55px 15px;
+    width: 20px;
+    height: 20px;
+    z-index: 10;
+    fill: var(--medium-gray);
+}
+.contactButton {
+    display: flex;
+    align-items: center;
+    margin: 25px 0;
+}
+.authorization {
+    grid-area: accept;
+    display: flex;
+    flex-direction: column;
+}
+.check {
+    display: grid;
+    grid-template-columns: 50px 1fr;
+    align-items: center;
+    gap: 20px;
+    color: var(--light-gray);
+    line-height: 1.5rem;
+    font-size: 0.75rem;
+}
+.check div svg {
+    margin: 0 0 0 8px;
+    fill: var(--white);
+}
+.mailStatus {
+    grid-area: mailMessage;
+    display: none;
+}
+.success {
+    display: block;
+    padding: 15px;
+    color: green;
+}
+.error {
+    display: block;
+    padding: 20px;
+    color: red;
+}
+.inputError {
+    display: none;
+}
+.displayError {
+    display: block;
+    color: red;
+    font-size: 0.875rem;
+    padding: 0 0 0 10px;
+}
+@media (max-width: 767px) {
+    .contact {
+        padding: 50px 30px 30px 30px;
+        margin: 30px 0;
+    }
+    .contactTitle, .contactSubtitle {
+        justify-content: center;
+        text-align: center;
+    }
+    .contactMobilePhone p, .contactFixedPhone p {
+        font-size: 0.875rem;
+    }
+    .contactTitle h2 {
+        font-size: 1.2rem;
+        text-align: center;  
+    }
+    .contactSubtitle {
+        font-size: 0.875rem;
+    }
+}

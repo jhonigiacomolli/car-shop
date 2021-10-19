@@ -1,7 +1,7 @@
 import axios from 'axios'
 import Link from 'next/link'
 import { useConfig } from 'context'
-import {token, token_validation} from 'api/api'
+import {administration_token, token, token_validation} from 'api/api'
 import { ChangeEvent, Dispatch, FormEvent, useEffect, useState } from 'react'
 import { User, Key, Eye, User_Logo, ArrowLeft } from 'components/icons'
 import { TYPE_Users, TYPE_Message_Types, TYPE_API_Response } from 'context/context-types'
@@ -42,6 +42,8 @@ const Login = ({ setLogin, setUserName, setLoading, users }: LoginProps) => {
                     'Authorization': `Bearer ${localToken}`
                 },
             }).then(resp => {
+                console.log(resp);
+                
                 setLogin(localToken)                
                 const user = users.filter(user => user.email === localUserEmail)
                 setUserName(user[0])
@@ -87,7 +89,7 @@ const Login = ({ setLogin, setUserName, setLoading, users }: LoginProps) => {
                     }
                 }
                 const { data } = await axios.post<{ token: string, user_email: string}>(`${token}`, axiosdata, axiosconfig)
-                                
+                
                 if(data.token) {
                     if (remind) {
                         localStorage.setItem('ms-auth-token', data.token) 
@@ -109,13 +111,47 @@ const Login = ({ setLogin, setUserName, setLoading, users }: LoginProps) => {
                     }, 2500);
                 }
             }catch {
-                setLoading(false)
-                setMessageBoxType('warning')
-                setMessageBoxTitle('CREDENCIAIS INVÁLIDAS')
-                setMessageBoxMessage('As credenciais informadas são inválidas, verifique e tente novamente')
-                setTimeout(() => {
-                    setMessageBoxMessage('')
-                }, 2500);
+                try {
+                    const axiosdata = {
+                        'username': user,
+                        'password': password
+                    }
+                    const axiosconfig = {
+                        headers: {
+                            'Content-Type': 'application/json',
+                        }
+                    }
+                    const { data } = await axios.post<{ token: string, user_email: string}>(`${administration_token}`, axiosdata, axiosconfig)
+                                
+                    if(data.token) {
+                        if (remind) {
+                            localStorage.setItem('ms-auth-token', data.token) 
+                            localStorage.setItem('ms-user-email', data.user_email)
+                        }else {
+                            sessionStorage.setItem('ms-auth-token', data.token)
+                            sessionStorage.setItem('ms-user-email', data.user_email)
+                        }
+                        const user = users.filter(user => user.email === data.user_email)
+                        setUserName(user[0])
+                        setLogin(data.token)
+                    }else {
+                        setLoading(false)
+                        setMessageBoxType('warning')
+                        setMessageBoxTitle('CREDENCIAIS INVÁLIDAS')
+                        setMessageBoxMessage('As credenciais informadas são inválidas, verifique e tente novamente')
+                        setTimeout(() => {
+                            setMessageBoxMessage('')
+                        }, 2500);
+                    }
+                }catch {
+                    setLoading(false)
+                    setMessageBoxType('warning')
+                    setMessageBoxTitle('CREDENCIAIS INVÁLIDAS')
+                    setMessageBoxMessage('As credenciais informadas são inválidas, verifique e tente novamente')
+                    setTimeout(() => {
+                        setMessageBoxMessage('')
+                    }, 2500);
+                }
             }
         }
     }

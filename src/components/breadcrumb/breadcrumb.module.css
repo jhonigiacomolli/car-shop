@@ -1,0 +1,30 @@
+.container {
+    width: 100vw;
+    box-sizing: border-box;
+    text-decoration: none;
+    background-color: var(--dark-gray-2);
+    color: var(---light-gray);
+}
+.content {
+    max-width: var(--boxed-size);
+    margin: 0 auto;
+    text-transform: uppercase;
+    font-size: 0.675rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 40px;
+}
+.content a {
+    color: var(--light-gray);
+}
+.icon svg {
+    height: 0.675rem;
+    margin: 0 10px;
+    fill: var(--light-gray);
+}
+@media (max-width: 767px) {
+    .container {
+        display: none;
+    }
+}

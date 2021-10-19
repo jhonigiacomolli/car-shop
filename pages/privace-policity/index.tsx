@@ -1,26 +1,30 @@
-import React from 'react'
-import Axios from 'axios'
-import { api } from '../../api/api'
-import Styles from './index.module.css'
+import axios from 'axios'
 import Head from 'next/head'
-import PrimaryExternalButton from '../../components/buttons/PrimaryExternalButton'
-import { useConfig } from '../../context'
-import { RegisterAccess } from '../../functions/RegisterAccess'
+import { api } from 'api/api'
+import { TYPE_ConfigProps } from 'context/context-types'
+import { useConfig } from 'context'
+import { registerAccess } from 'functions/register-access'
+import PrimaryExternalButton from 'components/buttons/primary-external-button'
+import Styles from './index.module.css'
+import { Fragment, useEffect, useState } from 'react'
 
-const PrivacePolicity = ({ config, setLoading }) => {
-    const { setConfig, setPage } = useConfig()
-    const [privacePolicity, setPrivacePolicity] = React.useState()
+type PrivacePolicityProps = {
+    config: TYPE_ConfigProps
+}
+const PrivacePolicity = ({ config }: PrivacePolicityProps) => {
+    const { setConfig, setPage, setLoading } = useConfig()
+    const [privacePolicity, setPrivacePolicity] = useState('')
 
-    React.useEffect(() => {
+    useEffect(() => {
         setLoading(false)
-        RegisterAccess()
+        registerAccess()
         setPage('privace')
         setConfig(config)
         setPrivacePolicity(config.privacePolicity.content)
     },[])
 
     return (
-        <React.Fragment>
+        <Fragment>
             <Head>
                 <title>{config.siteTitle}</title>
                 <meta name="description" content={config.siteDescription}/>
@@ -32,17 +36,19 @@ const PrivacePolicity = ({ config, setLoading }) => {
                     <div className={Styles.message} dangerouslySetInnerHTML={{__html: privacePolicity}}></div>
                     <p className={Styles.lastModified}>Última atualização em: {config.privacePolicity.lastModified}</p>
                     <p className={Styles.siteTitle}>{config.siteTitle}</p>
-                    <PrimaryExternalButton className={Styles.button} link={config.privacePolicity.downloadLink} target={'_blank'}>DOWNLOAD POLITICA DE PRIVACIDADE</PrimaryExternalButton>
+                    <PrimaryExternalButton className={Styles.button} link={config.privacePolicity.downloadLink} target={'_blank'}>
+                        DOWNLOAD POLITICA DE PRIVACIDADE
+                    </PrimaryExternalButton>
                 </div>
             </div>
-        </React.Fragment>
+        </Fragment>
     )
 }
 
 export default PrivacePolicity
 
 export async function getStaticProps() {
-    const config = await  Axios(`${api}/config`).then(resp => resp.data)
+    const { data: config } = await  axios.get<TYPE_ConfigProps>(`${api}/config`)
 
     return {
         props: {

@@ -1,34 +1,40 @@
-import React from 'react'
+import axios from 'axios'
 import Axios from 'axios'
-import API from '../../api/api'
 import Styles from './index.module.css'
-import { useConfig } from '../../context'
-import { RegisterAccess } from '../../functions/RegisterAccess'
-import FilterSideBar from '../../components/filter/FilterSideBar'
-import BoxedCar from '../../components/car/BoxedCar'
-import ListedCar from '../../components/car/ListedCar'
-import { Grid, List } from '../../components/icons/index'
-import { DateFormat_short } from '../../functions/DateFormat'
+import { useConfig } from 'context'
+import { TYPE_Cars, TYPE_CarTaxonomies, TYPE_ConfigProps } from 'context/context-types'
+import { registerAccess } from 'functions/register-access'
+import { Grid, List } from 'components/icons'
+import FilterSidebar from 'components/filter/filter-sidebar'
+import { api } from 'api/api'
+import { Fragment, useEffect, useState } from 'react'
+import BoxedCar from 'components/car/boxed-car'
+import ListedCar from 'components/car/listed-car'
 
-const Cars = ({ cars, taxonomies, config, setLoading }) => {
+type CarsProps = {
+    config: TYPE_ConfigProps
+    cars: TYPE_Cars[]
+    taxonomies: TYPE_CarTaxonomies
+}
+const Cars = ({ cars: originalCars, taxonomies, config }: CarsProps) => {
     
-    const { setPage, setConfig, filter1, filter2, filter3, filter4 } = useConfig()
-    const [Cars, setCars] = React.useState()
-    const [carsPerPage, setCarsPerPage] = React.useState(config.cars.config.carsPerPage)
-    const [wait, setWait] = React.useState(false)
-    const [order, setOrder] = React.useState("dateUp")
-    const [view, setView] = React.useState('grid')
-    const [filterCondition, setFilterCondition] = React.useState('empty')
-    const [filterAssembler, setFilterAssembler] = React.useState('empty')
-    const [filterTransmission, setFilterTransmission] = React.useState('empty')
-    const [filterFuel, setFilterFuel] = React.useState('empty')
-    const [filterMotor, setFilterMotor] = React.useState('empty')
-    const [filterPorts, setFilterPorts] = React.useState('empty')
-    const [filterDirection, setFilterDirection] = React.useState('empty')
-    const [filterKm, setFilterKm] = React.useState('empty')
-    const [filterEndPlate, setFilterEndPlate] = React.useState('empty')
-    const [filterYear, setFilterYear] = React.useState('empty')
-    const [filterColor, setFilterColor] = React.useState('empty')
+    const { setPage, setConfig, setLoading, filter1, filter2, filter3, filter4 } = useConfig()
+    const [cars, setCars] = useState<TYPE_Cars[]>([])
+    const [carsPerPage, setCarsPerPage] = useState(config.cars.config.carsPerPage)
+    const [wait, setWait] = useState(false)
+    const [order, setOrder] = useState("dateUp")
+    const [view, setView] = useState('grid')
+    const [filterCondition, setFilterCondition] = useState('empty')
+    const [filterAssembler, setFilterAssembler] = useState('empty')
+    const [filterTransmission, setFilterTransmission] = useState('empty')
+    const [filterFuel, setFilterFuel] = useState('empty')
+    const [filterMotor, setFilterMotor] = useState('empty')
+    const [filterPorts, setFilterPorts] = useState('empty')
+    const [filterDirection, setFilterDirection] = useState('empty')
+    const [filterKm, setFilterKm] = useState('empty')
+    const [filterEndPlate, setFilterEndPlate] = useState('empty')
+    const [filterYear, setFilterYear] = useState('empty')
+    const [filterColor, setFilterColor] = useState('empty')
 
     const {
         homeFilter1,
@@ -37,9 +43,9 @@ const Cars = ({ cars, taxonomies, config, setLoading }) => {
         homeFilter4
     } = config.cars.config
     
-    React.useEffect(() => {
+    useEffect(() => {
         setLoading(false)
-        RegisterAccess()
+        registerAccess()
         setPage('cars')
         setConfig(config)
 
@@ -88,14 +94,14 @@ const Cars = ({ cars, taxonomies, config, setLoading }) => {
         homeFilter4 === 'color' && filter4 && setFilterColor(filter4)
     }, [])
     
-    React.useEffect(() => {
+    useEffect(() => {
         function infiteScrool () {
             const scrool = window.scrollY
             const height = document.body.offsetHeight - window.innerHeight
             if(scrool > height * 0.25) {
                 if(!wait){
-                    if(carsPerPage < cars.length) {
-                        setCarsPerPage(carsPerPage + config.cars.config.carsPerPage)
+                    if(carsPerPage <= cars.length) {
+                        setCarsPerPage(old => old + config.cars.config.carsPerPage)
                         setWait(true)
                         setTimeout(() => {
                             setWait(false)
@@ -103,6 +109,7 @@ const Cars = ({ cars, taxonomies, config, setLoading }) => {
                     }
                 }
             }
+            
         }
         window.addEventListener('scrool', infiteScrool)
         window.addEventListener('wheel', infiteScrool)
@@ -111,10 +118,14 @@ const Cars = ({ cars, taxonomies, config, setLoading }) => {
             window.removeEventListener('scrool', infiteScrool)
             window.removeEventListener('wheel', infiteScrool)
         }
-    },[wait])
+    },[wait, cars])
+
+    useEffect(() => {
+        rendercars()
+    }, [carsPerPage])
     
-    React.useEffect(() => {
-        const filter = cars
+    useEffect(() => {
+        const filter = originalCars
                         .filter(car => (filterCondition && filterCondition !== "empty") ? filterCondition === car.condition : car )
                         .filter(car => (filterAssembler && filterAssembler !== "empty") ? filterAssembler === car.assembler : car )
                         .filter(car => (filterTransmission && filterTransmission !== "empty") ? filterTransmission === car.transmission : car )
@@ -125,40 +136,40 @@ const Cars = ({ cars, taxonomies, config, setLoading }) => {
                         .filter(car => (filterEndPlate && filterEndPlate !== "empty") ? filterEndPlate === car.endPlate : car)
                         .filter(car => (filterYear && filterYear !== "empty") ? filterYear === car.year : car)
                         .filter(car => (filterColor && filterColor !== "empty") ? filterColor === car.color : car)
-                        .sort((carA, carB) => order === 'dateUp' &&  new Date(carB.registration) - new Date(carA.registration))
-                        .sort((carA, carB) => order === 'dateDown' && new Date(carA.registration) - new Date(carB.registration))
-                        .sort((carA, carB) => order === 'kmUp' && carB.km - carA.km)
-                        .sort((carA, carB) => order === 'kmDown' && carA.km - carB.km)
+                        .sort((carA, carB) => order === 'dateUp' ?  new Date(carB.registration).getTime() - new Date(carA.registration).getTime() : 0)
+                        .sort((carA, carB) => order === 'dateDown' ? new Date(carA.registration).getTime() - new Date(carB.registration).getTime() : 0)
+                        .sort((carA, carB) => order === 'kmUp' ? carB.km - carA.km : 0)
+                        .sort((carA, carB) => order === 'kmDown' ? carA.km - carB.km : 0)
                         .sort((carA, carB) =>  {
                             return order === "valueDown" ? carA.salePrice ? 
                                                     carB.salePrice ?  carA.salePrice - carB.salePrice : carA.salePrice - carB.price
                                                     :
                                                     carB.salePrice ? carA.price - carB.salePrice : carA.price - carB.price
-                                                : ""
+                                                : 0
                         })
                         .sort((carA, carB) =>  {
                             return order === "valueUp" ? carA.salePrice ? 
                                                     carB.salePrice ?  carB.salePrice - carA.salePrice : carB.price - carA.salePrice
                                                     :
                                                     carB.salePrice ? carB.salePrice - carA.price : carB.price - carA.price
-                                                : ""
+                                                : 0
                         })
 
         setCars(filter)
-    }, [order, filterCondition, filterAssembler, filterTransmission, filterFuel, filterMotor, filterPorts, filterDirection, filterEndPlate, filterYear, filterColor] )
+    }, [order, filterCondition, filterAssembler, filterTransmission, filterFuel, filterMotor, filterPorts, filterDirection, filterEndPlate, filterYear, filterColor])
 
-    function renderCars() {
+    function rendercars() {
         if (view === 'grid') {
             return (
-                Cars && Cars.map((car, index) => {
-                    return index < carsPerPage &&  <BoxedCar key={car.title} theme="light" car={car} setLoading={setLoading}/>
+                cars && cars.map((car, index) => {
+                    return index < carsPerPage &&  <BoxedCar key={car.title} theme="light" car={car} />
                 })
             )
         }
         if(view === 'list') {
             return (
-                Cars && Cars.map((car, index) => {
-                    return index < carsPerPage &&  <ListedCar  key={car.title} theme="light" car={car} setLoading={setLoading}/>
+                cars && cars.map((car, index) => {
+                    return index < carsPerPage &&  <ListedCar  key={car.title} theme="light" car={car} />
                     }
                 )
             )
@@ -166,10 +177,10 @@ const Cars = ({ cars, taxonomies, config, setLoading }) => {
     }
 
     return (
-        <React.Fragment>
+        <Fragment>
             <div className={Styles.container}>
                 <aside className={Styles.filters}>
-                    <FilterSideBar 
+                    <FilterSidebar 
                         taxonomies={taxonomies} 
                         config={config}
                         filterCondition={filterCondition}
@@ -198,7 +209,7 @@ const Cars = ({ cars, taxonomies, config, setLoading }) => {
                     <div className={Styles.contentHeader}>
                         <div>
                             <h2 className={Styles.sectionTitle}>VEÍCULOS A VENDA</h2>
-                            <span className={Styles.result}>{`${Cars && Cars.length} resultados`}</span>
+                            <span className={Styles.result}>{`${cars && cars.length} resultados`}</span>
                         </div>
                         <div className={Styles.ordenation}>
                             <p>Ordenar por: </p>  
@@ -220,12 +231,12 @@ const Cars = ({ cars, taxonomies, config, setLoading }) => {
                     </div>
                     <div className={`${Styles.carContent} ${ view === 'list' ? Styles.listed : '' }`}>
                         {
-                            renderCars()   
+                            carsPerPage && rendercars()   
                         }
                     </div>
                 </div>
             </div>
-        </React.Fragment>
+        </Fragment>
     )
 }
 
@@ -233,16 +244,16 @@ export default Cars
 
 
 export async function getStaticProps() {
-    const config = await  Axios(`${API}/config`).then(resp => resp.data)
-    const cars = await  Axios(`${API}/cars`).then(resp => resp.data)
-    const taxonomies = await Axios(`${API}/cars/taxonomies`).then(resp => resp.data)
+    const { data: config } = await  axios.get<TYPE_ConfigProps>(`${api}/config`)
+    const { data: cars } = await  axios.get<TYPE_Cars[]>(`${api}/cars`)
+    const { data: taxonomies } = await axios.get<TYPE_CarTaxonomies>(`${api}/cars/taxonomies`)
   
     return {
         props: {
             cars,
-            taxonomies: taxonomies,
+            taxonomies,
             config,
         },
         revalidate: config.revalidate
     }
-  }
+}

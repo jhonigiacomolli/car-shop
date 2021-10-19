@@ -1,25 +1,30 @@
 import React from 'react'
-import Axios from 'axios'
-import { api } from '../../api/api'
+import axios from 'axios'
 import Head from 'next/head'
 import Image from 'next/image'
-import { useConfig } from '../../context/index'
-import { DateFormat_inFull } from '../../functions/DateFormat'
-import { Engine, Tachometer, Calendar, Transmission, Vehicle, Fuel, Check, CheckAlt, Door, SteeringWheel, CarPlate, Color, ArrowLeft, ArrowRight} from '../../components/icons'
-import { RegisterAccess } from '../../functions/RegisterAccess'
-import Breadcrumb from '../../components/breadcrumb/Breadcrumb'
-import DecoratedTitle_1 from '../../components/utils/titles/DecoratedTitle_1'
-import PrimaryButton from '../../components/buttons/PrimaryButton'
-import CarPage_Form from '../../components/contactForm/CarPage_Form'
-import VideoPlayer from '../../components/video/VideoPlayer'
 import Styles from './car_post.module.css'
-import ShareBox from '../../components/utils/shareBox/ShareBox'
+import { useConfig } from 'context'
+import { dateFormat_inFull } from 'functions/date-format'
+import { registerAccess } from 'functions/register-access'
+import { api } from 'api/api'
+import { TYPE_Cars, TYPE_ConfigProps, TYPE_Image } from 'context/context-types'
+import { GetStaticPaths, GetStaticProps } from 'next'
+import Breadcrumb from 'components/breadcrumb/breadcrumb'
+import { ArrowLeft, ArrowRight, Calendar, CarPlate, Check, CheckAlt, Color, Door, Engine, Fuel, SteeringWheel, Tachometer, Transmission, Vehicle } from 'components/icons'
+import PrimaryButton from 'components/buttons/primary-button'
+import DecoratedTitle1 from 'components/titles/decorated-title-1'
+import VideoPlayer from 'components/video/video-player'
+import ShareBox from 'components/shareBox/share-box'
+import CarPage_Form from 'components/contact-form/car-page-form'
 
-const Car = ({ car, config, setLoading }) => {
-    const { config: contextConfig, setConfig, setPage, windowSize } = useConfig()
-    const { cars } = config ? config : ''
+type CarProps = {
+    car: TYPE_Cars
+    config: TYPE_ConfigProps
+}
+
+const Car = ({ car, config }: CarProps) => {
+    const { config: contextConfig, windowWidth, setConfig, setPage, setLoading } = useConfig()
     const {
-        id,
         code,
         title,
         slug,
@@ -43,7 +48,6 @@ const Car = ({ car, config, setLoading }) => {
         video,
         optionals
     } = car ? car : {
-        id: 0,
         code: '',
         title: '',
         slug: '',
@@ -68,24 +72,27 @@ const Car = ({ car, config, setLoading }) => {
         optionals: []
     }
 
+    
+
     const formatedKm = Number(km).toLocaleString("pt-BR")
-    const formatedRegistration = DateFormat_inFull(registration)
+    const formatedRegistration = dateFormat_inFull(registration)
     const formatedPrice = price.toLocaleString("pt-BR", { style: 'currency', currency: 'BRL' })
     const formatedSalePrice = salePrice.toLocaleString("pt-BR", { style: 'currency', currency: 'BRL' })
     const [slide, setSlide] = React.useState(0)
-    const [slideImages, setSlideImages] = React.useState([])
+    const [slideImages, setSlideImages] = React.useState<TYPE_Image[]>([])
     const [player, setPlayer] = React.useState(false)    
-    const [url, setUrl] = React.useState()
-    const [descriptionString, setDescriptionString] = React.useState('')
+    const [url, setUrl] = React.useState('')
+    const [descriptionString, setDescriptionString] = React.useState<string | null>('')
     
     React.useEffect(() => {
         setLoading(false)
-        RegisterAccess()
+        registerAccess()
         setPage('car')
         setConfig(config)
-        setSlideImages([{ url: thumbnail }, ...gallery])
+        setSlideImages([{ id: 0, url: thumbnail }, ...gallery])
         document && document.URL && setUrl(document.URL)
-        document &&setDescriptionString(document.querySelector('[car-description]').textContent);
+        const element = document.querySelector('[car-description]')
+        document && element && setDescriptionString(element.textContent);
     }, [])
 
     function slideNext () {
@@ -113,16 +120,16 @@ const Car = ({ car, config, setLoading }) => {
     }
 
     return (
-        (config && car) ? <div className={Styles.container}>
+        <div className={Styles.container}>
             {player && <VideoPlayer url={video} closeChange={() => setPlayer(false)} />}
-            <Breadcrumb setLoading={setLoading}/>
+            <Breadcrumb />
             <Head>
                 <title>{`${config && config.siteTitle} | ${title} `}</title>
-                <meta name="description" content={descriptionString}/>         
+                <meta name="description"          content={descriptionString ?? ''}/>         
                 <meta property="og:url"           content={url ? url : ''} />
                 <meta property="og:type"          content={'website'} />
                 <meta property="og:title"         content={title} />
-                <meta property="og:description"   content={descriptionString} />
+                <meta property="og:description"   content={descriptionString ?? ''} />
                 <meta property="og:image"         content={thumbnail} />
             </Head>
             {/* SlideShow  */}
@@ -130,7 +137,7 @@ const Car = ({ car, config, setLoading }) => {
                 <div className={Styles.imageContent}>
                     <a className={Styles.buttonPrev} onClick={slidePrev}>
                         <ArrowLeft />
-                        {windowSize > 767 && "Anterior"}
+                        {windowWidth > 767 && "Anterior"}
                     </a>
                     <div className={Styles.imagePrev}>
                         {
@@ -145,7 +152,14 @@ const Car = ({ car, config, setLoading }) => {
                                         ${ slide === 0 && index+1 === array.length && Styles.prev}
                                         `}
                                         >
-                                            <Image  src={image.url} alt={`${title}-${index}`} width={750} height={500} layout={'responsive'} objectFit={'cover'}/> 
+                                            <Image  
+                                                src={image.url} 
+                                                alt={`${title}-${index}`} 
+                                                width={750} 
+                                                height={500} 
+                                                layout={'responsive'} 
+                                                objectFit={'cover'}
+                                            /> 
                                         </div>
                                     )
                                 } else {
@@ -193,7 +207,7 @@ const Car = ({ car, config, setLoading }) => {
                         }
                     </div>
                     <a className={Styles.buttonNext} onClick={slideNext}>
-                        {windowSize > 767 && "Próximo"}
+                        {windowWidth > 767 && "Próximo"}
                         <ArrowRight />
                     </a>
                 </div>
@@ -205,15 +219,15 @@ const Car = ({ car, config, setLoading }) => {
                         <div className={Styles.title}>
                             <h1 >{title}</h1>
                             <span className={Styles.postDate}>Veículo anúnciado em: <p>{formatedRegistration}</p></span>
-                            {code && <span className={Styles.carCode}>Código do Anúncio: <p>{code}</p></span>}
+                            {code && <span className={Styles.carCode}>Código do Anúncio: <p>{code ?? ''}</p></span>}
                         </div>
                         {priceVerification()}
                     </div>
                     {video && <div className={Styles.video}>
                         Este anúncio possuí um video com detalhes do veículo
-                        <PrimaryButton link='' onClick={(e) => {e.preventDefault(), setPlayer(true), scrollTo(0,0)}} >Assistir video</PrimaryButton>
+                        <PrimaryButton link='' onClick={() => {setPlayer(true), scrollTo(0,0)}} >Assistir video</PrimaryButton>
                     </div>}
-                    <DecoratedTitle_1 text={cars && cars.carPage && cars.carPage.dataSectionTitle} className={Styles.sectionTitle} />
+                    <DecoratedTitle1 text={ config && config.cars && config.cars.carPage && config.cars.carPage.dataSectionTitle} className={Styles.sectionTitle} />
                     <div className={Styles.dataContainer}>
                         {condition && <span className={Styles.dataItem}>
                             <Check label={'Condição'} />
@@ -260,30 +274,29 @@ const Car = ({ car, config, setLoading }) => {
                             <p>{color}</p>
                         </span>}
                     </div>
-                    <DecoratedTitle_1 text={cars && cars.carPage && cars.carPage.optionsSectionTitle}  className={Styles.sectionTitle} />
+                    <DecoratedTitle1 text={config && config.cars && config.cars.carPage && config.cars.carPage.optionsSectionTitle}  className={Styles.sectionTitle} />
                     <div className={Styles.optionsContainer}>
                     {
-                        optionals && optionals.map((optional, index) => {
-                            return (
-                                <span key={index} className={Styles.optionalItem}>
+                        optionals?.map((optional, index) => (
+                                <div key={index} className={Styles.optionalItem}>
                                     <CheckAlt />
-                                    <p>{optional.optional}</p>
-                                </span>
+                                    <p>{optional}</p>
+                                </div>
                             )
-                        })
+                        )
                     }
                     </div>
-                    <DecoratedTitle_1 text={cars && cars.carPage && cars.carPage.descriptionSectionTitle}  className={Styles.sectionTitle} />
+                    <DecoratedTitle1 text={config && config.cars && config.cars.carPage && config.cars.carPage.descriptionSectionTitle}  className={Styles.sectionTitle} />
                     <p car-description={'car'} className={Styles.description} dangerouslySetInnerHTML={{__html: description}} />
                 <div className={Styles.share}>
-                    <ShareBox sectionTitle={'Compartilhe este anúncio com os seus amigos(as)'} title={title} description={descriptionString} link={url} />
+                    <ShareBox sectionTitle={'Compartilhe este anúncio com os seus amigos(as)'} title={title} description={descriptionString ?? ''} link={url} />
                 </div>
                 </div>
                 <div className={Styles.contactContainer}>
-                    <CarPage_Form config={config} car={car}/>
+                    <CarPage_Form car={car}/>
                 </div>
             </div>
-        </div> : <div></div>
+        </div>
     )
 }
 
@@ -291,8 +304,8 @@ export default Car
 
 
 //Busca de dados na api
-export async function getStaticPaths() {
-    const slugs = await Axios(`${api}/cars`).then(resp => resp.data)
+export const getStaticPaths: GetStaticPaths = async () => {
+    const { data: slugs } = await axios.get<TYPE_Cars[]>(`${api}/cars`)
     
     return {
         paths : slugs.map(resp => {
@@ -306,9 +319,9 @@ export async function getStaticPaths() {
     }
 }
 
-export async function getStaticProps({params}) { 
-    const config = await  Axios(`${api}/config`).then(resp => resp.data)
-    const car = await Axios(`${api}/car/${params.car_post}`).then(resp => resp.data)
+export const getStaticProps: GetStaticProps = async ({ params }) => { 
+    const { data: config } = await  axios.get<TYPE_ConfigProps>(`${api}/config`)
+    const { data: car } = await axios.get<TYPE_Cars>(`${api}/car/${params?.car_post}`)
     return {
         props: {
             config,

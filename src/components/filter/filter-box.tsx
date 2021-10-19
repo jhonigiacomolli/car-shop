@@ -71,9 +71,9 @@ const FilterBox = ({ id }: FilterboxProps) => {
                         .filter(car => (filter2 && filter2 !== "empty") ? filter2 === car[homeFilter2] : car )
                         .filter(car => (filter3 && filter3 !== "empty") ? filter3 === car[homeFilter3] : car )
                         .filter(car => (filter4 && filter4 !== "empty") ? filter4 === car[homeFilter4] : car )
-        setNumberCars(filter.length)
-    }, [filter1, filter2, filter3, filter4])
-
+        setNumberCars(filter.length)        
+    }, [cars, filter1, filter2, filter3, filter4])
+    
     function updateStateFilters() {
         setLoading(true)
         setHomeFilter1(filter1)

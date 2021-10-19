@@ -1,0 +1,82 @@
+.container {
+    text-align: left;
+    width: 100%;
+}
+.title {
+    font-size: 1.1rem;
+    color: var(--white);
+}
+.iconsContainer {
+    display: flex;
+    gap: 10px;
+}
+.iconsContainer span {
+    cursor: pointer;
+}
+.facebookIcon,
+.twitterIcon,
+.whatsappIcon,
+.telegramIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+    border-radius: 50%;
+}
+.facebookIcon svg,
+.twitterIcon svg,
+.whatsappIcon svg,
+.telegramIcon svg {
+    fill: var(--white);
+    height: 1.5rem;
+    width: 1.5rem;
+}
+.facebookIcon {
+    background: var(--facebook-background);
+}
+.twitterIcon {
+    background: var(--twitter-background);
+}
+.whatsappIcon {
+    background: var(--whatsapp-background);
+}
+.telegramIcon {
+    background: var(--telegram-background);
+}
+.shareIcon > div {
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    background-color: var(--detach);
+    color: var(--white);
+    max-width: 40%;
+}
+.shareIcon label {
+    font-size: 0.875rem;
+}
+.shareIcon svg {
+    width: 2.5rem;
+    height: 2.5rem;
+    padding: 15px 0;
+    margin: 0;
+    transition: 0.3s ease;
+    fill: var(--white);
+}
+.title {
+    font-size: 0.875rem;
+}
+@media (max-width: 767px) {
+    .shareIcon > div {
+        max-width: 60%;
+    }
+}
+@media (max-width: 480px) {
+    .title {
+        text-align: center;
+    }
+    .shareIcon > div {
+        max-width: 100%;
+    }
+}

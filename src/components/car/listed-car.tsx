@@ -7,11 +7,11 @@ import { dateFormat_short } from 'functions/date-format'
 import { TYPE_Cars } from 'context/context-types'
 import { useConfig } from 'context'
 
-type CompactCarProps = {
+type ListedCarProps = {
     car: TYPE_Cars
     theme: 'light' | 'dark'
 }
-const CompactCar = ({ car, theme='light' }: CompactCarProps) => {
+const ListedCar = ({ car, theme='light' }: ListedCarProps) => {
     const { slug, thumbnail, title, km, year, motor, registration, price, salePrice, color } = car 
     const { setLoading } = useConfig()
     const formatedPrice = Number(price).toLocaleString("pt-BR", { style: 'currency', currency: 'BRL' })
@@ -73,4 +73,4 @@ const CompactCar = ({ car, theme='light' }: CompactCarProps) => {
     )
 }
 
-export default CompactCar
+export default ListedCar

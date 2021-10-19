@@ -1,12 +1,37 @@
-import React from 'react'
+import React, { Dispatch } from 'react'
 import { useConfig } from '../../context'
-import Styles from './FilterSideBar.module.css'
-import { VehicleSearch, Check, Transmission, Vehicle, Fuel, Engine, Door, SteeringWheel, Color, CarPlate, Calendar, ArrowDown, ArrowUp } from '../icons/index'
-import PrimaryButton from '../buttons/PrimaryButton'
+import Styles from './filter-sidebar.module.css'
+import { VehicleSearch, Check, Transmission, Vehicle, Fuel, Engine, Door, SteeringWheel, Color, CarPlate, Calendar, ArrowDown, ArrowUp } from 'components/icons/index'
+import PrimaryButton from '../buttons/primary-button'
+import { TYPE_CarTaxonomies, TYPE_ConfigProps } from 'context/context-types'
 
-const FilterSidebar = (props) => {
+type FilterSidebarProps = {
+    config: TYPE_ConfigProps
+    taxonomies: TYPE_CarTaxonomies 
+    filterCondition: string
+    filterAssembler: string
+    filterTransmission: string
+    filterFuel: string
+    filterMotor: string
+    filterPorts: string
+    filterDirection: string
+    filterEndPlate: string
+    filterYear: string
+    filterColor: string
+    setFilterCondition: Dispatch<string>
+    setFilterAssembler: Dispatch<string>
+    setFilterTransmission: Dispatch<string>
+    setFilterFuel: Dispatch<string>
+    setFilterMotor: Dispatch<string>
+    setFilterPorts: Dispatch<string>
+    setFilterDirection: Dispatch<string>
+    setFilterEndPlate: Dispatch<string>
+    setFilterYear: Dispatch<string>
+    setFilterColor: Dispatch<string>
+}
+const FilterSidebar = (props: FilterSidebarProps) => {
     const [contract, setContract] = React.useState(true)
-    const { windowSize } = useConfig()
+    const { windowWidth } = useConfig()
     const {
         config,
         taxonomies, 
@@ -73,15 +98,16 @@ const FilterSidebar = (props) => {
     }
 
     React.useEffect(() => {
-        windowSize > 767 ? setContract(false) : setContract(true)
-    }, [windowSize])
+        windowWidth > 767 ? setContract(false) : setContract(true)
+    }, [windowWidth])
+
     return (
-        displayFilters && <div className={Styles.filterContainer}>
-            <div className={`${Styles.labelContainer} ${contract ? Styles.contracted : ''}`} onClick={() => windowSize <= 767 && setContract(!contract)} >
+        displayFilters ? <div className={Styles.filterContainer}>
+            <div className={`${Styles.labelContainer} ${contract ? Styles.contracted : ''}`} onClick={() => windowWidth <= 767 && setContract(!contract)} >
                 <label className={Styles.label}>{contract ? 'EXIBIR FILTROS' : 'Filtros de Busca'}</label>
-                {windowSize > 767 && <VehicleSearch />}
-                {!contract && windowSize <= 767 && <ArrowUp />}
-                {contract && windowSize <= 767 && <ArrowDown />}
+                {windowWidth > 767 && <VehicleSearch />}
+                {!contract && windowWidth <= 767 && <ArrowUp />}
+                {contract && windowWidth <= 767 && <ArrowDown />}
             </div>
             <div className={`${Styles.filter} ${contract ? Styles.contracted : ''}`}>
                 {displayFilterCondition && <Check label={'Condição'}/>}
@@ -196,7 +222,7 @@ const FilterSidebar = (props) => {
                 </select>}
                 <PrimaryButton label={'Restaurar filtros'} onClick={resetFilters} >Restaurar Filtros</PrimaryButton>
             </div>
-        </div>
+        </div> : null
     )
 }
 

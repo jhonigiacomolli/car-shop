@@ -14,18 +14,16 @@ import SlideShow from 'components/slide-show/slide-show'
 
 type HomeProps = {
     config: TYPE_ConfigProps
-    blog: TYPE_Posts[]
     cars: TYPE_Cars[]
     taxonomies: TYPE_CarTaxonomies
 }
-const Home = ({config, blog, cars, taxonomies}: HomeProps) => {
-    const { setPage, setLoading, setConfig, setBlog, setCarsTaxonomies, setCars } = useConfig()
+const Home = ({config, cars, taxonomies}: HomeProps) => {
+    const { setPage, setLoading, setConfig, setCarsTaxonomies, setCars } = useConfig()
 
     React.useEffect(() => {
         setLoading(false)
         registerAccess()
         setConfig(config)
-        setBlog(blog)
         setCars(cars)
         setCarsTaxonomies(taxonomies)
         setPage('home')
@@ -55,14 +53,11 @@ export default Home
 
 export async function getStaticProps() {
     const { data: config } = await  axios.get<TYPE_ConfigProps>(`${api}/config`)
-    const numberOfPosts = config.blog.latestPosts.numberOfPosts
-    const { data: blog } = await  axios.get<TYPE_Posts[]>(`${api}/blog?_limit=${numberOfPosts}`)
     const { data: cars } = await  axios.get<TYPE_Cars[]>(`${api}/cars`)
     const { data: taxonomies } = await axios.get<TYPE_CarTaxonomies>(`${api}/cars/taxonomies`)
   
     return {
         props: {
-            blog,
             cars,
             taxonomies,
             config,
