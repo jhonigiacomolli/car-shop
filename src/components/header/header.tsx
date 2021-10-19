@@ -5,38 +5,39 @@ import { No_Logo, User } from 'components/icons'
 import MainMenu from 'components/menu/main-menu'
 import Styles from './header.module.css'
 import SearchBar from 'components/search/search-bar'
+import { useEffect, useState } from 'react'
 
-const Header = () => {
-    const { config, windowWidth, page, setLoading, position } = useConfig()
+type HeaderProps = {
+    theme?: 'light' | 'dark'
+}
+const Header = ({ theme = 'light' }:HeaderProps) => {
+    const { config, page, position, setLoading } = useConfig()
+    const [sticky, setSticky] = useState(false)
+    const [altHeader, setAltHeader] = useState(false)
+
+    useEffect(() => {
+        setSticky(position > 12 ? true : false)
+    }, [position])
+
+    useEffect(() => {
+        setAltHeader(page === 'car' ? true : false)
+    }, [page])
 
     return(
-        <header id="header" className={`${`${Styles.header} ${position > 2 ? Styles.sticky : ''}`} ${page==='home' ? Styles.home : ''}`}>
+        <header id={'header'} className={`${Styles.header} ${Styles[theme]} ${page==='home' && Styles.home} ${altHeader ? Styles.altFixedHeader : ''} ${sticky ? Styles.sticky : ''}`}>
             <div className={Styles.menu}>
-                <div className={Styles.menuContent}>
-                    {windowWidth > 767 && <SearchBar className={Styles.search} theme="dark" />}
-                    <div onClick={() => page !== 'home' &&  setLoading(true)} className={Styles.logo}> 
-                        <Link href={page !== 'home' ? '/' : '#'} aria-label={'Logomarca'}>
-                            <a>
-                            {(config.header && config.header.logo) ? 
-                                <Image src={config.header.logo} alt={'Logomarca'} width={450} height={100} quality={100} objectFit="contain"/> 
-                            :
-                                <No_Logo className={Styles.noLogo}/>
-                            }
-                            </a>
-                        </Link>
-                    </div>
-                    <div className={Styles.user} >
-                        <Link href="/admin">
-                            <a onClick={() => setLoading(true)}>
-                                <User />
-                                {windowWidth > 480 && 'Entrar'}
-                            </a>
-                        </Link>
-                    </div>
+                <div onClick={() => page !== 'home' &&  setLoading(true)} className={Styles.logo}> 
+                    <Link href={page !== 'home' ? '/' : '#'} aria-label={'Logomarca'}>
+                        <a>
+                        {(config.header && config.header.logo) ? 
+                            <Image src={config.header.logo} alt={'Logomarca'} width={sticky ? 200 : 280} height={sticky ? 80 : 100} layout="fixed" quality={100} objectFit="contain"/> 
+                        :
+                            <No_Logo className={Styles.noLogo}/>
+                        }
+                        </a>
+                    </Link>
                 </div>
-                <div className={Styles.mainMenu}>
-                    <MainMenu />
-                </div>
+                <MainMenu theme="light" className={Styles.mainMenu} setSticky={setSticky} position={'main'}/>
             </div>
         </header>
     )

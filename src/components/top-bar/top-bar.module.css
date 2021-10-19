@@ -1,10 +1,7 @@
 .topBarContainer {
-    grid-area: topbar;
     padding: 5px 0;
-    position: relative;
-    z-index: 10;
-    background: var(--topbar-background);
-    border-bottom: 1px solid var(--detach);
+    background: var(--detach-secundary);
+    z-index: 1;
 }
 .topBar {
     display: grid;
@@ -18,7 +15,7 @@
     margin: 0 auto;
 }
 .topBar p, .topBar a {
-    font-size: 0.75rem;
+    font-size: 0.85rem;
     color: var(--white);
 }
 .topBarLeft {
@@ -30,7 +27,7 @@
     width: 1rem;
     height: 1rem;
     margin: 0 10px 0 0 ;
-    fill: var(--medium-gray);
+    fill: var(--white);
 }
 .topBarRight {
     grid-area: topBarRight;
@@ -44,8 +41,44 @@
     line-height: 1rem;
     margin: 0;
 }
-@media  (max-width: 480px ){
+@media (max-width: 991px) {
+    .topBar a, .topBarRight {
+        font-size: 0.675rem;
+    }
     .topBar {
-        grid-template-rows: 0;
+        grid-template-columns: auto;
+        grid-template-rows: 0px 40px ;
+        grid-template-areas: 
+            "topBarLeft"
+            "topBarRight"
+        ;
+    }
+    .topBarLeft {
+        text-align: center;
+        justify-content: center;
+        padding: 0 20px;
+    }
+    .topBarRight {
+        text-align: center;
+        justify-content: center;
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+    }
+    .topBarRight p {
+        margin: 20px 0 5px 0;
+    }
+    .topBarRight > div {
+        margin: 0;
+    }
+}
+@media (max-width: 480px) {
+    .topBar {
+        grid-template-columns: 1fr;
+        grid-template-rows: 0px 60px ;
+        grid-template-areas: 
+            "topBarLeft"
+            "topBarRight"
+        ;
     }
 }

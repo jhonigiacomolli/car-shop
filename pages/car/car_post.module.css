@@ -1,0 +1,290 @@
+.container {
+    grid-area: content;
+    margin: var(--fixed-header-height) auto;
+}
+.imageContainer {
+    contain: content;
+    background-color: var(--dark-gray);
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+.imageContent {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-basis: 24vw;
+    box-sizing: border-box;
+}
+.image {
+    padding: 10px 20px;
+    box-sizing: border-box;
+    display: none;
+}
+.imagePrev, .imageNext {
+    width: 24vw;
+}
+.image > div { 
+    border-radius: 15px;
+    z-index: 0;
+}
+.slideCount {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px;
+    margin-top: -30px;
+    z-index: 10;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+    background-color: var(--dark-gray-transparency);
+    color: var(--light-gray);
+}
+.slide {
+    width: 50vw;
+    display: block;
+}
+.prev {
+    display: block;
+    opacity: 0.2;
+}
+.next {
+    display: block;
+    opacity: 0.2;
+}
+.buttonPrev {
+    left: 5vw;
+}
+.buttonNext {
+    right: 5vw;
+}
+.buttonPrev, .buttonNext {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: 50%;
+    color: var(--light-gray);
+    z-index: 10;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+.buttonPrev svg, .buttonNext svg  {
+    fill: var(--light-gray);
+}
+.buttonPrev:hover, .buttonNext:hover {
+    cursor: pointer;
+    filter: brightness(2);
+    color: var(--white);
+    transition: all 0.3s ease;
+    opacity: 1;
+}
+.buttonPrev:hover{
+    transform:  translate(-10px, 0);
+}
+.buttonNext:hover {
+    transform:  translate(10px, 0);
+}
+.buttonPrev:hover svg, .buttonNext:hover svg {
+    fill: var(--white);
+}
+.content{
+    display: grid;
+    grid-template-columns: minmax(200px, 1fr);
+    padding: 0 30px;
+    max-width: var(--boxed-size);
+    margin: 0px auto;
+}
+.carContent {
+    padding: 50px 0;
+    width: 100%;
+    box-sizing: border-box;
+}
+.titleContainer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end ;
+    justify-content: space-between;
+}
+.title {
+    display: flex;
+    flex-direction: column;
+}
+.title h1{
+    font-family: 'Spartan';
+    font-size: 2.3rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+    margin: 0;
+    color: var(--dark-gray);
+}
+.carCode {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    margin: 0;
+    font-size: 0.775rem;
+    color: var(--medium-gray);
+}
+.carCode p {
+    font-size: 0.875rem;
+    font-weight: 900;
+    margin: 10px 0;
+    color: var(--dark-gray);
+}
+.value {
+    margin: 40px 0 -20px  0 ;
+}
+.price {
+    font-family: 'Spartan';
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+    color: var(--detach);
+}
+.scratch {
+    font-size: 1.3rem;
+    text-align: right;
+    text-decoration: line-through 2px var(--gray);
+    color: var(--gray);
+    filter: brightness(1.3);
+    margin: 0 0 -20px 0;
+}
+.postDate {
+    font-size: 0.775rem;
+    color: var(--medium-gray);
+    margin: 10px 0 0 0;
+}
+.postDate p {
+    display: inline;
+    font-size: 0.875rem;
+    font-weight: 900;
+    color: var(--dark-gray);
+}
+.dataContainer, .optionsContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px 50px;
+}
+.dataContainer {
+    background-color: #eeeeee;
+    padding: 80px 10px 30px 10px ;
+    margin-top: -75px;
+    border-radius: 10px;
+    border-top-left-radius: 60px;
+}
+.dataItem {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 20px;
+    align-items: center;
+    justify-content: space-around;
+    color: var(--dark-gray);
+    border-bottom: 1px solid var(--ice-white);
+}
+.dataItem p {
+    margin: 5px 0 10px 0;
+    text-align: left;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--dark-gray);
+}
+.dataItem svg {
+    height: 1.2rem;
+    fill: var(--detach);
+}
+.optionalItem {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--dark-gray);
+}
+.optionalItem p {
+    margin: 5px 0 10px 0;
+    text-align: left;
+    font-size: 0.875rem;
+}
+.optionalItem svg {
+    height: 1.2rem;
+    fill: var(--detach);
+}
+.description {
+    font-size: 0.87rem;
+    line-height: 2rem;
+    color: var(--dark-gray);
+}
+.contactContainer {
+    margin: 0 0 -130px 0;
+    padding: 0 0 0px 0;
+    border-radius: 15px;
+}
+.video {
+    width: 50%;
+    margin: 25px auto;
+    font-size: 0.875rem;  
+    text-align: center;  
+    color: var(--white);
+}
+.video span {
+    max-width: 300px;
+    margin: 10px auto;
+}
+.share {
+    margin: 50px 0 15px 0;
+}
+@media (max-width: 991px) {
+    .imageContainer {
+        padding: 0;
+    }
+    .slide {
+        width: 100vw;
+    }
+    .next, .prev, .imageNext, .imagePrev {
+        display: none;
+    }
+    .title h1{
+        font-size: 1.7rem;
+    }
+    .price {
+        font-size: 1.7rem;
+    }
+    .scratch {
+        font-size: 1.2rem;
+    }
+    .titleContainer {
+        justify-content: center;
+    }
+}
+@media (max-width: 767px) {
+    .title {
+        text-align: center;
+    }
+    .carCode {
+        justify-content: center;
+    }
+    .dataContainer, .optionsContainer {
+        grid-template-columns: 1fr;
+    }
+}
+@media (max-width: 480px) {
+    .dataContainer, .optionsContainer {
+        gap: 15px;
+    }
+    .sectionTitle {
+        margin-left: -75px;
+    }
+    .sectionTitle h1 {
+        font-size: 0.875rem;
+    }
+    .contactContainer {
+        margin: 0 -20px -50px -20px;
+    }
+    .video {
+        width: 70%;
+        margin: 25px auto;
+        font-size: 0.875rem;  
+        text-align: center;  
+    }
+}

@@ -1,0 +1,9 @@
+.contentContainer {
+    grid-area: content;
+    width: var(--full-width);
+    margin: 0;
+    text-align: center;
+}
+.blog {
+    fill: var(--gray);
+}

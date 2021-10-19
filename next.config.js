@@ -2,6 +2,6 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ['database.microsite.net.br', 'database.microsite.net.br', 'www.microsite.net.br', 'microsite.net.br', 'localhost'],
+    domains: ['database.sartorautomoveis.com.br', 'database.sartorautomoveis.com.br', 'www.microsite.net.br', 'microsite.net.br', 'localhost'],
   }
 }

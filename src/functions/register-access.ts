@@ -1,7 +1,7 @@
-import Axios from 'axios'
-import { api } from '../api/api'
+import axios from 'axios'
+import { api } from 'api/api'
 
-export const RegisterAccess = async () => {
+export const registerAccess = async () => {
     //Define qual o browser utilizado
     const agent = navigator.userAgent
     let browser
@@ -25,7 +25,7 @@ export const RegisterAccess = async () => {
     }
 
     //Busca o IP do usuário
-    const ip = await Axios('https://api.ipify.org')
+    const ip = await axios('https://api.ipify.org')
     
     //Define o dispositivo utilizado pelo usuário
     let device
@@ -53,7 +53,7 @@ export const RegisterAccess = async () => {
 
     //Grava no banco de dados os dados de acesso
     if(browser && ip && os && device && !document.URL.includes('localhost:')) {
-        Axios({
+        axios({
             method: 'POST',
             url: `${api}/access`,
             headers: {

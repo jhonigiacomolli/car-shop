@@ -1,23 +1,37 @@
-.container {
-    top: 0;
-    left: 0;
-    width: 100%;
-    box-sizing: border-box;
-    height: 100%;
-    position: fixed;
+.dark {
+    --li-after-background: var(--dark-gray);
+    --li-hover-background: var(--dark-gray-transparency-2);
+    --link-hover: var(--detach);
+    --link-color: var(--white);
+    --submenu-background: var(--dark-gray-transparency);
+    --submenu-li-border-color: var(--gray);
+    --submenu-link-color: var(--medium-gray);
+    --hamb-line-background: var(--ice-white);
+    --mobile-menu-background: var(--mobile-menu);
+    --mobile-menu-li-focus: var(--detach);
+}
+.light {
+    --li-after-background: var(--light-gray);
+    --li-hover-background: transparent;
+    --link-hover: var(--white);
+    --link-color: var(--light-gray);
+    --submenu-background: var(--light-gray-transparency);
+    --submenu-li-border-color: var(--ice-white);
+    --submenu-link-color: var(--dark-gray);
+    --hamb-line-background: var(--medium-gray);
+    --mobile-menu-background: var(--mobile-menu);
+    --mobile-menu-li-focus: var(--detach);
 }
 .mainMenu {
     display: flex;
     justify-content: center;
-    margin: 0;
-    padding: 0;
     text-align: center;
-    z-index: 20;
-    overflow-y: scroll;
-    font-family: 'RobotoThin';
+    flex-wrap: wrap;
+    background: var(--detach-transparency);
+    margin: 0 70px;
+    border-radius: 40px;
 }
 .mainMenu.mobile {
-    position: sticky;
     display: none;
 }
 .toggleMenu {
@@ -29,63 +43,66 @@
 .mainMenu ul {
     display: flex;
     justify-content:center;
+    align-items: center;
 }
 .mainMenu li {
     list-style: none;
-    margin: 0 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+    align-content: center;
+    padding: 15px;
+}
+.mainMenu li::after {
+    /* content: '';
+    display: inline-block;
+    position: relative;
+    top: 10px;
+    left: 15px;
+    width: 2px;
+    height: 35px;
+    opacity: 0.3;
+    background: var(--li-after-background); */
+}
+.mainMenu:last-child {
+    display: none !important;
+}
+.mainMenu li:hover {
+    background-color: var(--li-hover-background);
 }
 .mainMenu li:hover > a,
 .mainMenu li:focus > a {
-    color: var(--detach-secundary);
+    color: var(--link-hover);
+    transform: scale(1.1);
     transition: 0.4s;
-}
-.mainMenu li > a {
-    height: 100%;
-}
-.mainMenu > li::before {
-    content: '';
-    display: block;
-    position: relative;
-    width: 0;
-    height: 6px;
-    background: var(--detach-secundary);
-    transition: all 0.2s;
-}
-.mainMenu li:hover::before {
-    width: 100%;
 }
 .mainMenu li a {
-    color: var(--white);
-    font-size: 0.95rem;
+    color: var(--link-color);
+    font-size: 1.1rem;
     text-transform: uppercase;
-    font-weight: 700;
-    padding: 20px 0;
+    font-weight: 600;
     transition: 0.4s;
-    cursor: pointer;
 }
 .subMenu {
     display: none !important;
     position: absolute;
-    padding: 0 20px;
-    margin: 60px 0 15px 0;
-    z-index: 100;
-    border: 1px solid var(--detach);
-    background: var(--detach-tertiary);
+    display: flex;
+    padding: 0 10px 10px 10px;
+    margin: 15px 0 0 -15px;
+    border-radius: 10px;
+    background: var(--submenu-background);
 }
 ul.subMenu a {
     font-weight: 300;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+    color: var(--submenu-link-color) !important;
+}
+.subMenu li {
+    border-bottom: 1px solid var(--submenu-li-border-color);
 }
 .activeMenu {
     display: block !important;
 }
 .mainMenu li > ul li {
-    padding: 0px;
-    text-align: left !important;
+    padding: 15px 30px;
+    text-align: left;
 }
 .toggleMenu {
     padding: 10px;
@@ -100,7 +117,7 @@ ul.subMenu a {
     width: 30px;
     height: 4px; 
     border-radius: 5px;
-    background: var(--ice-white);
+    background: var(--hamb-line-background);
     margin-bottom: 5px;
     transition: 0.4s ease;
 }
@@ -119,37 +136,36 @@ ul.subMenu a {
     margin-top: 12px;
     transition: 0.4s ease;
 }
-
 .mobileMenu {
+    margin-top: -130px;
     width: 100vw;
-    height: 100vh;
-    position: sticky;
+    height: calc(100vh + 130px);
+    position: absolute;
     top: 0;
     left: 0;
-    background: var(--mobile-menu);
-    z-index: 999;
+    background: var(--mobile-menu-background);
+    z-index: 2000;
+    overflow: hidden;
     display: flex;
     flex-direction: column-reverse;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
-    box-sizing: border-box;
-    padding: 20px 0 0 0;
+    padding: 15vh 0 0 0;
 }
 .mobileMenu .toggleMenu.mobile {
     position: absolute;
     right: 20px;
     top: 45px;
-    z-index: 99;
 }
 .mobileMenu ul {
     flex-direction: column;
+    padding: 15vh 0;
 }
 .mobileMenu li {
-    padding: 15vh 0;
-    box-sizing: border-box;
+    padding: 15px 0;
 }
 .mobileMenu li a:focus {
-    color: var(--detach-secundary);
+    color: var(--mobile-menu-li-focus);
 }
 .mobileMenu li a {
     font-size: 1.2rem;
@@ -160,26 +176,28 @@ ul.subMenu a {
     }
 }
 @media (max-width: 767px) {
-    .mobileMenu li {
-        padding: 0;
-        width: 100%;
+    .mainMenu {
+        background: transparent;
+    }
+    .mainMenu li a {
+        color: var(--detach-secundary);
+    }
+    .mainMenu li:hover a {
+        color: var(--detach);
     }
     .subMenu {
         position: relative;
-        margin: 0;
+        padding:  10px 0 !important;
+        margin: 10px 0 0 0;
         width: 100vw;
     }
-    .subMenu li {
-        padding: 20px 0 !important;
-        width: 100%;
-    }
     .subMenu li a {
-        width: 100%;
         display: inline-block;
         padding: 0;
+        width: 100%;
         font-size: 0.8rem;
         margin: 0 auto;
         text-align: center;
-        color: var(--white);
+        color: var(--submenu-link-color);
     }
 }

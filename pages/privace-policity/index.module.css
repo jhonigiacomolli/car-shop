@@ -1,0 +1,66 @@
+.contentContainer {
+    grid-area: content;
+    max-width: var(--boxed-size);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(250px, 1fr);
+    grid-template-rows: calc(var(--fixed-header-height) + 100px ) 1fr;
+    grid-template-areas:
+        "menu"
+        "policity"
+    ;
+    min-height: 50vh;
+    font-family: 'Montserrat', sans-serif;
+}
+.contentContainer * {
+    box-sizing: border-box;
+}
+.content {
+    grid-area: policity;
+    padding: 0 30px 250px 30px;
+}
+.content h1 {
+    color: var(--dark-gray);
+    text-align: center;
+}
+.content a {
+    color: var(--detach);
+}
+.content span {
+    width: 100%;
+}
+.message p {
+    text-align: justify;
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+.message li {
+    line-height: 2rem;
+}
+.message li::marker {
+    font-weight: 700;
+}
+.lastModified {
+    text-align: center;
+    margin: 40px 0 0 0;
+}
+.siteTitle {
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    text-align: center;
+}
+span.button {
+    width: max-content;
+    margin: 60px auto 15px auto;
+}
+@media (max-width: 480px) {
+    .content {
+        grid-area: policity;
+        padding: 0 15px 250px 15px;
+    }
+    span.button {
+        width: auto;
+        text-align: center;
+        font-weight: 400;
+    }
+}

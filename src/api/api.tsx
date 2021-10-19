@@ -78,9 +78,9 @@ export type TYPE_AdminPanelOption = {
     subitens?: TYPE_AdminPanelSubOption[]
 }
 
-const api = 'https://database.microsite.net.br/ms-api/v1'
-const token = 'https://database.microsite.net.br/ms-api/jwt-auth/v1/token'
-const token_validation = 'https://database.microsite.net.br/ms-api/jwt-auth/v1/token/validate'
+const api = 'https://database.sartorautomoveis.com.br//ms-api/v1'
+const token = 'https://database.sartorautomoveis.com.br/ms-api/jwt-auth/v1/token'
+const token_validation = 'https://database.sartorautomoveis.com.br/ms-api/jwt-auth/v1/token/validate'
 const administration = 'https://database.microsite.net.br/ms-api/v1'
 const support_api = `${administration}/tickets`
 

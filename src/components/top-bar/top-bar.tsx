@@ -8,20 +8,12 @@ const TopBar = () => {
     
     return (
         <div className={Style.topBarContainer}>
-            {windowWidth > 767 &&<div className={Style.topBar}>
-                {config.header.topBarLeft !== '<p><br></p>' ? (
-                    <div className={Style.topBarLeft}>
-                        <Phone className={Style.icon}/>
-                        <p dangerouslySetInnerHTML={{ __html: config.header.topBarLeft}} ></p>
-                    </div>
-                ): <div />}
-                {config.header.topBarRight !== '<p><br></p>' ? (
-                    <div className={Style.topBarRight}> 
-                        <p dangerouslySetInnerHTML={{ __html: config.header.topBarRight}} ></p>
-                        <Socials aria-label="Redes Sociais" size="small" title=""/>
-                    </div> 
-                ): <div />}
-            </div>}
+            <div className={Style.topBar}>
+                <div className={Style.topBarRight}> 
+                    <p dangerouslySetInnerHTML={{ __html: config.header && config.header.topBarRight}} ></p>
+                    <Socials title="" size={'small'}/>
+                </div> 
+            </div>
         </div>
     )
 }

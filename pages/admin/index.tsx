@@ -32,4 +32,4 @@ export async function getServerSideProps() {
             users: [...usersMS.filter(user => user.capability === 'administrator' && !usersClient.find(item => item.email === user.email)), ...usersClient]
         }
     }
-  }
+}

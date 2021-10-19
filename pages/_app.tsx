@@ -4,8 +4,12 @@ import ConfigContextProvider from "context"
 import LoaderFullView from "components/loaders/loader-full-view"
 import { useState } from "react"
 import WhatsAppChat from "components/chat/whatsapp-chat"
-import BackToTop2 from "components/back-to-top/back-to-top-2"
+import BackToTop2 from "components/back-to-top/back-to-top"
 import CookieMessage from "components/cookies/cookie-message"
+import TopBar from "components/top-bar/top-bar"
+import Header from "components/header/header"
+import Footer from "components/footer/footer"
+import Copyright from "components/copyright/copyright"
 import '../styles/global.css'
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -20,11 +24,17 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="description" content={config && config.siteDescription}/>
         <script id="head-scripts"/>
       </Head>
-      <LoaderFullView />
-      <Component {...pageProps} setAdminArea={setAdminArea} adminArea={adminArea} />
-      {!adminArea && <WhatsAppChat />}
-      {!adminArea && <BackToTop2 />}
-      {!adminArea && (config && config.lgpd.cookieEnabled) && <CookieMessage />}
+      <div className={!adminArea ? 'container' : 'private-container'} >
+        <LoaderFullView />
+        {!adminArea && <TopBar  />}
+        {!adminArea && <Header theme="light"/>}
+        <Component {...pageProps} setAdminArea={setAdminArea} adminArea={adminArea} />
+        {!adminArea && <Footer id={'contato'}/>}
+        {!adminArea && <Copyright />}
+        {!adminArea && <WhatsAppChat />}
+        {!adminArea && <BackToTop2 />}
+        {!adminArea && (config && config.lgpd.cookieEnabled) && <CookieMessage />}
+      </div>
     </ConfigContextProvider>
   ) 
 }

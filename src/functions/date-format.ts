@@ -1,24 +1,24 @@
-export function AddDays(days = 0) {
+export function addDays(days = 0) {
     return new Date(new Date().getTime() + (days * 24 * 60 * 60 * 1000)).toLocaleDateString('pt-br')
 }
 
-export function SubtractDays(days = 0) {
+export function subtractDays(days = 0) {
     return new Date(new Date().getTime() - (days * 24 * 60 * 60 * 1000)).toLocaleDateString('pt-br')
 }
 
-export function ConvertToUsDate(date) {
+export function convertToUsDate(date: string) {
     const dateArray = date.split('/')
     const usDate = `${dateArray[2]}/${dateArray[1]}/${dateArray[0]}`
     return usDate
 }
 
-export function ConvertToUsDateWithHifen(date) {
+export function convertToUsDateWithHifen(date: string) {
     const dateArray = date.split('/')
     const usDate = `${dateArray[2]}-${dateArray[1]}-${dateArray[0]}`
     return usDate
 }
 
-export function DateFormat_short(props) {
+export function dateFormat_short(props: string) {
     const fulldata = props.split(' ')
     const data = fulldata[0].split('-')
     const day = data[2]
@@ -27,7 +27,7 @@ export function DateFormat_short(props) {
     return `${day} / ${month} / ${year}`
 }
 
-export function DateFormat_inFull(props) {
+export function dateFormat_inFull(props: string) {
     const fulldata = props.split(' ')
     const data = fulldata[0].split('-')
     const day = data[2]

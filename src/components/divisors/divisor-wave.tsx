@@ -10,6 +10,9 @@ type DivisorWaveProps = {
     color?: string
     overlap?: 'top' | 'bottom'
     zIndex?: number
+    fillColor1: string
+    fillColor2: string
+    fillColor3: string
 }
 
 const DivisorWave = ({ 
@@ -18,6 +21,9 @@ const DivisorWave = ({
     invertedY = false,
     height = 100,
     color = '#000',
+    fillColor1,
+    fillColor2,
+    fillColor3,
     overlap,
     zIndex 
 }: DivisorWaveProps) => {
@@ -57,9 +63,9 @@ const DivisorWave = ({
             viewBox="0 0 460.8 72"
             preserveAspectRatio="none"
         >
-            <path d="M536.4,412.49V389.07H75.6v41.14c38.24-39.14,69.7-43.37,110.72-35.5,75.6,13,219.8,64.33,350.08,17.78Z" transform="translate(-75.6 -389.07)" fillRule="evenodd"/>
-            <path d="M168.94,392.05c68.92,6.18,226.35,70.6,367.46,20.18v17.92c-207,24.6-298.66-31.26-367.46-38.1Z" transform="translate(-75.6 -389.07)" fillRule="evenodd"/>
-            <path d="M75.6,430c100.8-103.27,154.57,36.37,460.8,0v36.37H75.6Z" transform="translate(-75.6 -389.07)" fillRule="evenodd"/>
+            <path fill={fillColor1} d="M536.4,412.49V389.07H75.6v41.14c38.24-39.14,69.7-43.37,110.72-35.5,75.6,13,219.8,64.33,350.08,17.78Z" transform="translate(-75.6 -389.07)" fillRule="evenodd"/>
+            <path fill={fillColor2} d="M168.94,392.05c68.92,6.18,226.35,70.6,367.46,20.18v17.92c-207,24.6-298.66-31.26-367.46-38.1Z" transform="translate(-75.6 -389.07)" fillRule="evenodd"/>
+            <path fill={fillColor3} d="M75.6,430c100.8-103.27,154.57,36.37,460.8,0v36.37H75.6Z" transform="translate(-75.6 -389.07)" fillRule="evenodd"/>
         </svg>
     )
 

@@ -351,6 +351,10 @@ export type TYPE_ContextProps = {
     portfolios: TYPE_Portfolio[]
     tickets: TYPE_Tickets[]
     loading: boolean
+    filter1: string
+    filter2: string
+    filter3: string
+    filter4: string
     setConfig: Dispatch<TYPE_ConfigProps>
     setPosition: Dispatch<number>  
     setPage: Dispatch<string>
@@ -369,4 +373,8 @@ export type TYPE_ContextProps = {
     setPortfolios: Dispatch<TYPE_Portfolio[]>
     setTickets: Dispatch<TYPE_Tickets[]>
     setLoading: Dispatch<boolean>
+    setFilter1: Dispatch<string>
+    setFilter2: Dispatch<string>
+    setFilter3: Dispatch<string>
+    setFilter4: Dispatch<string>
 }

@@ -1,0 +1,157 @@
+.dark {
+    --box-background: var(--dark-gray-2);
+    --box-boxshadow: var(--dark-gray-3);
+    --title-color: var(--white);
+    --title-color-hover: var(--detach);
+    --publish-color:var(--medium-gray);
+    --price-background: var(--dark-gray-2);
+    --price-border-color: var(--gray);
+    --value-background: var(--dark-gray);
+    --value-color: var(--detach);
+    --value-before: var(--dark-gray);
+    --scratch-color: var(--medium-gray);
+    --scratch-decoration: var(--medium-gray);
+    --car-detail-background: var(--dark-gray-3);
+    --car-detail-color: var(--light-gray);
+    --car-detail-svg: var(--medium-gray);
+}
+.light {
+    --box-background: var(--ice-white);
+    --box-boxshadow: var(--light-gray);
+    --title-color: var(--gray);
+    --title-color-hover: var(--detach);
+    --publish-color: var(--medium-gray);
+    --price-background: var(--ice-white);
+    --price-border-color: var(--light-gray);
+    --value-background: var(--dark-gray-2);
+    --value-color: var(--detach);
+    --value-before: var(--dark-gray);
+    --scratch-color: var(--gray);
+    --scratch-decoration: var(--gray);
+    --car-detail-background: var(--white);
+    --car-detail-color: var(--medium-gray);
+    --car-detail-svg: var(--detach);
+}
+.car {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr auto auto;
+    grid-template-areas:
+        "image"
+        "title"
+        "carDetails"
+        "publish"
+        "price"
+    ;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--box-background);
+    cursor: pointer;
+    transition: all 0.4s;
+}
+.car:hover{    
+    box-shadow: 5px 8px 8px var(--box-boxshadow);
+}
+.car:hover img {
+    transition: 0.3s;
+    filter: brightness(1.1);
+}
+.car:hover .title {
+    color: var(--title-color-hover);
+}
+.car:hover .value {
+    filter: brightness(1.2);
+    transition: 0.3s;
+}
+.image {
+    grid-area: image;
+    margin-top: -5px;
+    width: 100%;
+}
+.image img {
+    transition: 0.3s;
+}
+.title {
+    grid-area: title;
+    font-size: 1.2rem;
+    line-height: 1.3rem;
+    color: var(--title-color);
+    transition: all 0.4s;
+}
+.publish {
+    grid-area: publish;
+    padding: 5px 0;
+    font-size: 0.7rem;
+    color: var(--publish-color);
+}
+.price {
+    grid-area: price;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    background: var(--price-background);
+    border-top: 1px solid var(--price-border-color);
+    margin: 0 0 -20px 0;
+
+}
+.value {
+    filter: brightness(1);
+    font-family: 'Spartan';
+    font-weight: 800;
+    font-size: 1.2rem;
+    padding: 10px 15px;
+    text-align: right;
+    color: var(--value-color);
+    background: var(--value-background);
+
+    letter-spacing: -1px;
+}
+.value::before {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 100%;
+    background: var(--value-before);
+    transform: skew(-23deg, 0deg);
+    z-index: -1;
+    top: 0;
+    left: -10px;
+}
+.scratch {
+    font-size: 0.8rem;
+    margin: 0 0 -15px 0;
+    padding: 5px 0 0 0;
+    text-align: right;
+    color: var(--scratch-color);
+    text-decoration: line-through 1px var(--scratch-decoration);
+}
+.carDetail {
+    grid-area: carDetails;
+    display: grid;
+    grid-template-columns: 1fr 1fr ;
+    align-items: center;
+    justify-content: space-around;
+    padding: 0 50px;
+    font-size: 0.55rem;
+    background: var(--car-detail-background);
+    color: var(--car-detail-color);
+}
+.carDetail label {
+    font-size: 0.675rem;
+}
+.carDetail svg {
+    width: 1.2rem;
+    fill: var(--car-detail-svg);
+}
+
+@media (max-width: 767px) {
+    .value {
+        font-size: 1.3rem;
+    }
+    .scratch {
+        font-size: 1rem;
+    }
+}

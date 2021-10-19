@@ -25,10 +25,10 @@ export const ConfigContextProvider = ({children}: ConfigContextProviderProps) =>
   const [windowWidth, setWindowWidth] = useState(0)
   const [windowHeight, setWindowHeight] = useState(0)
   const [position, setPosition] = useState(0)
-  const [filter1, setFilter1] = useState()
-  const [filter2, setFilter2] = useState()
-  const [filter3, setFilter3] = useState()
-  const [filter4, setFilter4] = useState()
+  const [filter1, setFilter1] = useState('')
+  const [filter2, setFilter2] = useState('')
+  const [filter3, setFilter3] = useState('')
+  const [filter4, setFilter4] = useState('')
   const [searchTerms, setSearchTerms] = useState('')
   const [carsResults, setCarsResults] = useState()
   const [postsResults, setPostsResults] = useState()
@@ -93,6 +93,10 @@ export const ConfigContextProvider = ({children}: ConfigContextProviderProps) =>
       portfolios,
       tickets,
       loading,
+      filter1,
+      filter2,
+      filter3,
+      filter4,
       setConfig, 
       setPosition,
       setPage, 
@@ -111,6 +115,10 @@ export const ConfigContextProvider = ({children}: ConfigContextProviderProps) =>
       setPortfolios,
       setTickets,
       setLoading,
+      setFilter1,
+      setFilter2,
+      setFilter3,
+      setFilter4,
     }}>
       {children }
     </configContext.Provider>

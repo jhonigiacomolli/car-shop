@@ -1,10 +1,9 @@
 .container {
     grid-area: copyright;
-    background: var(--detach);
+    background: var(--detach-secundary);
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: -5px 0 -150px 0;
 }
 .copyright {
     max-width: var(--boxed-size);
@@ -12,8 +11,7 @@
     flex: 1;
     align-items: flex-end;
     justify-content: space-between;
-    padding: 30px 0;
-    border-top: 1px solid var(--detach-tertiary);
+    padding: 15px 0;
     color: var(--white);
     font-size: 0.75rem;
 }
@@ -22,7 +20,7 @@
     transition: 0.3s ease;
 }
 .copyright a:hover {
-    color: var(--detach-secundary);
+    color: var(--detach);
     transition: 0.3s ease;
 }
 .copyLeft {

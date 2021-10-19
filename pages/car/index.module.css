@@ -1,0 +1,107 @@
+.container {
+    grid-area: content;
+    max-width: var(--boxed-size);
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 30px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: calc(var(--fixed-header-height) + 100px ) 1fr 250px;
+    grid-template-areas:
+    "menu menu"
+    "filter cars"
+    ;
+    box-sizing: border-box;
+}
+.content {
+    grid-area: cars;
+}
+.contentHeader {
+    display: flex;
+    justify-content: space-between;
+}
+.ordenation {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+}
+.ordenation p{
+    font-size: 0.675rem;
+    text-transform: uppercase;
+    color: var(--gray);
+}
+.ordenation select {
+    height: 40px;
+    padding: 0 10px;
+    border: none;
+    background-color: var(--light-gray);
+    color: var(--dark-gray);
+}
+.ordenation a {
+    padding: 10px 0px;
+}
+.ordenation svg {
+    height: 1.2rem;
+    fill: var(--medium-gray);
+}
+.carContent {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 60px 20px;
+    margin: 20px 0;
+    padding: 30px 0;
+    text-align: center;
+    border-top: 1px solid var(--light-gray);
+}
+.listed {
+    grid-template-columns: 1fr;
+}
+.filters {
+    grid-area: filter;
+    margin: 0 20px 0 0;
+}
+.sectionTitle {
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: 900;
+    letter-spacing: -2px;
+    color: var(--dark-gray);
+}
+.result {
+    color: var(--detach);
+    font-size: 1.3rem;
+    font-weight: 900;
+}
+.ordenation a.active {
+    background-color: var(--light-gray);
+}
+.active svg {
+    fill: var(--detach);
+}
+@media(max-width: 767px) {
+    .container {
+        padding: 0 20px;
+        grid-template-columns: minmax(200px, 1fr);
+        grid-template-rows: calc(var(--fixed-header-height)) auto 1fr 250px;
+        grid-template-areas:
+        "menu"
+        "filter"
+        "cars"
+        ;
+        box-sizing: border-box;
+    }
+    .contentHeader {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+    }
+    .ordenation {
+        justify-content: center;
+    }
+    .filters {
+        grid-area: filter;
+        margin: 0 0 50px 0;
+    }
+}

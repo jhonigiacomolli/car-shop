@@ -1,0 +1,106 @@
+.slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    overflow: hidden;
+    flex-shrink: 0;
+    flex-basis: 100vw;
+    transition: 0.5s ease;
+}
+.imageSlide {
+    object-fit: cover;
+}
+.info {
+    position: absolute;
+    text-align: center;
+}
+.title {
+    font-size: 4rem;
+    padding: 0 30px;
+    margin: 0;
+    letter-spacing: -2px;
+    font-family: 'Poppins';
+    color: var(--dark-gray);
+    background: var(--ice-white);
+    letter-spacing: -4px;
+}
+.subTitle {
+    width: 60%;
+    font-size: 2rem;
+    z-index: 2;
+    position: relative;
+    font-weight: 600;
+    margin: -15px -30px 0 30px;
+    padding: 0 30px 0 70px;
+    text-align: left;
+    background: var(--dark-gray);
+    color: var(--detach);
+}
+.description {
+    font-size: 1.5rem;
+    font-weight: 900;
+    margin: 0;
+    padding: 0 30px;
+    color: var(--white);
+}
+.buttonContainer {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 20px 0 0 0 ;
+}
+.button {
+    min-width: 150px;
+    padding: 10px 20px;
+    font-size: 0.875rem;
+    margin: 30px 0;
+    border-radius: 1.5rem;
+    text-transform: uppercase;
+    transition: 0.3s ease-out;
+    z-index: 2;
+    cursor: pointer;
+    color: var(--detach);
+    border: 3px solid var(--dark-gray);
+    background-color: var(--dark-gray-transparency-2);
+}
+.button:hover {
+    filter: brightness(1);
+    transition: 0.3s ease-out;
+    border-color: var(--detach);
+    background-color: var(--detach);
+    color: var(--white);
+}
+@media (max-width: 1199px){
+    .title {
+        font-size: 3rem;
+    }
+    .subTitle {
+        width: 80%;
+        font-size: 1.8rem;
+        margin: -10px 0 0 0;
+    }
+    .description {
+        font-size: 1.2rem;
+    }
+}
+@media (max-width: 767px) {
+    .title {
+        font-size: 2rem;
+        margin: 40px 30px 5px 30px !important;
+        line-height: 2.1rem;
+        padding: 5px 10px;
+    }
+    .subTitle {
+        font-size: 1.5rem;
+        width: auto;
+        margin: 5px 30px !important;
+        padding: 5px 10px;
+    }
+    .description {
+        font-size: 1rem;
+    }
+}

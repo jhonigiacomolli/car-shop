@@ -1,45 +1,27 @@
-import React from 'react'
-import Image from 'next/image'
 import { useConfig } from 'context'
-import { Phone, Pointer, UserMail, Whatsapp } from 'components/icons'
-import ContactForm from 'components/contact-form/contact-form'
+import { Clock, Phone, Pointer } from 'components/icons'
+import IconBox from 'components/icon-box/icon-box'
 import Styles from './footer.module.css'
 
 type FooterProps = {
     id: string
 }
 const Footer = ({ id }: FooterProps) => {
-    const { config, windowWidth } = useConfig()
-    const addressText = config.footer ? config.footer.addressText : ''
+    const { config, page } = useConfig()
+    const addressTitle = config.footer ? config.footer.addressTitle : ''
+    const addressText = config.footer ? config.footer.addressText : '' 
+    const phoneTitle = config.footer ? config.footer.phoneTitle : ''
+    const phoneText = config.footer ? config.footer.phoneText : ''
+    const scheduleTitle = config.footer ? config.footer.scheduleTitle : ''
+    const scheduleText = config.footer ? config.footer.scheduleText : ''  
  
     return (
         <footer id={id} className={Styles.footer}>
-            <div className={Styles.content}>
-                <div className={Styles.iconBoxes}>
-                    <div>
-                        {config.header.logo && <Image src={config.header.logo} alt="logo" width="230" height="100" objectFit="contain" />}
-                        <span>
-                            <Pointer />
-                            <div dangerouslySetInnerHTML={{ __html: addressText }} />
-                        </span>            
-                        <span>
-                            <UserMail />
-                            <div dangerouslySetInnerHTML={{ __html: config.companyEmailAddress }} />
-                        </span>
-                        <span>
-                            <Phone />
-                            <p>{config.companyFixedPhone}</p>
-                        </span>
-                        <span>
-                            <Whatsapp />
-                            <p>{config.companyMobilePhone}</p>
-                        </span>
-                    </div>
-                    {windowWidth > 767 && <Image src="/assets/img-footer.png" alt="footer image" width="350" height="350" objectFit="contain" />}
-                </div>
-                <div className={Styles.contactForm}>
-                    <ContactForm />
-                </div>
+            
+            <div className={Styles.iconBoxes}>
+                <IconBox icon={<Pointer />} title={addressTitle} text={addressText} />
+                <IconBox icon={<Phone />} title={phoneTitle} text={phoneText} />   
+                <IconBox icon={<Clock />} title={scheduleTitle} text={scheduleText} />             
             </div>
         </footer>
     )

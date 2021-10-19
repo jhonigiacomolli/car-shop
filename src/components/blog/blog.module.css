@@ -1,0 +1,108 @@
+.container {
+    background-color: transparent;
+    text-align: center;
+    padding: 30px;
+    grid-area: content;
+}
+.latestPosts {
+    max-width: var(--boxed-size);
+    margin: 0 auto;
+}
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.button span {
+    padding: 0 30px ;
+    flex-grow: 0;
+    flex-basis: auto;
+}
+.post {
+    margin: 0 0 40px 0;
+    padding: 0 0 15px 0;
+    transition: 0.3s ease;
+}
+.post img {
+    border-radius: 10px;
+}
+.post:hover {
+    border-radius: 20px;
+    box-shadow: 3px 3px 10px var(--medium-gray);
+    transition: 0.3s ease;
+}
+.postContent {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    justify-content: center;
+}
+.shortDetails {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
+}
+.postTitle {
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 5px 25px;
+    color: var(--dark-gray);
+    text-align: center;
+    text-transform: capitalize;
+    transition: 0.5s;
+}
+.postTitle:hover {
+    color: var(--detach);
+    filter: brightness(1.3);
+    transition: 0.3s;
+}
+.postMeta {
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+
+    margin: 0 auto;
+    padding: 5px 0;
+    border-top: 1px solid var(--light-gray);
+}
+.iconContainer div {
+    justify-content: center;
+}
+.iconContainer svg {
+    width: 1.3rem;
+    height: 1.3rem;
+    padding: 5px 20px;
+    fill: var(--detach);
+    text-align: center;
+}
+.iconContainer p{
+    font-size: 0.675rem;
+    font-family: MontSerrat;
+    color: var(--gray);
+}
+.link:hover {
+    cursor:pointer;
+}
+.relatedPosts {
+    margin: 20px 0;
+    padding: 0 0 20px 0;
+    border-top: 1px solid var(--light-gray);
+    border-bottom: 1px solid var(--light-gray);
+}
+.relatedItem {
+    margin: 10px 0;
+    padding: 10px 0;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-align: left;
+    border-bottom: 1px dotted var(--light-gray);
+    color: var(--detach);
+    cursor: pointer;
+}
+
+@media (max-width: 767px) {
+    .button span {
+        flex-grow: 1;
+    }
+}
