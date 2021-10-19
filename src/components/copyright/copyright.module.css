@@ -1,6 +1,6 @@
 .container {
     grid-area: copyright;
-    background: var(--detach-secundary);
+    background: var(--dark-gray);
     display: flex;
     align-items: center;
     justify-content: center;

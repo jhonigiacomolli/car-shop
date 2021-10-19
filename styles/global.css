@@ -5,7 +5,7 @@ body {
     overflow-y: scroll;
     overflow-x: hidden;
     font-family: 'Poppins-Light', sans-serif;
-    background: var(--ice-white);
+    background: var(--gray);
 }
 body a {
     text-decoration: none;
@@ -15,20 +15,17 @@ body a {
 
     /* Color Variables */
     --black: #000;
-    --dark-gray: #181818;
-    --dark-gray-transparency: #181818ea;
+    --dark-gray: #030303;
+    --dark-gray-transparency: #030303ea;
     --dark-gray-transparency-2: #1818185e;
-    --dark-gray-2: #1a1a1a;
+    --dark-gray-2: #181818;
     --dark-gray-3: #212121;
     --gray: #333;
     --medium-gray: #737373;
     --light-gray: #d4d4d4;
-    --light-gray-transparency: #ecececf1;
-    --light-gray-transparency-2: #d4d4d45e;
-    --detach: #ED3237;
-    --detach-transparency: #8d0005d7;
-    --detach-secundary: #8d0005;
-    --detach-tertiary: #570003;
+    --detach: #E1AE0F;
+    --detach-secundary: #be6c00;
+    --detach-tertiary: #E1AE0F;
     --ice-white: #f7f7f7;
     --white: #fff;
     --facebook-background: #133783;
@@ -36,13 +33,13 @@ body a {
     --telegram-background: #2496ff;
     --whatsapp-background: #00e61b;
     --twitter-background: #2aa9e0;
-    --input-checked: #ED3237;
+    --input-checked: #E1AE0F;
 
     /* Components Color Variables */
     --top-bar: #181818;
     --header: #181818bb;
-    --fixed-header: transparent;
-    --mobile-menu: #dadadae8;
+    --fixed-header: #080808;
+    --mobile-menu: #181818e8;
     --about-us-divisor: #181818;
     --filter-box: #333;
     --search-bar-dark: #ffffff10;
@@ -67,7 +64,6 @@ body a {
     --fixed-header-height: 150px;
     --slide-height: 900px;
     --back-to-top-width: 90px;
-    
 }
 @font-face {
     font-family: Poppins;

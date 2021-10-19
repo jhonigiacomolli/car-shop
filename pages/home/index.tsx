@@ -4,13 +4,13 @@ import { api } from 'api/api'
 import { useConfig } from 'context'
 import { registerAccess } from 'functions/register-access'
 import Styles from './index.module.css'
-import DivisorWave from 'components/divisors/divisor-wave'
 import { TYPE_Cars, TYPE_CarTaxonomies, TYPE_ConfigProps, TYPE_Posts } from 'context/context-types'
 import AboutUs from 'components/about-us/about-us'
 import LatestCars from 'components/car/latest-cars'
 import { carTaxonomies } from 'context/initial-contexts'
 import FilterBox from 'components/filter/filter-box'
 import SlideShow from 'components/slide-show/slide-show'
+import DivisorCar from 'components/divisors/divisor-car'
 
 type HomeProps = {
     config: TYPE_ConfigProps
@@ -34,15 +34,12 @@ const Home = ({config, cars, taxonomies}: HomeProps) => {
             <SlideShow />
             <FilterBox id="veiculos" />
             <LatestCars  numberOfCars={cars && config.cars.latestCars.numberOfCars} cars={cars} />
-            <DivisorWave 
+            <DivisorCar 
                 id={'sobre'} 
-                overlap="bottom"
-                fillColor1={'var(--ice-white)'} 
-                fillColor2={'var(--detach-tertiary)'} 
-                fillColor3={'transparent'} 
-                height={170} 
-                invertedY={false} 
-                invertedX={false} 
+                color={'var(--dark-gray)'} 
+                height={150} 
+                invertedY={true} 
+                invertedX={false}
             />
             <AboutUs />
         </div>

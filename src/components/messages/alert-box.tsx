@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import AdminButton from '../buttons/admin-button'
+import SecundaryButton from 'components/buttons/secundary-button'
 import Styles from './alert-box.module.css'
 import { Success, Warning, Error } from '../icons'
 
@@ -32,7 +32,7 @@ const AlertBox = ({title, message, type = 'success', onConfirm }: AlertBoxProps)
                         </div>
                     </div>
                     <div className={Styles.actions}>
-                        <AdminButton onClick={onConfirm}>OK</AdminButton>
+                        <SecundaryButton onClick={onConfirm}>OK</SecundaryButton>
                     </div>
                 </div>
             </div>

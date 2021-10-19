@@ -1,8 +1,8 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { dateFormat_inFull } from '../../../functions/date-format'
-import { TYPE_Cars } from '../../../context/context-types'
+import { dateFormat_inFull } from 'functions/date-format'
+import { TYPE_Cars } from 'context/context-types'
 import Styles from './car-item.module.css'
 
 type CarItemProps = {

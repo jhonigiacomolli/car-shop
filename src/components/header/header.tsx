@@ -13,18 +13,13 @@ type HeaderProps = {
 const Header = ({ theme = 'light' }:HeaderProps) => {
     const { config, page, position, setLoading } = useConfig()
     const [sticky, setSticky] = useState(false)
-    const [altHeader, setAltHeader] = useState(false)
 
     useEffect(() => {
         setSticky(position > 12 ? true : false)
     }, [position])
 
-    useEffect(() => {
-        setAltHeader(page === 'car' ? true : false)
-    }, [page])
-
     return(
-        <header id={'header'} className={`${Styles.header} ${Styles[theme]} ${page==='home' && Styles.home} ${altHeader ? Styles.altFixedHeader : ''} ${sticky ? Styles.sticky : ''}`}>
+        <header id={'header'} className={`${Styles.header} ${Styles[theme]} ${page==='home' && Styles.home} ${sticky ? Styles.sticky : ''}`}>
             <div className={Styles.menu}>
                 <div onClick={() => page !== 'home' &&  setLoading(true)} className={Styles.logo}> 
                     <Link href={page !== 'home' ? '/' : '#'} aria-label={'Logomarca'}>

@@ -16,6 +16,15 @@ function MyApp({ Component, pageProps }: AppProps) {
   const { config } = pageProps
   const [adminArea, setAdminArea] = useState(false)
 
+  if(process.browser) {
+    const WebFontLoader = require('webfontloader')
+    WebFontLoader.load ({
+      google: {
+        families: ['Archivo Black', 'Spartan: 500,700,800,900'],
+      }
+    })
+  }
+
   return (
     <ConfigContextProvider>
       <Head>
@@ -24,8 +33,8 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="description" content={config && config.siteDescription}/>
         <script id="head-scripts"/>
       </Head>
+      <LoaderFullView />
       <div className={!adminArea ? 'container' : 'private-container'} >
-        <LoaderFullView />
         {!adminArea && <TopBar  />}
         {!adminArea && <Header theme="light"/>}
         <Component {...pageProps} setAdminArea={setAdminArea} adminArea={adminArea} />

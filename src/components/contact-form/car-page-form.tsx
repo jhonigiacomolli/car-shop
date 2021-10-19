@@ -226,7 +226,7 @@ async function LGPDauthorization(event: ChangeEvent<HTMLInputElement>) {
                     {loader &&  <CircleLoader />}
                     <span className={`${Styles.mailStatus} ${mailState === 200 && Styles.success} ${ mailState !== undefined &&  mailState !== 200 && Styles.error}`}>
                         {
-                            mailState !== undefined && mailState === 200 ? "Mensagem enviada com sucesso!!!" : 'Ops.. ocorreu um erro, verifique as informações e tente novamente'
+                            mailState > 0 ? (mailState === 200 ? "Mensagem enviada com sucesso!!!" : 'Ops.. ocorreu um erro, verifique as informações e tente novamente') : ''
                         }
                     </span>
                 </div>

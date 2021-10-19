@@ -9,6 +9,10 @@ const TopBar = () => {
     return (
         <div className={Style.topBarContainer}>
             <div className={Style.topBar}>
+                <div className={Style.topBarLeft}>
+                    <Phone className={Style.icon}/>
+                    <p dangerouslySetInnerHTML={{ __html: config.header && config.header.topBarLeft}} ></p>
+                </div>
                 <div className={Style.topBarRight}> 
                     <p dangerouslySetInnerHTML={{ __html: config.header && config.header.topBarRight}} ></p>
                     <Socials title="" size={'small'}/>

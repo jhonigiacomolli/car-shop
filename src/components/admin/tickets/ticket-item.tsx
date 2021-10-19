@@ -1,5 +1,5 @@
 import { Dispatch, ReactElement, useEffect, useState } from 'react'
-import { TYPE_Tickets } from '../../../context/context-types'
+import { TYPE_Tickets } from 'context/context-types'
 import Ticket from './ticket'
 import Styles from './ticket-item.module.css'
 

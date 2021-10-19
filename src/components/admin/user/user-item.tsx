@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
-import { TYPE_Users } from '../../../context/context-types'
+import { TYPE_Users } from 'context/context-types'
 import Styles from './user-item.module.css'
 
 type UserItemProps = {

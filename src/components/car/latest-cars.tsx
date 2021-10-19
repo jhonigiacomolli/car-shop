@@ -19,7 +19,7 @@ const LatestCars = ({ id, cars, numberOfCars }: LatastCarsProps) => {
                 {
                     cars.map((car, index) => {
                         return (
-                            index < numberOfCars && <BoxedCar theme="light" key={car.title} car={car} />
+                            index < numberOfCars && <BoxedCar theme="dark" key={car.title} car={car} />
                         )
                     })
                 }

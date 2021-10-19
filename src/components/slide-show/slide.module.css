@@ -22,19 +22,16 @@
     margin: 0;
     letter-spacing: -2px;
     font-family: 'Poppins';
-    color: var(--dark-gray);
-    background: var(--ice-white);
-    letter-spacing: -4px;
-}
-.subTitle {
-    width: 60%;
-    font-size: 2rem;
+    color: var(--white);
     z-index: 2;
     position: relative;
+}
+.subTitle {
+    width: 75%;
+    font-size: 2rem;
     font-weight: 600;
-    margin: -15px -30px 0 30px;
-    padding: 0 30px 0 70px;
-    text-align: left;
+    padding: 30px 30px 10px 30px;
+    margin: -50px 0 0 0;
     background: var(--dark-gray);
     color: var(--detach);
 }
@@ -79,9 +76,8 @@
         font-size: 3rem;
     }
     .subTitle {
-        width: 80%;
-        font-size: 1.8rem;
-        margin: -10px 0 0 0;
+        font-size: 1.5rem;
+        margin: -40px 0 0 0;
     }
     .description {
         font-size: 1.2rem;
@@ -89,16 +85,12 @@
 }
 @media (max-width: 767px) {
     .title {
-        font-size: 2rem;
-        margin: 40px 30px 5px 30px !important;
-        line-height: 2.1rem;
-        padding: 5px 10px;
+        font-size: 2.3rem;
     }
     .subTitle {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         width: auto;
-        margin: 5px 30px !important;
-        padding: 5px 10px;
+        margin: -30px 0 0 0;
     }
     .description {
         font-size: 1rem;

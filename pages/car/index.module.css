@@ -35,15 +35,15 @@
     height: 40px;
     padding: 0 10px;
     border: none;
-    background-color: var(--light-gray);
-    color: var(--dark-gray);
+    background-color: var(--dark-gray-3);
+    color: var(--light-gray);
 }
 .ordenation a {
     padding: 10px 0px;
 }
 .ordenation svg {
     height: 1.2rem;
-    fill: var(--medium-gray);
+    fill: var(--light-gray);
 }
 .carContent {
     display: grid;
@@ -66,7 +66,7 @@
     font-size: 1.6rem;
     font-weight: 900;
     letter-spacing: -2px;
-    color: var(--dark-gray);
+    color: var(--light-gray);
 }
 .result {
     color: var(--detach);
@@ -74,7 +74,7 @@
     font-weight: 900;
 }
 .ordenation a.active {
-    background-color: var(--light-gray);
+    background-color: var(--dark-gray-3);
 }
 .active svg {
     fill: var(--detach);

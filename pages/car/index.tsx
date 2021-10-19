@@ -162,14 +162,14 @@ const Cars = ({ cars: originalCars, taxonomies, config }: CarsProps) => {
         if (view === 'grid') {
             return (
                 cars && cars.map((car, index) => {
-                    return index < carsPerPage &&  <BoxedCar key={car.title} theme="light" car={car} />
+                    return index < carsPerPage &&  <BoxedCar key={car.title} theme="dark" car={car} />
                 })
             )
         }
         if(view === 'list') {
             return (
                 cars && cars.map((car, index) => {
-                    return index < carsPerPage &&  <ListedCar  key={car.title} theme="light" car={car} />
+                    return index < carsPerPage &&  <ListedCar  key={car.title} theme="dark" car={car} />
                     }
                 )
             )

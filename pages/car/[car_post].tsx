@@ -119,6 +119,9 @@ const Car = ({ car, config }: CarProps) => {
         }
     }
 
+    console.log(description);
+    
+
     return (
         <div className={Styles.container}>
             {player && <VideoPlayer url={video} closeChange={() => setPlayer(false)} />}
@@ -287,9 +290,9 @@ const Car = ({ car, config }: CarProps) => {
                     }
                     </div>
                     <DecoratedTitle1 text={config && config.cars && config.cars.carPage && config.cars.carPage.descriptionSectionTitle}  className={Styles.sectionTitle} />
-                    <p car-description={'car'} className={Styles.description} dangerouslySetInnerHTML={{__html: description}} />
+                    <div car-description="car" className={Styles.description} dangerouslySetInnerHTML={{ __html: description }} />
                 <div className={Styles.share}>
-                    <ShareBox sectionTitle={'Compartilhe este anúncio com os seus amigos(as)'} title={title} description={descriptionString ?? ''} link={url} />
+                    <ShareBox sectionTitle="Compartilhe este anúncio com os seus amigos(as)" title={title} description={descriptionString ? descriptionString : ''} link={url} />
                 </div>
                 </div>
                 <div className={Styles.contactContainer}>

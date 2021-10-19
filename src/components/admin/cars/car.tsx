@@ -6,13 +6,13 @@ import { TYPE_API_Response, TYPE_Cars, TYPE_Image } from 'context/context-types'
 import { ChangeEvent, FormEvent, useContext, useEffect, useRef, useState } from 'react'
 import { Calendar, CarPlate, Check, Color, Door, Engine, Fuel, PictureAdd, SteeringWheel, Tachometer, Transmission, Vehicle } from 'components/icons'
 import CheckBox from 'components/checkbox/check-box'
-import AlertBox from 'components/messages/alert-box'
-import MessageBox from 'components/messages/message-box'
-import TextEditor from 'components/text-editor/text-editor'
+import AlertBox from 'components/admin/messages/alert-box'
+import MessageBox from 'components/admin/messages/message-box'
+import TextEditor from 'components/admin/text-editor/text-editor'
 import PageHeader from '../page-header'
 import Styles from './car.module.css'
 import { brl_currency } from 'functions/currency-format'
-import PrimarySubmit from 'components/buttons/primary-submit'
+import PrimarySubmit from 'components/admin/buttons/primary-submit'
 
 type CarProps = {
     car?: TYPE_Cars

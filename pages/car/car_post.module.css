@@ -115,7 +115,7 @@
     font-weight: 900;
     letter-spacing: -1px;
     margin: 0;
-    color: var(--dark-gray);
+    color: var(--white);
 }
 .carCode {
     display: flex;
@@ -130,7 +130,7 @@
     font-size: 0.875rem;
     font-weight: 900;
     margin: 10px 0;
-    color: var(--dark-gray);
+    color: var(--light-gray);
 }
 .value {
     margin: 40px 0 -20px  0 ;
@@ -159,7 +159,7 @@
     display: inline;
     font-size: 0.875rem;
     font-weight: 900;
-    color: var(--dark-gray);
+    color: var(--light-gray);
 }
 .dataContainer, .optionsContainer {
     display: grid;
@@ -167,7 +167,7 @@
     gap: 20px 50px;
 }
 .dataContainer {
-    background-color: #eeeeee;
+    background-color: var(--dark-gray-3);
     padding: 80px 10px 30px 10px ;
     margin-top: -75px;
     border-radius: 10px;
@@ -179,15 +179,15 @@
     column-gap: 20px;
     align-items: center;
     justify-content: space-around;
-    color: var(--dark-gray);
-    border-bottom: 1px solid var(--ice-white);
+    color: var(--medium-gray);
+    border-bottom: 1px solid var(--gray);
 }
 .dataItem p {
     margin: 5px 0 10px 0;
     text-align: left;
     font-size: 0.875rem;
     font-weight: 600;
-    color: var(--dark-gray);
+    color: var(--light-gray);
 }
 .dataItem svg {
     height: 1.2rem;
@@ -199,7 +199,7 @@
     column-gap: 20px;
     align-items: center;
     justify-content: space-between;
-    color: var(--dark-gray);
+    color: var(--light-gray);
 }
 .optionalItem p {
     margin: 5px 0 10px 0;
@@ -213,12 +213,13 @@
 .description {
     font-size: 0.87rem;
     line-height: 2rem;
-    color: var(--dark-gray);
+    color: var(--medium-gray);
 }
 .contactContainer {
     margin: 0 0 -130px 0;
     padding: 0 0 0px 0;
     border-radius: 15px;
+    background-color: var(--dark-gray-2);
 }
 .video {
     width: 50%;
@@ -279,7 +280,7 @@
         font-size: 0.875rem;
     }
     .contactContainer {
-        margin: 0 -20px -50px -20px;
+        margin: 0 -20px -130px -20px;
     }
     .video {
         width: 70%;

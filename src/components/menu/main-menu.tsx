@@ -17,13 +17,11 @@ const MainMenu = ({ position = 'main', theme, setSticky }: MainMenuProps) => {
     useEffect(() => {
         if (!toggle) {
             document.getElementById('sub-cars')?.classList.remove(Styles.activeMenu)
-            // document.getElementById('sub-blog').classList.remove(Styles.activeMenu)
         }
     }, [toggle])
 
     function activateMenu(element: string) {
         element !== 'sub-cars' && document.getElementById('sub-cars')?.classList.remove(Styles.activeMenu)
-        // element !== 'sub-blog' && document.getElementById('sub-blog').classList.remove(Styles.activeMenu)
         document.getElementById(element)?.classList.toggle(Styles.activeMenu)
     }
 
@@ -47,17 +45,6 @@ const MainMenu = ({ position = 'main', theme, setSticky }: MainMenuProps) => {
                 <li aria-label={'Para sessão sobre-nós'} onClick={() => {toggle && setToggle(!toggle), setSticky(true)}}>
                     <Link href="/#sobre">Sobre Nós</Link>
                 </li>
-                {/* <li aria-label={'Para sessão Blog'} onClick={windowWidth > 767 ? () => toggle && setToggle(!toggle) : (e) => activateMenu('sub-blog')}>
-                    <Link href={windowWidth > 767 ? "/#blog" : ''}>Blog</Link>
-                    <ul id={'sub-blog'} className={Styles.subMenu}>
-                        <li onClick={() => toggle && setToggle(!toggle)}>
-                            <Link href={'/#blog'}>Em destaque</Link>
-                        </li>
-                        <li onClick={() => {toggle && setToggle(!toggle), setLoading(true)}}>
-                            <Link href={'/blog'}>Todos os artigos</Link>
-                        </li>
-                    </ul>
-                </li> */}
                 <li aria-label={'Para sessão Contato'}  onClick={() => {toggle && setToggle(!toggle), setSticky(true)}}>
                     <Link href="/#sobre">Contato</Link>
                 </li>

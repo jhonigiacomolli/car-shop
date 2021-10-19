@@ -1,5 +1,5 @@
 import { ReactElement } from "react"
-import { Article, Bag, BuildingConstruction, Config, Folder, Home2, IconBox, Jobs, Logout, Slides, SupportIcon, User2, Vehicle2 } from "../components/icons"
+import { Article, Bag, BuildingConstruction, Config, Folder, Home2, IconBox, Jobs, Logout, Search, Slides, SupportIcon, User2, Vehicle2 } from "../components/icons"
 import Dashboard from "../components/admin/dashboard/dashboard"
 import Access from '../components/admin/dashboard/access'
 import Devices from '../components/admin/dashboard/devices'
@@ -54,6 +54,7 @@ import Portfolio from "../components/admin/portfolio/portfolio"
 import PortfolioConfig from "../components/admin/portfolio/portfolio-config"
 import AllTickets from "../components/admin/tickets/all-tickets"
 import Ticket from "../components/admin/tickets/ticket"
+import SEO from "components/admin/seo"
 
 type Capability = {
     administrator: boolean
@@ -78,9 +79,10 @@ export type TYPE_AdminPanelOption = {
     subitens?: TYPE_AdminPanelSubOption[]
 }
 
-const api = 'https://database.sartorautomoveis.com.br//ms-api/v1'
-const token = 'https://database.sartorautomoveis.com.br/ms-api/jwt-auth/v1/token'
-const token_validation = 'https://database.sartorautomoveis.com.br/ms-api/jwt-auth/v1/token/validate'
+const domain = 'sevencars.com.br'
+const api = `https://database.${domain}/ms-api/v1`
+const token = `https://database.${domain}/ms-api/jwt-auth/v1/token`
+const token_validation = `https://database.${domain}/ms-api/jwt-auth/v1/token/validate`
 const administration = 'https://database.microsite.net.br/ms-api/v1'
 const administration_token = 'https://database.microsite.net.br/ms-api/jwt-auth/v1/token'
 const administration_token_validation = 'https://database.microsite.net.br/ms-api/jwt-auth/v1/token/validate'
@@ -895,6 +897,32 @@ const AdminPanelOption: TYPE_AdminPanelOption[] = [
         ]
     },
     {
+        id: 'seo',
+        title: 'SEO',
+        display:  true,
+        capability: {
+            administrator: true,
+            editor: true,
+            contributor: false,
+        },
+        icon: <Search color1={'var(--menu-icon-color1)'} color2={'var(--menu-icon-color2)'}/>,   
+        subitens: [
+            {
+                id: 'seo-config',
+                display: true,
+                visible: false,
+                capability: {
+                    administrator: true,
+                    editor: true,
+                    contributor: true,
+                },
+                active:  false,
+                title: 'Configurações',
+                component: <SEO />,
+            },
+        ]
+    },
+    {
         id: 'tickets',
         title: 'Suporte',
         display:  true,
@@ -950,4 +978,4 @@ export const infoBoxesIcons: {[key: string]: ReactElement}[] = [
     {icon: <p></p>},
 ]
 
-export { api, token, token_validation, administration, administration_token, administration_token_validation, support_api, AdminPanelOption }
+export { domain, api, token, token_validation, administration, administration_token, administration_token_validation, support_api, AdminPanelOption }

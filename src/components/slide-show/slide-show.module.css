@@ -2,8 +2,8 @@
     contain: content;
     grid-area: slide;
     display: flex;
-    background: linear-gradient(35deg, var(--light-gray) 0%, var(--white) 100% );
-    border-bottom: 30px solid var(--light-gray);
+    background: linear-gradient(35deg, var(--dark-gray) 0%, var(--gray) 100% );
+    border-bottom: 30px solid var(--dark-gray);
 }
 .slideContent {
     overflow: hidden;

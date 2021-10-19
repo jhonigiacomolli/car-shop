@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { TYPE_Jobs } from '../../../context/context-types'
+import { TYPE_Jobs } from 'context/context-types'
 import Styles from './job-item.module.css'
 
 type JobItemProps = {

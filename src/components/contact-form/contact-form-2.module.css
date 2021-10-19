@@ -12,7 +12,7 @@
     width: 100%;
     font-size: 1.5rem;
     text-align: left;
-    color: var(--white);
+    color: var(--detach);
 }
 .input {
     display: grid;
@@ -26,7 +26,7 @@
     ;
     align-self: flex-start;
     font-size: 0.9rem;
-    color: var(--dark-gray);
+    color: var(--light-gray);
 }
 .input > label {
     padding: 5px 10px;
@@ -38,14 +38,12 @@
     padding: 5px 15px;   
     font-size: 0.9rem;
     min-height: 35px;
-    color: var(--dark-gray);
-    background-color: var(--light-gray-transparency);
+    color: var(--light-gray);
+    background-color: var(--dark-gray-2);
 }
 .input input:focus-visible {
-    outline:none;
+    color: var(--white);
     font-size: 1rem;
-    color: var(--dark-gray);
-    box-shadow: 0 0 0 4px var(--detach);
 }
 .input textarea {
     margin: 0;
@@ -53,14 +51,12 @@
     border-radius: 10px;
     padding: 15px;
     font-size: 0.85rem;
-    color: var(--dark-gray);
-    background-color: var(--light-gray-transparency);
+    color: var(--light-gray);
+    background-color: var(--dark-gray-2);
 }
 .input textarea:focus-visible {
-    font-size: 1rem; 
-    outline:none;
-    color: var(--dark-gray);
-    box-shadow: 0 0 0 4px var(--detach);
+    font-size: 1rem;
+    color: var(--white);
 }
 .authorization {
     grid-area: accept;

@@ -25,7 +25,7 @@
     --title-color-hover: var(--detach);
     --publish-color: var(--medium-gray);
     --price-svg: var(--gray);
-    --value-color: var(--detach);
+    --value-color: var(--detach-tertiary);
     --value-background: var(--black);
     --value-before: var(--dark-gray);
     --scratch-color: var(--gray);

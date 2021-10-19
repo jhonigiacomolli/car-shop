@@ -12,7 +12,7 @@
         "iconBox"
         "search"
     ;
-    background-color: var(--detach-tertiary);
+    background-color: var(--dark-gray-2);
     justify-items: center;
 }
 .contactForm {

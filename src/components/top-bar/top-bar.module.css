@@ -1,7 +1,7 @@
 .topBarContainer {
     padding: 5px 0;
-    background: var(--detach-secundary);
-    z-index: 1;
+    background-color: var(--dark-gray);
+    z-index: -1;
 }
 .topBar {
     display: grid;
@@ -27,7 +27,7 @@
     width: 1rem;
     height: 1rem;
     margin: 0 10px 0 0 ;
-    fill: var(--white);
+    fill: var(--medium-gray);
 }
 .topBarRight {
     grid-area: topBarRight;
@@ -47,7 +47,7 @@
     }
     .topBar {
         grid-template-columns: auto;
-        grid-template-rows: 0px 40px ;
+        grid-template-rows: 40px 40px ;
         grid-template-areas: 
             "topBarLeft"
             "topBarRight"
@@ -75,7 +75,7 @@
 @media (max-width: 480px) {
     .topBar {
         grid-template-columns: 1fr;
-        grid-template-rows: 0px 60px ;
+        grid-template-rows: 40px 60px ;
         grid-template-areas: 
             "topBarLeft"
             "topBarRight"

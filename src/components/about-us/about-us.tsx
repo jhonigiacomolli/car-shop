@@ -1,6 +1,7 @@
 import React from 'react'
 import { useConfig } from 'context'
 import AboutUsText from './about-us-text'
+import AboutUsImage from './about-us-image'
 import SimpleSlide from 'components/slide-show/simple-slide'
 import ContactForm from 'components/contact-form/contact-form-2'
 import Styles from './about-us.module.css'
@@ -11,7 +12,7 @@ const AboutUs = () => {
         <section className={Styles.aboutUs}>
             <div className={Styles.container}>
                 <div className={Styles.data}>
-                    {/* <AboutUsImage /> */}
+                    <AboutUsImage />
                     <AboutUsText /> 
                     {(config && config.structure && (config.structure.length > 0)) && (
                         <div className={Styles.structure}>

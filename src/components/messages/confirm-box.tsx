@@ -1,7 +1,6 @@
-import React from 'react'
-import AdminButton from '../buttons/admin-button'
-import Styles from './confirm-box.module.css'
 import { Confirm } from '../icons'
+import SecundaryButton from 'components/buttons/secundary-button'
+import Styles from './confirm-box.module.css'
 
 type ConfirmBoxProps = {
     title: string
@@ -30,8 +29,8 @@ const ConfirmBox = (props: ConfirmBoxProps) => {
                     </div>
                 </div>
                 <div className={Styles.actions}>
-                    <AdminButton onClick={onConfirm}>OK</AdminButton>
-                    <AdminButton onClick={onCancel}>Cancelar</AdminButton>
+                    <SecundaryButton onClick={onConfirm}>OK</SecundaryButton>
+                    <SecundaryButton onClick={onCancel}>Cancelar</SecundaryButton>
                 </div>
             </div>
         </div>

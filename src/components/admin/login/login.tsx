@@ -7,7 +7,7 @@ import { User, Key, Eye, User_Logo, ArrowLeft } from 'components/icons'
 import { TYPE_Users, TYPE_Message_Types, TYPE_API_Response } from 'context/context-types'
 import CheckBox from 'components/checkbox/check-box'
 import Image from 'next/image'
-import MessageBox from 'components/messages/message-box'
+import MessageBox from 'components/admin/messages/message-box'
 import Styles from './login.module.css'
 
 type LoginProps = {

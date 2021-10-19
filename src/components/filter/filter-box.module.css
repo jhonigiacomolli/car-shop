@@ -1,4 +1,5 @@
 .filterContainer {
+    /* background: var(--dark-gray); */
     padding:  0 0 25px 0;
 }
 .filterContent {
@@ -14,32 +15,27 @@
     z-index: 15;
     position: relative;
 }
-.filterContent span {
-    border-radius: 50px;
-}
 .filterContent select {
     padding: 10px;
     height: 50px;
-    border-radius: 50px;
+    border-radius: 5px;
     border: none;
     transition: 0.3s ease;
-    text-align: center;
-    background: var(--ice-white);
-    filter: brightness(1);
-    color: var(--dark-gray);
-    cursor: pointer;
+    background: var(--dark-gray-2);
+    filter: brightness(1.3);
+    color: var(--light-gray);
 }
 .filterContent select:hover {
-    filter: brightness(0.9);
+    filter: brightness(0.95);
     transition: 0.3s ease;
 }
 .selection {
     display: flex;
     flex-direction: column;
-    /* text-align: left; */
+    text-align: left;
 }
 .selection label {
-    color: var(--light-gray);
+    color: var(--medium-gray);
     margin: 0 0 5px 0;
 }
 .label {
@@ -47,29 +43,24 @@
     padding: 15px 30px;
     width: auto;
     height: 100%;
-    background-color: var(--detach-secundary);
+    background-color: var(--gray);
     color: var(--white);
 }
 .filter {
     display: grid;
     align-items: flex-end;
     gap: 10px;
-    padding: 50px;
+    padding: 40px;
     width: 100%;
     box-sizing: border-box;
-    background-color: var(--detach-secundary);
-    border-radius: 250px;
+    background-color: var(--dark-gray);
+    border-radius: 10px;
 }
 .filter {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
 }
-@media (max-width: 767px) {
-    .filter {
-        border-radius: 90px;
-    }
-}
 @media(max-width: 480px) {
     .filter {
-        /* padding: 15px; */
+        padding: 15px;
     }
 }

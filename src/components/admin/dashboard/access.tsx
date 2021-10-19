@@ -10,6 +10,7 @@ import ptBR from 'date-fns/locale/pt-BR'
 import PageHeader from '../page-header'
 import  "react-datepicker/dist/react-datepicker.css"
 import Styles from './access.module.css'
+import { domain } from 'api/api'
 
 type VisitedPages = {
     url: string
@@ -94,9 +95,10 @@ const Dashboard = () => {
         },
     }
 
-    const urls = access.filter((item, index, arr) => {
-        return index === arr.findIndex(it => it.url === item.url)
-    }).map(item => item.url)    
+    function renderPath(url: string) {
+        const arr = url.split('/')
+        return arr[arr.length - 1]
+    }
     
     return (
         <div className={Styles.container}>
@@ -181,7 +183,7 @@ const Dashboard = () => {
                                     </span>
                                     <p className={Styles.page}>
                                         <Desktop />
-                                        {item.url.split('/')[3] ?item.url.split('/')[3] : 'Página Inicial'}
+                                        {item.url.split('/')[3] ? renderPath(item.url) : 'Página Inicial'}
                                     </p>
                                     <a className={Styles.link} href={item.url} target="_blank" rel="noopener noreferrer" >
                                         <LinkIcon />

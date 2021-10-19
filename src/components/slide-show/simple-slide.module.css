@@ -16,4 +16,5 @@
     height: auto;
     opacity: 1;
     transition: all 2s ease, border 0.4s;
+    border: 10px solid var(--dark-gray-2);
 }

@@ -4,10 +4,10 @@ import { useConfig } from 'context'
 import { TokenContext } from '..'
 import { FormEvent, useContext, useEffect, useState } from 'react'
 import { TYPE_API_Response, TYPE_ConfigProps } from 'context/context-types'
-import AlertBox from 'components/messages/alert-box'
-import MessageBox from 'components/messages/message-box'
+import AlertBox from 'components/admin/messages/alert-box'
+import MessageBox from 'components/admin/messages/message-box'
 import PageHeader from '../page-header'
-import PrimarySubmit from 'components/buttons/primary-submit'
+import PrimarySubmit from 'components/admin/buttons/primary-submit'
 import Styles from './blog-config.module.css'
 
 

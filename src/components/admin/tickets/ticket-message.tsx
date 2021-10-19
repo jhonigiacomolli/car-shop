@@ -1,4 +1,4 @@
-import { TYPE_Ticket_Message } from "../../../context/context-types"
+import { TYPE_Ticket_Message } from "context/context-types"
 import Styles from './ticket-message.module.css'
 
 type TicketMessageProps = {

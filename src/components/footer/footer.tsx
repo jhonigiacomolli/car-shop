@@ -17,7 +17,6 @@ const Footer = ({ id }: FooterProps) => {
  
     return (
         <footer id={id} className={Styles.footer}>
-            
             <div className={Styles.iconBoxes}>
                 <IconBox icon={<Pointer />} title={addressTitle} text={addressText} />
                 <IconBox icon={<Phone />} title={phoneTitle} text={phoneText} />   

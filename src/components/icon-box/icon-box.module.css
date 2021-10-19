@@ -23,7 +23,7 @@
     justify-content: center;
     margin:  10px 0 0;
     font-size: 1.2rem;
-    color: var(--white);
+    color: var(--detach);
 }
 .text {
     grid-area: text;
