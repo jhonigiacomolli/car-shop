@@ -5,7 +5,11 @@
     bottom: 0;
     left: 0;
     z-index: 1000;
-    background: var(--view-overlay-background2);
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--view-overlay-background);
 }
 .content{
     display: flex;

@@ -14,7 +14,7 @@
     font-weight: 800;
     font-size: 1.3rem;
     letter-spacing: -1px;
-    color: var(--dark-gray);
+    color: var(--light-gray);
 }
 .textTitle::after {
     content: '';

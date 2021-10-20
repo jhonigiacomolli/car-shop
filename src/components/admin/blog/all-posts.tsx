@@ -188,7 +188,6 @@ const AllArticles = () => {
                             </div>
                         </div>
                 )})}
-                    )
             </div>
         </div>
     )
