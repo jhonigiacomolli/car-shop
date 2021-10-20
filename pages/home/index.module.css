@@ -7,3 +7,15 @@
 .blog {
     fill: var(--gray);
 }
+.partners {
+    padding: 30px;
+    color: var(--white);
+    background: var(--dark-gray-3);
+}
+.partner {
+    max-width: var(--boxed-size);
+    margin: 0 auto;
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+}

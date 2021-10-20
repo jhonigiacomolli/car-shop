@@ -249,7 +249,7 @@ const AdminPanelOption: TYPE_AdminPanelOption[] = [
     {
         id: 'portfolios',
         title: 'Portfólios',
-        display:  false,
+        display: true,
         capability: {
             administrator: true,
             editor: true,

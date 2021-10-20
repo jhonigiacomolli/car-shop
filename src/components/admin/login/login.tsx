@@ -41,9 +41,7 @@ const Login = ({ setLogin, setUserName, setLoading, users }: LoginProps) => {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${localToken}`
                 },
-            }).then(resp => {
-                console.log(resp);
-                
+            }).then(resp => {                
                 setLogin(localToken)                
                 const user = users.filter(user => user.email === localUserEmail)
                 setUserName(user[0])
