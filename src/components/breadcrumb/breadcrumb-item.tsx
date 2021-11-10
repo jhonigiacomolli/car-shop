@@ -9,7 +9,9 @@ const BreadcrumbItem = ({ link, text }: BreadcrumbItemProps) => {
     const { setLoading } = useConfig()
     return (
         <Link href={link}>
-            <a onClick={() => setLoading(true)}>{text}</a>
+            <a onClick={() => setLoading(true)}>
+                {text}
+            </a>
         </Link>
     )
 }

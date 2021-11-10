@@ -23,8 +23,12 @@ const ListedCar = ({ car, theme='light' }: ListedCarProps) => {
             return (
                 <div className={Styles.price}>
                     <div className={Styles.decoratePrice}>
-                        <h2 className={Styles.scratch}>{formatedPrice}</h2>
-                        <h2 className={Styles.value}>{formatedSalePrice}</h2>
+                        <h2 className={Styles.scratch}>
+                            {formatedPrice}
+                        </h2>
+                        <h2 className={Styles.value}>
+                            {formatedSalePrice}
+                        </h2>
                     </div>
                </div>
             )
@@ -32,7 +36,9 @@ const ListedCar = ({ car, theme='light' }: ListedCarProps) => {
             return (
                 <div className={Styles.price}>
                     <div className={Styles.decoratePrice}>
-                        <h2 className={Styles.value}>{formatedPrice}</h2>
+                        <h2 className={Styles.value}>
+                            {formatedPrice}
+                        </h2>
                     </div>
                </div>
             )
@@ -43,7 +49,17 @@ const ListedCar = ({ car, theme='light' }: ListedCarProps) => {
         <Link aria-label={title} href={`/car/${slug}`} passHref>
             <div onClick={() => setLoading(true)} className={`${Styles.car} ${Styles[theme]}`}>
                 <div className={Styles.image} > 
-                    {thumbnail && <Image src={thumbnail} alt={title} width={270} height={170} quality={100} objectFit="cover" layout="responsive"/>}
+                    {thumbnail && (
+                        <Image 
+                            src={thumbnail} 
+                            alt={title} 
+                            width={270} 
+                            height={170} 
+                            quality={100} 
+                            objectFit="cover" 
+                            layout="responsive"
+                        />
+                    )}
                 </div>
                 <h2 className={Styles.title}>{title}</h2>
                 <div className={Styles.carDetail}>
@@ -64,7 +80,9 @@ const ListedCar = ({ car, theme='light' }: ListedCarProps) => {
                             <h2>{color}</h2>
                         </span>
                 </div>
-                <span className={Styles.publish}>Anúnciado em: {dateFormat_short(registration)}</span>
+                <span className={Styles.publish}>
+                    Anúnciado em: {dateFormat_short(registration)}
+                </span>
                 {
                     priceVerification()   
                 }

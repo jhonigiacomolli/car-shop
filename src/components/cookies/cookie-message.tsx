@@ -51,8 +51,12 @@ const CookieMessage = () => {
                 <div className={Styles.content}>
                     <div dangerouslySetInnerHTML={{__html: (config && config.lgpd && config.lgpd.cookieMessage) ? config.lgpd.cookieMessage : ''}} />
                     <div className={Styles.actionContainer}>
-                        <PrimaryButton className={Styles.buttonDetach} onClick={() => acceptCookie()} >Aceitar</PrimaryButton>
-                        <PrimaryButton className={Styles.button} link={'/privace-policity'} >Politica de Privacidade</PrimaryButton>
+                        <PrimaryButton className={Styles.buttonDetach} onClick={() => acceptCookie()}>
+                            Aceitar
+                        </PrimaryButton>
+                        <PrimaryButton className={Styles.button} link={'/privace-policity'}>
+                            Politica de Privacidade
+                        </PrimaryButton>
                     </div>
                 </div>
             </div>}

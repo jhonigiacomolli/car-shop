@@ -79,7 +79,7 @@ export type TYPE_AdminPanelOption = {
     subitens?: TYPE_AdminPanelSubOption[]
 }
 
-const domain = 'sevencars.com.br'
+const domain = 'seudominio.com.br'
 const api = `https://database.${domain}/ms-api/v1`
 const token = `https://database.${domain}/ms-api/jwt-auth/v1/token`
 const token_validation = `https://database.${domain}/ms-api/jwt-auth/v1/token/validate`

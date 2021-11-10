@@ -1,5 +1,4 @@
 import axios from 'axios'
-import Axios from 'axios'
 import Styles from './index.module.css'
 import { useConfig } from 'context'
 import { TYPE_Cars, TYPE_CarTaxonomies, TYPE_ConfigProps } from 'context/context-types'
@@ -208,18 +207,34 @@ const Cars = ({ cars: originalCars, taxonomies, config }: CarsProps) => {
                 <div className={Styles.content}>
                     <div className={Styles.contentHeader}>
                         <div>
-                            <h2 className={Styles.sectionTitle}>VEÍCULOS A VENDA</h2>
-                            <span className={Styles.result}>{`${cars && cars.length} resultados`}</span>
+                            <h2 className={Styles.sectionTitle}>
+                                VEÍCULOS A VENDA
+                            </h2>
+                            <span className={Styles.result}>
+                                {`${cars && cars.length} resultados`}
+                            </span>
                         </div>
                         <div className={Styles.ordenation}>
                             <p>Ordenar por: </p>  
                             <select name="ordenation" id="ordenation" onChange={(e) => setOrder(e.target.value)}>
-                                <option value="dateUp">Mais Recentes Primeiro</option>
-                                <option value="dateDown">Mais Antigos Primeiro</option>
-                                <option value="valueUp">Valores Maiores Primeiro</option>
-                                <option value="valueDown">Valores Menores Primeiro</option>
-                                <option value="kmUp">Maior Kilometragem Primeiro</option>
-                                <option value="kmDown">Menor Kilometragem Primeiro</option>
+                                <option value="dateUp">
+                                    Mais Recentes Primeiro
+                                </option>
+                                <option value="dateDown">
+                                    Mais Antigos Primeiro
+                                </option>
+                                <option value="valueUp">
+                                    Valores Maiores Primeiro
+                                </option>
+                                <option value="valueDown">
+                                    Valores Menores Primeiro
+                                </option>
+                                <option value="kmUp">
+                                    Maior Kilometragem Primeiro
+                                </option>
+                                <option value="kmDown">
+                                    Menor Kilometragem Primeiro
+                                </option>
                             </select>
                             <a className={view === 'grid' ? Styles.active : ''} onClick={() => setView('grid')} >
                                 <Grid />

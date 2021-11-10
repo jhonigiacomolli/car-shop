@@ -106,28 +106,35 @@ const Car = ({ car, config }: CarProps) => {
         if(salePrice) {
             return (
                 <div className={Styles.value}>
-                    <h1 className={Styles.scratch}>{formatedPrice}</h1>
-                    <h1 className={Styles.price}>{formatedSalePrice}</h1>
+                    <h1 className={Styles.scratch}>
+                        {formatedPrice}
+                    </h1>
+                    <h1 className={Styles.price}>
+                        {formatedSalePrice}
+                    </h1>
                 </div>
             )
         }else {
             return (
                 <div className={Styles.value}>
-                    <h1 className={Styles.price}>{formatedPrice}</h1>
+                    <h1 className={Styles.price}>
+                        {formatedPrice}
+                    </h1>
                 </div>
             )
         }
     }
 
-    console.log(description);
-    
-
     return (
         <div className={Styles.container}>
-            {player && <VideoPlayer url={video} closeChange={() => setPlayer(false)} />}
+            {player && (
+                <VideoPlayer url={video} closeChange={() => setPlayer(false)} />
+            )}
             <Breadcrumb />
             <Head>
-                <title>{`${config && config.siteTitle} | ${title} `}</title>
+                <title>
+                    {`${config && config.siteTitle} | ${title} `}
+                </title>
                 <meta name="description"          content={descriptionString ?? ''}/>         
                 <meta property="og:url"           content={url ? url : ''} />
                 <meta property="og:type"          content={'website'} />
@@ -177,8 +184,17 @@ const Car = ({ car, config }: CarProps) => {
                                 if(image.url) {
                                     return (
                                         <div  key={slug + index} className={`${Styles.image} ${index === slide && Styles.slide}`}>
-                                            <Image  src={image.url} alt={`${title}-${index}`} width={750} height={500} layout={'responsive'} objectFit={'cover'}/> 
-                                            <span className={Styles.slideCount} >{`Imagem ${index+1} de ${array.length}`}</span>
+                                            <Image  
+                                                src={image.url} 
+                                                alt={`${title}-${index}`} 
+                                                width={750} 
+                                                height={500} 
+                                                layout={'responsive'} 
+                                                objectFit={'cover'}
+                                            /> 
+                                            <span className={Styles.slideCount}>
+                                                {`Imagem ${index+1} de ${array.length}`}
+                                            </span>
                                         </div>
                                     )
                                 } else {
@@ -193,14 +209,21 @@ const Car = ({ car, config }: CarProps) => {
                                 if(image.url) {
                                     return (
                                         <div  
-                                        key={slug + index} 
-                                        className={`
-                                        ${Styles.image} 
-                                        ${index-1 === slide && Styles.next} 
-                                        ${slide === array.length - 1 && index === 0 && Styles.next}
-                                        `}
+                                            key={slug + index} 
+                                            className={`
+                                            ${Styles.image} 
+                                            ${index-1 === slide && Styles.next} 
+                                            ${slide === array.length - 1 && index === 0 && Styles.next}
+                                            `}
                                         >
-                                            <Image  src={image.url} alt={`${title}-${index}`} width={750} height={500} layout={'responsive'} objectFit={'cover'}/> 
+                                            <Image  
+                                                src={image.url} 
+                                                alt={`${title}-${index}`} 
+                                                width={750} 
+                                                height={500} 
+                                                layout={'responsive'} 
+                                                objectFit={'cover'}
+                                            /> 
                                         </div>
                                     )
                                 } else {
@@ -220,64 +243,104 @@ const Car = ({ car, config }: CarProps) => {
                 <div className={Styles.carContent}>
                     <div className={Styles.titleContainer}>
                         <div className={Styles.title}>
-                            <h1 >{title}</h1>
-                            <span className={Styles.postDate}>Veículo anúnciado em: <p>{formatedRegistration}</p></span>
-                            {code && <span className={Styles.carCode}>Código do Anúncio: <p>{code ?? ''}</p></span>}
+                            <h1>{title}</h1>
+                            <span className={Styles.postDate}>
+                                Veículo anúnciado em: <p>
+                                    {formatedRegistration}
+                                </p>
+                            </span>
+                            {code && <span className={Styles.carCode}>
+                                Código do Anúncio: <p>
+                                    {code ?? ''}
+                                </p>
+                            </span>}
                         </div>
                         {priceVerification()}
                     </div>
-                    {video && <div className={Styles.video}>
-                        Este anúncio possuí um video com detalhes do veículo
-                        <PrimaryButton link='' onClick={() => {setPlayer(true), scrollTo(0,0)}} >Assistir video</PrimaryButton>
-                    </div>}
-                    <DecoratedTitle1 text={ config && config.cars && config.cars.carPage && config.cars.carPage.dataSectionTitle} className={Styles.sectionTitle} />
+                    {video && (
+                        <div className={Styles.video}>
+                            Este anúncio possuí um video com detalhes do veículo
+                            <PrimaryButton link='' onClick={() => {setPlayer(true), scrollTo(0,0)}}>
+                                Assistir video
+                            </PrimaryButton>
+                        </div>
+                    )}
+                    <DecoratedTitle1 
+                        text={ config && config.cars && config.cars.carPage && config.cars.carPage.dataSectionTitle} 
+                        className={Styles.sectionTitle} 
+                    />
                     <div className={Styles.dataContainer}>
-                        {condition && <span className={Styles.dataItem}>
-                            <Check label={'Condição'} />
-                            <p>{condition}</p>
-                        </span>}
-                        {assembler && <span className={Styles.dataItem}>
-                            <Vehicle label={'Montadora'} />
-                            <p>{assembler}</p>
-                        </span>}
-                        {transmission && <span className={Styles.dataItem}>
-                            <Transmission label={'Câmbio'} />
-                            <p>{transmission}</p>
-                        </span>}
-                        {fuel && <span className={Styles.dataItem}>
-                            <Fuel label={'Combustível'} />
-                            <p>{fuel}</p>
-                        </span>}
-                        {motor && <span className={Styles.dataItem}>
-                            <Engine label={'Motorização'} />
-                            <p>{motor}</p>
-                        </span>}
-                        {ports && <span className={Styles.dataItem}>
-                            <Door label={'Portas'} />
-                            <p>{ports}</p>
-                        </span>}
-                        {direction && <span className={Styles.dataItem}>
-                            <SteeringWheel label={'Direção'} />
-                            <p>{direction}</p>
-                        </span>}
-                        {formatedKm && <span className={Styles.dataItem}>
-                            <Tachometer label={'KM'} />
-                            <p>{formatedKm}</p>
-                        </span>}
-                        {endPlate && <span className={Styles.dataItem}>
-                            <CarPlate label={'Final da Placa'} />
-                            <p>{endPlate}</p>
-                        </span>}
-                        {year && <span className={Styles.dataItem}>
-                            <Calendar label={'Ano'} />
-                            <p>{year}</p>
-                        </span>}
-                        {color && <span className={Styles.dataItem}>
-                            <Color label={'Cor'} />
-                            <p>{color}</p>
-                        </span>}
+                        {condition && (
+                            <span className={Styles.dataItem}>
+                                <Check label={'Condição'} />
+                                <p>{condition}</p>
+                            </span>
+                        )}
+                        {assembler && (
+                            <span className={Styles.dataItem}>
+                                <Vehicle label={'Montadora'} />
+                                <p>{assembler}</p>
+                            </span>
+                        )}
+                        {transmission && (
+                            <span className={Styles.dataItem}>
+                                <Transmission label={'Câmbio'} />
+                                <p>{transmission}</p>
+                            </span>
+                        )}
+                        {fuel && (
+                            <span className={Styles.dataItem}>
+                                <Fuel label={'Combustível'} />
+                                <p>{fuel}</p>
+                            </span>
+                        )}
+                        {motor && (
+                            <span className={Styles.dataItem}>
+                                <Engine label={'Motorização'} />
+                                <p>{motor}</p>
+                            </span>
+                        )}
+                        {ports && (
+                            <span className={Styles.dataItem}>
+                                <Door label={'Portas'} />
+                                <p>{ports}</p>
+                            </span>
+                        )}
+                        {direction && (
+                            <span className={Styles.dataItem}>
+                                <SteeringWheel label={'Direção'} />
+                                <p>{direction}</p>
+                            </span>
+                        )}
+                        {formatedKm && (
+                            <span className={Styles.dataItem}>
+                                <Tachometer label={'KM'} />
+                                <p>{formatedKm}</p>
+                            </span>
+                        )}
+                        {endPlate && (
+                            <span className={Styles.dataItem}>
+                                <CarPlate label={'Final da Placa'} />
+                                <p>{endPlate}</p>
+                            </span>
+                        )}
+                        {year && (
+                            <span className={Styles.dataItem}>
+                                <Calendar label={'Ano'} />
+                                <p>{year}</p>
+                            </span>
+                        )}
+                        {color && (
+                            <span className={Styles.dataItem}>
+                                <Color label={'Cor'} />
+                                <p>{color}</p>
+                            </span>
+                        )}
                     </div>
-                    <DecoratedTitle1 text={config && config.cars && config.cars.carPage && config.cars.carPage.optionsSectionTitle}  className={Styles.sectionTitle} />
+                    <DecoratedTitle1 
+                        text={config && config.cars && config.cars.carPage && config.cars.carPage.optionsSectionTitle}  
+                        className={Styles.sectionTitle} 
+                    />
                     <div className={Styles.optionsContainer}>
                     {
                         optionals?.map((optional, index) => (
@@ -289,11 +352,23 @@ const Car = ({ car, config }: CarProps) => {
                         )
                     }
                     </div>
-                    <DecoratedTitle1 text={config && config.cars && config.cars.carPage && config.cars.carPage.descriptionSectionTitle}  className={Styles.sectionTitle} />
-                    <div car-description="car" className={Styles.description} dangerouslySetInnerHTML={{ __html: description }} />
-                <div className={Styles.share}>
-                    <ShareBox sectionTitle="Compartilhe este anúncio com os seus amigos(as)" title={title} description={descriptionString ? descriptionString : ''} link={url} />
-                </div>
+                    <DecoratedTitle1 
+                        text={config && config.cars && config.cars.carPage && config.cars.carPage.descriptionSectionTitle}  
+                        className={Styles.sectionTitle} 
+                    />
+                    <div 
+                        car-description="car" 
+                        className={Styles.description} 
+                        dangerouslySetInnerHTML={{ __html: description }} 
+                    />
+                    <div className={Styles.share}>
+                        <ShareBox 
+                            sectionTitle="Compartilhe este anúncio com os seus amigos(as)" 
+                            title={title} 
+                            description={descriptionString ? descriptionString : ''} 
+                            link={url} 
+                        />
+                    </div>
                 </div>
                 <div className={Styles.contactContainer}>
                     <CarPage_Form car={car}/>

@@ -79,7 +79,6 @@ const CarPage_Form = ({ car }: CarPageFormProps) => {
         submit && (REGEX_Phone.test(phone) ? setPhoneError(false) : setPhoneError(true))
         setPhone(phone)
     }
-
     
     function LGPDverify(checkState: boolean, submit?: boolean) {
         submit && setLGPDauthError(checkState ? true : false)
@@ -182,51 +181,135 @@ async function LGPDauthorization(event: ChangeEvent<HTMLInputElement>) {
 
     return (
         <div className={Styles.contact}>
-            {messageBox && <AlertBox type="warning" message={messageBox} onConfirm={() => setMessageBox('')}/>}
+            {messageBox && (
+                <AlertBox 
+                    type="warning" 
+                    message={messageBox} 
+                    onConfirm={() => setMessageBox('')}
+                />
+            )}
             <span className={Styles.contactTitle}>
-                <h2>Gostou deste anúncio ?</h2>
+                <h2>
+                    Gostou deste anúncio ?
+                </h2>
             </span>
-            <p className={Styles.contactSubtitle}>Entre em contato conosco para maiores informações</p>
+            <p className={Styles.contactSubtitle}>
+                Entre em contato conosco para maiores informações
+            </p>
             <Link href={config &&  `tel:55${config.companyFixedPhone}`}>
                 <a className={Styles.contactFixedPhone} >
                     <MobilePhone />
-                    <p>{windowWidth > 767 ? 'Clique aqui para efetuar uma ligação' : 'Toque aqui para efetuar uma ligação'}</p> 
+                    <p>{
+                        windowWidth > 767 
+                        ? 'Clique aqui para efetuar uma ligação' 
+                        : 'Toque aqui para efetuar uma ligação'
+                    }
+                    </p> 
                 </a>
             </Link>
             <Link href={config && `https://wa.me/55${config.companyMobilePhone.replace('(', '').replace(')', '').replace('-', '').replace(' ', '')}`}>
                 <a className={Styles.contactMobilePhone}>
                     <Whatsapp />
-                    <p>{windowWidth > 767 ? 'Clique aqui para enivar uma mensagem' : 'Toque aqui para enviar uma mensagem'}</p> 
+                    <p>
+                        {
+                            windowWidth > 767 
+                            ? 'Clique aqui para enivar uma mensagem' 
+                            : 'Toque aqui para enviar uma mensagem'
+                        }
+                    </p> 
                 </a>
             </Link>
             <form className={Styles.contactForm} onSubmit={validateInputs}>
                 <User />
-                <input type="text" name="name" id="name" value={name} onChange={(e) => nameVerify(e.target.value)} placeholder="Nome" />
-                {nameError && <span className={Styles.displayError}>{nameErrorMessage}</span>}
+                <input 
+                    type="text" 
+                    name="name" id="name" 
+                    value={name} 
+                    onChange={(e) => nameVerify(e.target.value)} 
+                    placeholder="Nome" 
+                />
+                {nameError && (
+                    <span className={Styles.displayError}>
+                        {nameErrorMessage}
+                    </span>
+                )}
                 <Email />
-                <input type="email" name="email" id="email" value={email} onChange={(e) => emailVerify(e.target.value)} placeholder="E-mail"/>
-                {emailError && <span className={Styles.displayError}>{emailErrorMessage}</span>}
+                <input 
+                    type="email" 
+                    name="email" 
+                    id="email" 
+                    value={email} 
+                    onChange={(e) => emailVerify(e.target.value)} 
+                    placeholder="E-mail"
+                />
+                {emailError && (
+                    <span className={Styles.displayError}>
+                        {emailErrorMessage}
+                    </span>
+                )}
                 <Pointer />
-                <input type="text" name="city" id="city" value={city} onChange={(e) => setCity(e.target.value)} placeholder="Cidade" />
+                <input 
+                    type="text" 
+                    name="city" 
+                    id="city" 
+                    value={city} 
+                    onChange={(e) => setCity(e.target.value)} 
+                    placeholder="Cidade" 
+                />
                 <MobilePhone />
-                <input type="tel" name="phone" id="phone" value={phone} onChange={(e) => phoneMask(e.target.value)} placeholder="Telefone"/>
-                {phoneError && <span className={Styles.displayError}>{phoneErrorMessage}</span>}
+                <input 
+                    type="tel" 
+                    name="phone" 
+                    id="phone" 
+                    value={phone} 
+                    onChange={(e) => phoneMask(e.target.value)} 
+                    placeholder="Telefone"
+                />
+                {phoneError && (
+                    <span className={Styles.displayError}>
+                        {phoneErrorMessage}
+                    </span>
+                )}
                 <Message />
-                <textarea name="message" id="message" value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Gostou do veículo? Envie-nos uma mensagem para maiores detalhes" cols={30} rows={10} />
+                <textarea 
+                    name="message" 
+                    id="message" 
+                    value={message} 
+                    onChange={(e) => setMessage(e.target.value)} 
+                    placeholder="Gostou do veículo? Envie-nos uma mensagem para maiores detalhes" 
+                    cols={30} 
+                    rows={10} 
+                />
                 <div className={Styles.authorization}>
                     <label className={Styles.check} htmlFor="accept-terms">
-                        <CheckBox id="accept-terms"  onChange={LGPDauthorization} initialCheck={LGPDauth}/>
+                        <CheckBox 
+                            id="accept-terms"  
+                            onChange={LGPDauthorization} 
+                            initialCheck={LGPDauth}
+                        />
                         Ao usar este formulário, você concorda com o armazenamento e manuseio de seus dados por este site. Para maiores informações consulte nossa Política de Privacidade 
                     </label>
-                    {LGPDauthError && <span className={Styles.displayError}>{LGPDauthErrorMessage}</span>}
+                    {LGPDauthError && (
+                        <span className={Styles.displayError}>
+                            {LGPDauthErrorMessage}
+                        </span>
+                    )}
                 </div>
-                {LGPDauthError && <span className={Styles.displayError}>{LGPDauthErrorMessage}</span>}
+                {LGPDauthError && <span className={Styles.displayError}>
+                    {LGPDauthErrorMessage}
+                </span>}
                 <div className={Styles.contactButton}>
                     <PrimarySubmit disabled={loader}  value={'Enviar mensagem'} />
                     {loader &&  <CircleLoader />}
                     <span className={`${Styles.mailStatus} ${mailState === 200 && Styles.success} ${ mailState !== undefined &&  mailState !== 200 && Styles.error}`}>
                         {
-                            mailState > 0 ? (mailState === 200 ? "Mensagem enviada com sucesso!!!" : 'Ops.. ocorreu um erro, verifique as informações e tente novamente') : ''
+                            mailState > 0 
+                            ? (
+                                mailState === 200 
+                                ? "Mensagem enviada com sucesso!!!" 
+                                : 'Ops.. ocorreu um erro, verifique as informações e tente novamente'
+                            ) 
+                            : ''
                         }
                     </span>
                 </div>

@@ -25,7 +25,13 @@ const LatestPosts = ({backgroundColor, blogPosts}: LatestPostsProps) => {
                     })}
                 </div>
                 <div className={Styles.button}>
-                    <PrimaryButton label={'Todas as publicações'} onClick={() => setLoading(true)} link={config.blog && config.blog.latestPosts.buttonLink} >{config.blog && config.blog.latestPosts.buttonLabel}</PrimaryButton>
+                    <PrimaryButton 
+                        label={'Todas as publicações'} 
+                        onClick={() => setLoading(true)} 
+                        link={config.blog && config.blog.latestPosts.buttonLink} 
+                    >
+                        {config.blog && config.blog.latestPosts.buttonLabel}
+                    </PrimaryButton>
                 </div>
             </div>
         </div>

@@ -13,12 +13,18 @@ const PrimaryButton = ({ label, link, onClick, className, children }: PrimaryBut
     return (
         link ? (
             <Link href={link ?? ''} passHref>
-                <span aria-label={label} onClick={onClick} className={`${Styles.primaryButton} ${className ?? ''}`}>
+                <span 
+                    onClick={onClick} 
+                    className={`${Styles.primaryButton} ${className ?? ''}`}
+                >
                     {children}
                 </span>
             </Link>
         ) : (
-            <span aria-label={label} onClick={onClick} className={`${Styles.primaryButton} ${className ?? ''}`}>
+            <span 
+                onClick={onClick} 
+                className={`${Styles.primaryButton} ${className ?? ''}`}
+            >
                 {children}
             </span>
         )

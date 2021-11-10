@@ -10,9 +10,15 @@ const Copyright = () => {
         <div className={Styles.container}>
             <div className={Styles.copyright}>
                 <div className={Styles.copyLeft}> 
-                    <div dangerouslySetInnerHTML={{__html: config.copyright ? config.copyright.message : ""}} />
-                    {windowWidth > 767 && <p>|</p>}
-                    <div><Link href="/privace-policity">Politica de Privacidade</Link></div>
+                    <div 
+                        dangerouslySetInnerHTML={{ __html: config.copyright ? config.copyright.message : "" }} 
+                    />
+                    {windowWidth > 767 &&  <p>|</p>}
+                    <div>
+                        <Link href="/privace-policity">
+                            Politica de Privacidade
+                        </Link>
+                        </div>
                     {windowWidth > 767 && <p>|</p>}
                     <div onClick={() => setLoading(true)}>
                         <Link href="/admin">

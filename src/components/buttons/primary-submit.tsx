@@ -10,7 +10,12 @@ type PrimarySubmitProps = {
 const PrimarySubmit = ({ value, className, loader, disabled }: PrimarySubmitProps) => {
     return (
         <span className={`${Styles.buttonContainer} ${className}`} >
-            <input type={'submit'} disabled={disabled} className={Styles.primarySubmit} value={value}></input>
+            <input 
+                type={'submit'} 
+                disabled={disabled} 
+                className={Styles.primarySubmit} 
+                value={value} 
+            />
         </span>
     ) 
 }

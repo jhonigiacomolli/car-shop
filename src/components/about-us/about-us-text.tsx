@@ -8,8 +8,13 @@ const AboutUsText = () => {
 
     return (
         <div className={Styles.aboutUsText}>
-            {config.aboutUs && config.aboutUs.title && <DecoratedTitle5 text={config.aboutUs && config.aboutUs.title} />}
-            { config.aboutUs ? <p className={`${Animation.revealUp} ${Animation.delay6}`} dangerouslySetInnerHTML={{ __html: config.aboutUs && config.aboutUs.text}}></p> : ""}
+            {config.aboutUs && config.aboutUs.title && (
+                <DecoratedTitle5 text={config.aboutUs && config.aboutUs.title} />
+            )}
+            { config.aboutUs 
+            ? <div className={`${Animation.revealUp} ${Animation.delay6}`} dangerouslySetInnerHTML={{ __html: config.aboutUs && config.aboutUs.text}}></div> 
+            : <p></p>
+            }
         </div>
     )
 }

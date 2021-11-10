@@ -23,8 +23,12 @@ const BoxedCar = ({ car, theme = 'light' }: BoxedCarProps) => {
             return (
                 <div className={Styles.price}>
                     <div className={Styles.decoratePrice}>
-                        <h2 className={Styles.scratch}>{formatedPrice}</h2>
-                        <h2 className={Styles.value}>{formatedSalePrice}</h2>
+                        <h2 className={Styles.scratch}>
+                            {formatedPrice}
+                        </h2>
+                        <h2 className={Styles.value}>
+                            {formatedSalePrice}
+                        </h2>
                     </div>
                </div>
             )
@@ -32,7 +36,9 @@ const BoxedCar = ({ car, theme = 'light' }: BoxedCarProps) => {
             return (
                 <div className={Styles.price}>
                     <div className={Styles.decoratePrice}>
-                        <h2 className={Styles.value}>{formatedPrice}</h2>
+                        <h2 className={Styles.value}>
+                            {formatedPrice}
+                        </h2>
                     </div>
                </div>
             )

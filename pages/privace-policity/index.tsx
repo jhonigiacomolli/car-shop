@@ -26,17 +26,29 @@ const PrivacePolicity = ({ config }: PrivacePolicityProps) => {
     return (
         <Fragment>
             <Head>
-                <title>{config.siteTitle}</title>
+                <title>
+                    {config.siteTitle}
+                </title>
                 <meta name="description" content={config.siteDescription}/>
                 <link rel="icon" href={config.favIcon} />
             </Head>
             <div className={Styles.contentContainer}>
                 <div className={Styles.content}>
-                    <h1>POLÍTICAS DE PRIVACIDADE</h1>
-                    <div className={Styles.message} dangerouslySetInnerHTML={{__html: privacePolicity}}></div>
-                    <p className={Styles.lastModified}>Última atualização em: {config.privacePolicity.lastModified}</p>
-                    <p className={Styles.siteTitle}>{config.siteTitle}</p>
-                    <PrimaryExternalButton className={Styles.button} link={config.privacePolicity.downloadLink} target={'_blank'}>
+                    <h1>
+                        POLÍTICAS DE PRIVACIDADE
+                    </h1>
+                    <div className={Styles.message} dangerouslySetInnerHTML={{__html: privacePolicity}} />
+                    <p className={Styles.lastModified}>
+                        Última atualização em: {config.privacePolicity.lastModified}
+                    </p>
+                    <p className={Styles.siteTitle}>
+                        {config.siteTitle}
+                    </p>
+                    <PrimaryExternalButton 
+                        className={Styles.button} 
+                        link={config.privacePolicity.downloadLink} 
+                        target={'_blank'}
+                    >
                         DOWNLOAD POLITICA DE PRIVACIDADE
                     </PrimaryExternalButton>
                 </div>

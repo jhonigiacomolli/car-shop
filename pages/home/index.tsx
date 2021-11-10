@@ -44,7 +44,7 @@ const Home = ({ config, cars, taxonomies }: HomeProps) => {
         <div className={Styles.contentContainer}>
             <SlideShow />
             <FilterBox id="veiculos" />
-            <LatestCars  numberOfCars={cars && config.cars.latestCars.numberOfCars} cars={cars} />
+            <LatestCars numberOfCars={cars && config.cars.latestCars.numberOfCars} cars={cars} />
             <DivisorCar 
                 id={'sobre'} 
                 color={'var(--dark-gray)'} 
@@ -59,7 +59,14 @@ const Home = ({ config, cars, taxonomies }: HomeProps) => {
                     {
                         portfolio?.map(item => (
                             <div key={item.id} >
-                                <Image src={item.cover} alt="Parceiros" width="150" height="100" objectFit="contain" layout="fixed"/>
+                                <Image 
+                                    src={item.cover} 
+                                    alt="Parceiros" 
+                                    width="150" 
+                                    height="100" 
+                                    objectFit="contain" 
+                                    layout="fixed"
+                                />
                             </div>
                         ))
                     }

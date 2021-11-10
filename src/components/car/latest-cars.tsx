@@ -25,7 +25,9 @@ const LatestCars = ({ id, cars, numberOfCars }: LatastCarsProps) => {
                 }
             </div>
             <div className={Styles.button}>
-                <PrimaryButton label={'Todos os veículos'} onClick={() => setLoading(true)} link={'/car'}>Todos os veículos</PrimaryButton>
+                <PrimaryButton label={'Todos os veículos'} onClick={() => setLoading(true)} link={'/car'}>
+                    Todos os veículos
+                </PrimaryButton>
             </div>
         </div>
     )

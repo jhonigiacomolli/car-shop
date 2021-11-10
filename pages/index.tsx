@@ -21,9 +21,7 @@ export default function HomePage ({ config, cars, taxonomies }: HomePageProps) {
   }, [])
 
   return (
-      <>
-        <Home config={config} cars={cars} taxonomies={taxonomies} />
-      </>
+    <Home config={config} cars={cars} taxonomies={taxonomies} />
   )
 }
 

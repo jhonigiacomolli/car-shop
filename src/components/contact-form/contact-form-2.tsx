@@ -172,35 +172,97 @@ const ContactForm = () => {
 
     return (
         <form className={Styles.form} onSubmit={validateInputs}>
-            <h2 className={Styles.title}>Envie-nos uma mensagem!</h2>
+            <h2 className={Styles.title}>
+                Envie-nos uma mensagem!
+            </h2>
             <label className={Styles.input} htmlFor={'name'}>
-                <input type="text" name="name" id="name" value={name} onChange={(e) => nameVerify(e.target.value)} placeholder="Digite seu nome..."/>
-                {nameError && <span className={Styles.displayError}>{nameErrorMessage}</span>}
+                <input 
+                    type="text" 
+                    name="name" 
+                    id="name" 
+                    value={name} 
+                    onChange={(e) => nameVerify(e.target.value)} 
+                    placeholder="Digite seu nome..."
+                />
+                {nameError && (
+                    <span className={Styles.displayError}>
+                        {nameErrorMessage}
+                    </span>
+                )}
             </label>
             <label className={Styles.input} htmlFor={'email'}>
-                <input type="text" name="email" id="email" value={email}  onChange={(e) => emailVerify(e.target.value)} placeholder="email@dominio.com.br" />
-                {emailError && <span className={Styles.displayError}>{emailErrorMessage}</span>}
+                <input 
+                    type="text" 
+                    name="email" 
+                    id="email" 
+                    value={email}  
+                    onChange={(e) => emailVerify(e.target.value)} 
+                    placeholder="email@dominio.com.br"
+                />
+                {emailError && (
+                    <span className={Styles.displayError}>
+                        {emailErrorMessage}
+                    </span>
+                )}
             </label>
             <label className={Styles.input} htmlFor={'phone'}>
-                <input type="tel" name="phone" id="phone" value={phone} onChange={(e) => phoneMask(e.target.value)} placeholder="(00) 0000-0000"/>
-                {phoneError && <span className={Styles.displayError}>{phoneErrorMessage}</span>}
+                <input 
+                    type="tel" 
+                    name="phone" 
+                    id="phone" 
+                    value={phone} 
+                    onChange={(e) => phoneMask(e.target.value)} 
+                    placeholder="(00) 0000-0000"
+                />
+                {phoneError && (
+                    <span className={Styles.displayError}>
+                        {phoneErrorMessage}
+                    </span>
+                )}
             </label>
             <label className={Styles.input} htmlFor={'subject'}>
-                <input type="text" name="subject" id="subject" value={subject} onChange={(e) => setSubject(e.target.value)} placeholder="Digite o assunto..." />
+                <input 
+                    type="text" 
+                    name="subject" 
+                    id="subject" 
+                    value={subject} 
+                    onChange={(e) => setSubject(e.target.value)} 
+                    placeholder="Digite o assunto..."
+                />
             </label>
             <label className={Styles.input} htmlFor={'message'}>
-                <textarea name="message" id="" cols={30} rows={10} value={message} onChange={(e) => setMessage(e.target.value)} placeholder="Escreva sua mensagem..."></textarea>
+                <textarea 
+                    name="message" 
+                    id="" 
+                    cols={30} 
+                    rows={10} 
+                    value={message} 
+                    onChange={(e) => setMessage(e.target.value)} 
+                    placeholder="Escreva sua mensagem..." 
+                />
             </label>
             <div className={Styles.authorization}>
                 <label className={Styles.check} htmlFor="accept-terms">
-                    <CheckBox id="accept-terms"  onChange={LGPDauthorization} initialCheck={LGPDauth}/>
+                    <CheckBox 
+                        id="accept-terms"
+                        onChange={LGPDauthorization} 
+                        initialCheck={LGPDauth}
+                    />
                     <p>Ao usar este formulário, você concorda com o armazenamento e manuseio de seus dados por este site. Para maiores informações consulte nossa Política de Privacidade</p>
                 </label>
-                {LGPDauthError && <span className={Styles.displayError}>{LGPDauthErrorMessage}</span>}
+                {LGPDauthError && <span className={Styles.displayError}>
+                    {LGPDauthErrorMessage}
+                </span>}
             </div>
             <span className={`${Styles.mailStatus} ${mailState === 200 && Styles.success} ${ mailState !== undefined &&  mailState !== 200 && Styles.error}`}>
                 {
-                    mailState > 0 ? (mailState === 200 ? "Mensagem enviada com sucesso!!!" : 'Ops.. ocorreu um erro, verifique as informações e tente novamente') : ''
+                    mailState > 0 
+                    ? (
+                        mailState === 200 
+                        ? "Mensagem enviada com sucesso!!!" 
+                        : 'Ops.. ocorreu um erro, verifique as informações e tente novamente'
+                    ) 
+                    : ''
                 }
             </span>
             <div className={Styles.submit}>

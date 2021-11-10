@@ -14,7 +14,9 @@ const BackToTop = () => {
         <div className={`${Styles.container} ${windowWidth <= 767 && Styles.mobile}`} onClick={() => returnToTop()}>
             <div className={`${Styles.content} ${position === 0 && Styles.hidden}`}>
                 <ArrowUp className={Styles.icon} />
-                {windowWidth > 767 && <p>{position.toFixed(0) + ' %'}</p>}
+                {windowWidth > 767 && (
+                    <p>{position.toFixed(0) + ' %'}</p>
+                )}
             </div>
         </div>
     )
